@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>QComp - Quantitative Verification Benchmark Set - qcomp.org</title>
+	<link rel="stylesheet" type="text/css" href="../libraries/taucharts.css">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<script type="text/javascript" src="../libraries/knockout.js"></script>
+	<script src="../libraries/d3.js" charset="utf-8"></script>
+	<script src="../libraries/taucharts.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../script.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="results.js"></script>
+</head>
+<body onload="init()">
+
+<h1>Quantitative Verification Benchmark Results</h1>
+<div class="belowh1">
+	<a href="index.html">⮌</a> &nbsp;|&nbsp; License: <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> &nbsp;|&nbsp; <a href="contributing.html">Contributing</a> &nbsp;|&nbsp;&thinsp; <a href="conversions.html">JANI Converters</a>
+</div>
+<p>
+	The models and results in this benchmark set on <a href="../index.html">qcomp.org</a> are provided under the terms of the
+	<a href="http://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> license.
+	Please cite the publication linked as "first presented in" for each model.
+	To contribute a new model, update an existing model, or add new results for an existing model, please consider our
+	<a href="contributing.html">information for contributors</a>.
+	For general questions or comments concerning the benchmark set, contact
+	<script type="text/javascript">WriteMailLink('n.etnewtu@snnamtrah.a:otliaml', 'nnamtraH dnrAs');</script>.
+	If you have questions concerning a specific model, please contact the submitter listed for that model.
+</p>
+
+<div class="box">
+	<div class="boxlabelo"><div class="boxlabel">Select data</div></div>
+	<div class="box" style="display: inline-block;">
+		<div class="boxlabelo" style="pointer-events: auto;"><div class="boxlabel">Tools</div></div>
+		<!-- ko foreach: tools -->
+			<div class="box" style="display: inline-block;">
+				<div class="boxlabelo" style="pointer-events: auto; white-space: nowrap;"><div class="boxlabel">
+					<input type="checkbox" data-bind="checked: selected, attr: { id: 'select_tool_' + name }" style="vertical-align: top; margin-top: 3px;" />
+					<label data-bind="text: name, attr: { for: 'select_tool_' + name, title: name }"></label>
+				</div></div>
+				<h4>Versions</h4>
+				<!-- ko foreach: $root.toolVersions -->
+					<div data-bind="if: tool === $parent">
+						<label>
+							<input type="checkbox" data-bind="checked: selected" style="vertical-align: top; margin-top: 2px;" />
+							<span data-bind="text: $data.toString()"></span>
+						</label>
+					</div>
+				<!-- /ko -->
+			</div>
+		<!-- /ko -->
+	</div>
+	<div class="box" style="column-width: 200px;">
+		<div class="boxlabelo" style="pointer-events: auto;"><div class="boxlabel">Models</div></div>
+		<!-- ko foreach: models -->
+			<div class="box" style="display: inline-block;">
+				<div class="boxlabelo" style="pointer-events: auto; white-space: nowrap;"><div class="boxlabel" style="background: none;">
+					<table style="width: 100%; table-layout: fixed; margin-left: -0.5ex;">
+						<tr>
+							<td style="width: 3ex; padding-left: 0.5ex; background-color: #FFFFFF;">
+								<input type="checkbox" data-bind="checked: selected, attr: { id: 'select_model_' + short }" style="vertical-align: top; margin-top: 3px;" />
+							</td>
+							<td style="overflow: hidden; text-overflow: ellipsis;">
+								<span style="padding-right: 0.5ex; background-color: #FFFFFF;">
+									<label data-bind="text: name, attr: { for: 'select_model_' + short, title: name }"></label>
+								</span>
+							</td>
+						</tr>
+					</table>
+				</div></div>
+				<div style="position: relative; left: 2.5ex; top: -0.5ex;">
+					(<a data-bind="text: short, attr: { href: 'index.html#' + short }" href=""></a>)
+				</div>
+				<div style="display: inline-block; vertical-align: top; margin-right: 12px;">
+					<h4>Parameters</h4>
+					<table style="width: 100%; table-layout: fixed;">
+						<tbody data-bind="foreach: paramCombs">
+							<tr>
+								<td style="width: 2.5ex;">
+									<input type="checkbox" data-bind="checked: selected, attr: { id: 'chkParamComb_' + model.short + '_' + short }" style="vertical-align: top; margin-top: 3px;" />
+								</td>
+								<td>
+									<label data-bind="attr: { for: 'chkParamComb_' + model.short + '_' + short }">
+										<div data-bind="text: name, attr: { title: name }" style="overflow-x: hidden; white-space: nowrap; text-overflow: ellipsis;"></div>
+									</label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div style="display: inline-block; vertical-align: top; margin-right: 12px;">
+					<h4>Properties</h4>
+					<table style="width: 100%; table-layout: fixed;">
+						<tbody data-bind="foreach: properties">
+							<tr>
+								<td style="width: 2.5ex;">
+									<input type="checkbox" data-bind="checked: selected, attr: { id: 'chkProperty_' + model.short + '_' + name }" style="vertical-align: top; margin-top: 3px;" />
+								</td>
+								<td>
+									<label data-bind="attr: { for: 'chkProperty_' + model.short + '_' + name }">
+										<div data-bind="attr: { title: name }" style="overflow-x: hidden; white-space: nowrap; text-overflow: ellipsis;">
+											<span data-bind="text: name"></span>
+											<span data-bind="attr: { title: propertyTypeToLongString(type) }">(<span data-bind="text: propertyTypeToShortString(type)"></span>)</span>
+										</div>
+									</label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		<!-- /ko -->
+	</div>
+</div>
+
+<div class="box">
+	<div class="boxlabelo"><div class="boxlabel">Configure display</div></div>
+	<fieldset>
+		Show&nbsp;
+		<select data-bind="options: scaleOptions, value: scaleConfig"></select>
+		<select data-bind="options: aggregateOptions, value: aggregateConfig"></select>
+		<select data-bind="options: valueOptions, value: valueConfig"></select>
+		&nbsp;per&nbsp;
+		<select data-bind="options: axisOptions, value: rowConfig"></select>
+		&nbsp;and&nbsp;
+		<select data-bind="options: axisOptions, value: columnConfig, optionsCaption: '(none)'"></select>
+		&nbsp;as a&nbsp;
+		<select data-bind="options: plotTypes, value: plotType"></select>
+	</fieldset>
+</div>
+
+<!-- ko if: errorMessage() !== null -->
+	<div class="box" style="margin-bottom: 64px;">
+		<div class="boxlabelo"><div class="boxlabel">Results</div></div>
+		<div data-bind="text: errorMessage()" style="font-style: italic; text-align: center; padding: 24px;"></div>
+	</div>
+<!-- /ko -->
+<!-- ko if: errorMessage() === null && data() !== null -->
+	<div class="box" data-bind="with: data()">
+		<div class="boxlabelo"><div class="boxlabel">Results</div></div>
+		<!-- ko if: display === "table" -->
+			<div data-bind="text: valuesCaption + ':'"></div>
+			<div style="overflow-x: auto; padding-bottom: 4px;">
+				<table id="results" style="white-space: nowrap;">
+					<thead>
+						<tr data-bind="if: $data.columnTopCaptions !== undefined">
+							<!-- ko if: $data.rowsPreCaption !== undefined -->
+								<th></th>
+							<!-- /ko -->
+							<!-- ko if: $data.rowsCaption !== undefined -->
+								<th></th>
+							<!-- /ko -->
+							<!-- ko foreach: columnTopCaptions -->
+								<th data-bind="text: caption, attr: { colspan: span }" style="text-align: center;"></th>
+							<!-- /ko -->
+						</tr>
+						<tr>
+							<!-- ko if: $data.rowsPreCaption !== undefined -->
+								<th>
+									<div data-bind="text: rowsPreCaption.caption" style="border-bottom: 1px solid #000000; padding: 0ex 1ex 0ex 0ex;"></div>
+								</th>
+							<!-- /ko -->
+							<!-- ko if: $data.rowsCaption !== undefined -->
+								<th>
+									<div data-bind="text: rowsCaption.caption" style="border-bottom: 1px solid #000000; padding: 0ex 1ex 0ex 0ex;"></div>
+								</th>
+							<!-- /ko -->
+							<!-- ko foreach: columnCaptions -->
+								<th style="text-align: center; padding: 0ex;">
+									<div data-bind="text: caption, style: { marginLeft: isFirst ? '1ex' : '0ex', marginRight: isLast ? '1ex' : '0ex' }" style="border-bottom: 1px solid #000000; padding: 0ex 1ex;"></div>
+								</th>
+							<!-- /ko -->
+						</tr>
+					</thead>
+					<tbody data-bind="foreach: rows">
+						<tr>
+							<!-- ko if: $data.preCaption !== undefined -->
+								<td data-bind="text: preCaption"></td>
+							<!-- /ko -->
+							<!-- ko if: $data.caption !== undefined -->
+								<td data-bind="text: caption"></td>
+							<!-- /ko -->
+							<!-- ko foreach: columnValues -->
+								<td style="text-align: right;">
+									<span data-bind="text: hasValue ? displayValue : ''"></span><span data-bind="visible: unit !== null, text: ' ' + unit"></span>
+								</td>
+							<!-- /ko -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		<!-- /ko -->
+		<!-- ko if: display !== "table" -->
+			<div id="chart" style="height: 500px;"></div>
+		<!-- /ko -->
+	</div>
+<!-- /ko -->
+
+<div class="box" style="margin-bottom: 64px;">
+	<div class="boxlabelo"><div class="boxlabel">Notes</div></div>
+	<div style="font-style: italic; font-size: 90%;">
+		Per-property runtimes include overhead: the difference between the total runtime and the sum of the individual per-property runtimes of a result.
+		A result's overhead is evenly distributed over all properties included in the result.
+		Overhead may include e.g. the time for tool startup and state space exploration.
+		The CPU-scaled runtime is obtained by multiplying the actual runtime in seconds by one-thousandth of the <a href="https://www.cpubenchmark.net/cpu_list.php">Passmark</a> "single-thread rating" for the CPU of the system that the result was obtained on.
+		It is a unitless number meant to improve the fairness of comparing runtimes obtained on different systems and has no absolute meaning.
+	</div>
+</div>
+
+</body>
+</html>

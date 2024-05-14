@@ -1,0 +1,953 @@
+{
+	"name": "airportA",
+	"short": "airportA",
+	"type": "mdp",
+	"original": "DRN",
+	"version": 1,
+	"date": "2022-10-05",
+	"author": "Sebastian Junges",
+	"source": "https://github.com/sjunges/premise-mdp-benchmarks",
+	"description": "Set of challenging MDP model checking queries from the Premise tool (https://github.com/monitoring-MDPs/premise). We created a set of challenging benchmarks by scaling up the original benchmarks and filtering such that not all the standard configurations solved every benchmark within a second.",
+	"references": [
+		"https://doi.org/10.1007/978-3-030-81688-9_26"
+	],
+	"notes": "Challenging",
+	"parameters": [
+		{
+			"name": "N0",
+			"kind": "file",
+			"description": "File parameter 0",
+			"type": "integer"
+		},
+		{
+			"name": "N1",
+			"kind": "file",
+			"description": "File parameter 1",
+			"type": "integer"
+		},
+		{
+			"name": "N2",
+			"kind": "file",
+			"description": "File parameter 2",
+			"type": "integer"
+		},
+		{
+			"name": "N3",
+			"kind": "file",
+			"description": "File parameter 3",
+			"type": "integer"
+		},
+		{
+			"name": "N4",
+			"kind": "file",
+			"description": "File parameter 4",
+			"type": "integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "MaxGoal",
+			"description": "The maximal probability to finally reach a goal state.",
+			"type": "prob-reach"
+		}
+	],
+	"files": [
+		{
+			"original-file": [
+				"airportA-7-200-30-1-200.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 1
+				},
+				{
+					"name": "N4",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-4-350.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 4
+				},
+				{
+					"name": "N4",
+					"value": 350
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-4-150.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 4
+				},
+				{
+					"name": "N4",
+					"value": 150
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-0-400.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 0
+				},
+				{
+					"name": "N4",
+					"value": 400
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-1-400.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 1
+				},
+				{
+					"name": "N4",
+					"value": 400
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-400-40-4-450.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 400
+				},
+				{
+					"name": "N2",
+					"value": 40
+				},
+				{
+					"name": "N3",
+					"value": 4
+				},
+				{
+					"name": "N4",
+					"value": 450
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-3-300.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 3
+				},
+				{
+					"name": "N4",
+					"value": 300
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-0-200.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 0
+				},
+				{
+					"name": "N4",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-3-400.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 3
+				},
+				{
+					"name": "N4",
+					"value": 400
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-400-40-2-100.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 400
+				},
+				{
+					"name": "N2",
+					"value": 40
+				},
+				{
+					"name": "N3",
+					"value": 2
+				},
+				{
+					"name": "N4",
+					"value": 100
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-400-40-2-50.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 400
+				},
+				{
+					"name": "N2",
+					"value": 40
+				},
+				{
+					"name": "N3",
+					"value": 2
+				},
+				{
+					"name": "N4",
+					"value": 50
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-2-200.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 2
+				},
+				{
+					"name": "N4",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-1-300.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 1
+				},
+				{
+					"name": "N4",
+					"value": 300
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-400-40-1-200.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 400
+				},
+				{
+					"name": "N2",
+					"value": 40
+				},
+				{
+					"name": "N3",
+					"value": 1
+				},
+				{
+					"name": "N4",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-4-250.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 4
+				},
+				{
+					"name": "N4",
+					"value": 250
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-3-200.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 3
+				},
+				{
+					"name": "N4",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-0-300.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 0
+				},
+				{
+					"name": "N4",
+					"value": 300
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-400-40-1-400.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 400
+				},
+				{
+					"name": "N2",
+					"value": 40
+				},
+				{
+					"name": "N3",
+					"value": 1
+				},
+				{
+					"name": "N4",
+					"value": 400
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-2-400.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 2
+				},
+				{
+					"name": "N4",
+					"value": 400
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-3-150.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 3
+				},
+				{
+					"name": "N4",
+					"value": 150
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-3-350.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 3
+				},
+				{
+					"name": "N4",
+					"value": 350
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-2-350.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 2
+				},
+				{
+					"name": "N4",
+					"value": 350
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-2-150.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 2
+				},
+				{
+					"name": "N4",
+					"value": 150
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-0-350.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 0
+				},
+				{
+					"name": "N4",
+					"value": 350
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-0-150.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 0
+				},
+				{
+					"name": "N4",
+					"value": 150
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-4-400.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 4
+				},
+				{
+					"name": "N4",
+					"value": 400
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-400-40-4-500.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 400
+				},
+				{
+					"name": "N2",
+					"value": 40
+				},
+				{
+					"name": "N3",
+					"value": 4
+				},
+				{
+					"name": "N4",
+					"value": 500
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-1-150.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 1
+				},
+				{
+					"name": "N4",
+					"value": 150
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-2-250.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 2
+				},
+				{
+					"name": "N4",
+					"value": 250
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-1-350.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 1
+				},
+				{
+					"name": "N4",
+					"value": 350
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-400-40-4-300.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 400
+				},
+				{
+					"name": "N2",
+					"value": 40
+				},
+				{
+					"name": "N3",
+					"value": 4
+				},
+				{
+					"name": "N4",
+					"value": 300
+				}
+			]
+		},
+		{
+			"original-file": [
+				"airportA-7-200-30-4-200.drn",
+				"airportA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 7
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 30
+				},
+				{
+					"name": "N3",
+					"value": 4
+				},
+				{
+					"name": "N4",
+					"value": 200
+				}
+			]
+		}
+	],
+	"results": []
+}

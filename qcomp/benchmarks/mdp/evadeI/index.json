@@ -1,0 +1,385 @@
+{
+	"name": "evadeI",
+	"short": "evadeI",
+	"type": "mdp",
+	"original": "DRN",
+	"version": 1,
+	"date": "2022-10-05",
+	"author": "Sebastian Junges",
+	"source": "https://github.com/sjunges/premise-mdp-benchmarks",
+	"description": "Set of challenging MDP model checking queries from the Premise tool (https://github.com/monitoring-MDPs/premise). We created a set of challenging benchmarks by scaling up the original benchmarks and filtering such that not all the standard configurations solved every benchmark within a second.",
+	"references": [
+		"https://doi.org/10.1007/978-3-030-81688-9_26"
+	],
+	"notes": "Challenging",
+	"parameters": [
+		{
+			"name": "N0",
+			"kind": "file",
+			"description": "File parameter 0",
+			"type": "integer"
+		},
+		{
+			"name": "N1",
+			"kind": "file",
+			"description": "File parameter 1",
+			"type": "integer"
+		},
+		{
+			"name": "N2",
+			"kind": "file",
+			"description": "File parameter 2",
+			"type": "integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "MaxGoal",
+			"description": "The maximal probability to finally reach a goal state.",
+			"type": "prob-reach"
+		}
+	],
+	"files": [
+		{
+			"original-file": [
+				"evadeI-19-0-450.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 0
+				},
+				{
+					"name": "N2",
+					"value": 450
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-4-300.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 4
+				},
+				{
+					"name": "N2",
+					"value": 300
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-0-250.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 0
+				},
+				{
+					"name": "N2",
+					"value": 250
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-3-350.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 3
+				},
+				{
+					"name": "N2",
+					"value": 350
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-4-200.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 4
+				},
+				{
+					"name": "N2",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-3-450.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 3
+				},
+				{
+					"name": "N2",
+					"value": 450
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-4-400.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 4
+				},
+				{
+					"name": "N2",
+					"value": 400
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-3-250.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 3
+				},
+				{
+					"name": "N2",
+					"value": 250
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-3-300.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 3
+				},
+				{
+					"name": "N2",
+					"value": 300
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-2-500.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 2
+				},
+				{
+					"name": "N2",
+					"value": 500
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-4-150.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 4
+				},
+				{
+					"name": "N2",
+					"value": 150
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-0-400.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 0
+				},
+				{
+					"name": "N2",
+					"value": 400
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-3-500.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 3
+				},
+				{
+					"name": "N2",
+					"value": 500
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-4-350.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 4
+				},
+				{
+					"name": "N2",
+					"value": 350
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-4-250.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 4
+				},
+				{
+					"name": "N2",
+					"value": 250
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-0-500.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 0
+				},
+				{
+					"name": "N2",
+					"value": 500
+				}
+			]
+		},
+		{
+			"original-file": [
+				"evadeI-19-3-400.drn",
+				"evadeI.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 19
+				},
+				{
+					"name": "N1",
+					"value": 3
+				},
+				{
+					"name": "N2",
+					"value": 400
+				}
+			]
+		}
+	],
+	"results": []
+}

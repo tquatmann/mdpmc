@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>QComp - Quantitative Verification Benchmark Set - qcomp.org</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<script type="text/javascript" src="../script.js"></script>
+</head>
+<body onload="init()">
+
+<h1>Quantitative Verification Benchmark Set</h1>
+<div class="belowh1">
+	<a href="index.html">⮌</a> &nbsp;|&nbsp; <a href="#otherstojani">Other Models to JANI</a> &nbsp;|&nbsp; <a href="#janitoothers">JANI to Other Models</a> &nbsp;|&nbsp; <a href="#janitojani">JANI to JANI</a>
+</div>
+
+<p>
+	This page lists tools that can convert models to, between, and from JANI.
+	Please contact <script type="text/javascript">WriteMailLink('n.etnewtu@snnamtrah.a:otliaml', 'nnamtraH dnrAs');</script> if you would like to have your own conversion tool added to this page.
+	If problems occur while using one of the mentioned tools, please contact the respective tool authors.
+</p>
+
+<h2 id="otherstojani">Conversion of Models to JANI</h2>
+<p>
+	All models in the <a href="index.html">Quantitative Verification Benchmark Set</a> need to be available in the <a href="http://www.jani-spec.org/">JANI</a> model format.
+	The following conversions from other modelling formalisms are available in tools:
+</p>
+<ul class="text continue">
+	<li>
+		<a href=#galileotojani>Galileo to JANI</a> via <a href="https://github.com/utwente-fmt/DFTRES">DFTRES</a>
+	</li>
+	<li>
+		<a href=#gspntojani>Generalised stochastic Petri nets (GSPN) to JANI</a> via <a href="http://www.stormchecker.org">Storm</a>
+	</li>
+	<li>
+		<a href=#modesttojani>Modest to JANI</a> via <a href="http://www.modestchecker.net">moconv</a>
+	</li>
+	<li>
+		<a href=#PPDDLtojani>PPDDL to JANI</a> via <a href="https://fai.cs.uni-saarland.de/downloads/ppddl2jani.zip">ppddl2jani</a>
+	</li>
+	<li>
+		<a href=#prismtojani>PRISM to JANI</a> via <a href="http://www.stormchecker.org">Storm</a>
+	</li>
+</ul>
+
+<h3 id="galileotojani">Galileo to JANI</h3>
+<p>
+	Conversion of input models given in the <a href="https://www.cse.msu.edu/~cse870/Materials/FaultTolerant/manual-galileo.htm">Galileo Language</a> is supported by the <tt><a href="https://github.com/utwente-fmt/DFTRES">DFTRES</a></tt> tool.
+</p>
+<p>
+	For example, the Galileo model file <a href="ma/mcs/mcs.1-1-10-false.dft">mcs.1-1-10-false.dft</a> can be converted into a JANI file using <tt>DFTRES</tt> with the following command:
+</p>
+<p class="tt">
+	java -jar DFTRES.jar --export-jani mcs.1-1-10-false.jani -a -r 1 mcs.1-1-10-false.dft
+</p>
+<p>
+	The properties specified in the JANI file are determined by the options specified to <tt>DFTRES</tt>, namely <tt>-a</tt> for availability and <tt>-r T</tt> for reliability up to time <tt>T</tt>.
+</p>
+<p>
+	The Galileo conversion of <tt>DFTRES</tt> requires a working installation of <a href="https://fmt.ewi.utwente.nl/tools/dftcalc/">DFTCalc</a> and its dependencies.
+</p>
+
+<h3 id="gspntojani">GSPN to JANI</h3>
+<p>
+	GSPN given in <a href="http://www.di.unito.it/~greatspn/index.html">GreatSPN project files</a> can be converted into JANI using <tt>Storm-gspn</tt>, which is part of <a href="http://www.stormchecker.org">Storm</a>.
+</p>
+<p>
+	For example, the GreatSPN file <a href="ma/readers-writers/readers-writers.pnpro">readers-writers.pnpro</a>, the capacities file <a href="ma/readers-writers/readers-writers.capacities">readers-writers.capacities</a>, and the property file <a href="ma/readers-writers/readers-writers.csl">readers-writers.csl</a> can be converted into a JANI file using <tt>Storm-gspn</tt> version 1.2.4 with the following command:
+</p>
+<p class="tt">
+	storm-gspn --gspnfile readers-writers.pnpro --capacitiesfile readers-writers.capacities --prop readers-writers.csl --constants K=35 --to-jani readers-writers-35.jani
+</p>
+<p>
+	Here, the capacities file specifies upper bounds for the number of tokens in each place to guarantee a finite Markov model. The property file contains properties using the syntax of <a href="http://www.prismmodelchecker.org/manual/PropertySpecification/">PRISM properties</a>.
+	The option <tt>--constants</tt> specifies values for constants/templates occurring in the GreatSPN file.
+	In addition, the following options can be used:
+</p>
+<ul class="none continue">
+	<li>
+		<tt>--capacity &lt;value&gt;</tt> specifies that at most <tt>&lt;value&gt;</tt> many tokens can be in each place.
+		This is an alternative to specifying a capacities file.
+	</li>
+	<li>
+		<tt>--addprops</tt> adds a set of standard GSPN properties, e.g. the probability for a deadlock.
+	</li>
+</ul>
+
+<h3 id="modesttojani">Modest to JANI</h3>
+<p>
+	Conversion of input models given in the <a href="http://www.modestchecker.net/Publications/?HHHK13">Modest language</a> is supported by <tt>moconv</tt>, which is part of the <a href="http://www.modestchecker.net">Modest Toolset</a>.
+</p>
+<p>
+	For example, the Modest model file <a href="mdp/beb/beb.3.modest">beb.3.modest</a> can be converted into a JANI file using <tt>moconv</tt> with the following command:
+</p>
+<p class="tt">
+	moconv.exe beb.3.modest -O beb.3-4.jani -E "K=4" --unroll-distrs
+</p>
+<p>
+	Several additional conversions can be performed by specifying options to <tt>moconv</tt> (such as replacing finite-support probability distributions by probabilistic branching via the <tt>--unroll-distrs</tt> option in the command above); run
+</p>
+<p class="tt">
+	moconv.exe -?
+</p>
+<p>
+	for an overview and explanation of all available options.
+</p>
+
+<h3 id="PPDDLtojani">PPDDL to JANI</h3>
+<p>
+	Conversion of input models given in the <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.539.6990&rep=rep1&type=pdf">Probabilistic Planning Domain Definition Language (PPDDL)</a> is supported by <a href="https://fai.cs.uni-saarland.de/downloads/ppddl2jani.zip"><tt>ppddl2jani</tt></a>, a script written by <a href="https://fai.cs.uni-saarland.de/steinmetz/">Marcel Steinmetz</a>, which uses parts of the <a href="http://www.fast-downward.org/HomePage">Fast Downward</a> PPDDL parser.
+</p>
+<p>
+	For example, the PPDDL files of the elevator problem <a href="mdp/elevators/p01.pddl">p01.pddl</a> and <a href="mdp/elevators/domain.pddl">domain.pddl</a> can be converted into a JANI file using <tt>ppddl2jani</tt> with the following command: 
+</p>
+<p class="tt">
+	ppddl2jani.py domain.pddl p01.pddl --jani elevators.jani
+</p>
+
+<h3 id="prismtojani">PRISM to JANI</h3>
+<p>
+	Conversion of input models given in the <a href="http://www.prismmodelchecker.org/manual/ThePRISMLanguage/">PRISM launguage</a> is supported by <tt>Storm-conv</tt>, which is part of <a href="http://www.stormchecker.org">Storm</a>.
+</p>
+<p>
+	For example, the PRISM model file <a href="mdp/resource-gathering/resource-gathering.pm">resource-gathering.pm</a> and the PRISM property file <a href="mdp/resource-gathering/resource-gathering.prctl">resource-gathering.prctl</a> can be converted into a JANI file using <tt>Storm-conv</tt> version 1.2.4 with the following command:
+</p>
+<p class="tt">
+	storm-conv --prism resource-gathering.pm --prop resource-gathering.prctl --tojani resource-gathering.jani
+</p>
+<p>
+	In addition, the following options can be used:
+</p>
+<ul class="none continue">
+	<li>
+		<tt>--prismcompat</tt> enables PRISM compatibility.
+		This may be necessary to process some PRISM models.
+	</li>
+	<li>
+		<tt>--constants &lt;values&gt;</tt> specifies the constant replacements to use, where <tt>&lt;values&gt;</tt> is a comma separated list of constants and their values, e.g. <tt>a=1,b=2,c=3</tt>.
+	</li>
+	<li>
+		<tt>--globalvars</tt> makes all module variables global, e.g. to guarantee the same variable order as in the input file.
+	</li>
+</ul>
+
+<h2 id="janitoothers">Conversion of Models from JANI</h2>
+<p>
+	There are tools which support the analysis of model types which are often represented in JANI but do not directly accept JANI as an input format.
+	The following tools implement conversions from JANI to other input formats:
+</p>
+<ul class="text continue">
+	<li>
+		<a href=#jani2ppddl>JANI to PPDDL</a> via <a href="https://dgit.cs.uni-saarland.de/Michaela/jani-ppddl-translation-release">jani2ppddl</a>
+	</li>
+</ul>
+
+<h3 id="jani2ppddl">JANI to PPDDL</h3>
+<p>
+	Conversion of JANI MDP models using a restricted JANI syntax into the <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.539.6990&rep=rep1&type=pdf">Probabilistic Planning Domain Definition Language (PPDDL)</a> is supported by <a href="https://dgit.cs.uni-saarland.de/Michaela/jani-ppddl-translation-release"><tt>jani2ppddl</tt></a>, a script written by <a href="https://depend.cs.uni-saarland.de/~klauck">Michaela Klauck</a>.
+</p>
+<p>
+	For example, the JANI file of Rabin's mutual exclusion protocol <a href="mdp/rabin/rabin.3.jani">rabin.3.jani</a> can be converted into a PPDDL domain and a problem file using <tt>jani2ppddl</tt> with the following command, where the configuration file lists the arithmetic expressions used in the model (see the script's webpage for more information).
+</p>
+<p class="tt">
+	jani2ppddl.py rabin.3.jani -c config_rabin.py
+</p>
+
+<h2 id="janitojani">JANI-to-JANI Conversions</h2>
+<p>
+	<a href="http://www.jani-spec.org/">JANI</a> includes model types and advanced modelling features that might not be supported by some tools.
+	The following tools implement conversions to less expressive model types or more conservative fragments of JANI:
+</p>
+<ul>
+	<li>
+		<a href="http://www.modestchecker.net">moconv</a>
+		<ul>
+			<li>Assignments with discrete nondeterministic expressions to nondeterministic branching</li>
+			<li>Exit rewards to branch rewards</li>
+			<li>Input-enabled labels to explicit edges</li>
+			<li>Instantiation of open parameters</li>
+			<li>Parallel automata to flat models</li>
+			<li>PTA to MDP via the digital clocks semantics</li>
+			<li>Sampling expressions with finite-support probability distributions to probabilistic branching</li>
+		</ul>
+	</li>
+	<li>
+		<a href="http://www.stormchecker.org">Storm</a>
+		<ul>
+			<li>Arrays to sets of variables</li>
+			<li>Instantiation of open parameters</li>
+			<li>Parallel automata to flat models</li>
+			<li>Substitution of function calls by their defining expression</li>
+		</ul>
+	</li>
+</ul>
+
+</body>
+</html>

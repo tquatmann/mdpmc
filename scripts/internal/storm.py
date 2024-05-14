@@ -1,0 +1,282 @@
+from .benchmark import Benchmark
+from .invocation import Invocation
+from .execution import *
+from .configuration import *
+
+def get_name():
+    """ should return the name of the tool """
+    return "Storm"
+
+def test_installation(settings, configuration = None):
+    """
+    Performs a quick check to test wether the installation works. 
+    Returns an error message if something went wrong and 'None' otherwise.
+    """
+    storm_executable = os.path.join(settings.storm_binary_dir(), "storm")    
+    if not os.path.exists(storm_executable):
+         return "Binary '{}' does not exist.".format(storm_executable)    
+    command_line = storm_executable + " {}".format("" if configuration is None else configuration.command)
+    try:
+        test_out, test_time, test_code = execute_command_line(command_line, 10)
+        if test_code != 0:
+            return "Error while executing:\n\t{}\nNon-zero return code: '{}'.".format(command_line, test_code)
+    except KeyboardInterrupt:
+        return "Error: Execution interrupted."
+    except Exception:
+        return "Error while executing\n\t{}\n".format(command_line)
+
+    
+def is_benchmark_supported(benchmark : Benchmark, configuration : Configuration):
+    """ Auxiliary function that returns True if the provided benchmark is not supported by Storm and no known external conversion tool can help."""
+    # Storm does not support CTMCs with infinite state-spaces
+    if benchmark.is_prism_inf() and benchmark.is_ctmc():
+        return False
+    return True
+
+def get_configurations():
+    cfgs = []
+    cfgs.append(Configuration(id="lp", note="LP with non-triv bounds using gurobi (1 thread)", command="--minmax:method lp  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds"))
+    cfgs.append(Configuration(id="lp-glpk-nobnds", note="LP using glpk", command="--minmax:method lp  --lpsolver glpk"))
+    cfgs.append(Configuration(id="lp-gurobi-16autonobnds", note="LP using gurobi (16 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 16 "))
+    cfgs.append(Configuration(id="lp-gurobi-4auto", note="LP with non-triv bounds using gurobi (4 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds "))
+    cfgs.append(Configuration(id="lp-gurobi-4autoeq", note="LP with non-triv bounds using gurobi (4 threads), eq. constr", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-eq-unique-actions --minmax:lp-use-nontrivial-bounds "))
+    cfgs.append(Configuration(id="lp-gurobi-4autoinit", note="LP with non-triv bounds using gurobi (4 threads), only init opt. ", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial --topological:relevant-values --minmax:lp-use-nontrivial-bounds "))
+    cfgs.append(Configuration(id="lp-gurobi-4autoiniteq", note="LP with non-triv bounds using gurobi (4 threads), only init opt., eq. constr", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial --topological:relevant-values --minmax:lp-eq-unique-actions --minmax:lp-use-nontrivial-bounds "))
+    cfgs.append(Configuration(id="lp-gurobi-4autonobnds", note="LP using gurobi (4 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 "))
+    cfgs.append(Configuration(id="lp-gurobi-4barriernobnds", note="LP using gurobi (4 threads, barrier)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method barrier "))
+    cfgs.append(Configuration(id="lp-gurobi-4dualsimplnobnds", note="LP using gurobi (4 threads, dualsimpl)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method dual-simplex "))
+    cfgs.append(Configuration(id="lp-gurobi-4primalsimplnobnds", note="LP using gurobi (4 threads, primalsimpl)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method primal-simplex "))
+    cfgs.append(Configuration(id="lp-mecq", note="LP with non-triv bounds using Gurobi, MEC Quotient", command="--minmax:method lp --force-require-unique  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds"))
+    cfgs.append(Configuration(id="lp-mecq-topo", note="LP with non-triv bounds using Gurobi, topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds"))
+    cfgs.append(Configuration(id="lp-mecq-topo-glpk", note="LP with non-triv bounds using glpk, topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver glpk --minmax:lp-use-nontrivial-bounds "))
+    cfgs.append(Configuration(id="lp-mecq-topo-gurobi-4auto", note="LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds "))
+    cfgs.append(Configuration(id="lp-mecq-topo-soplex", note="LP with non-triv bounds using soplex (inexact), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --minmax:lp-use-nontrivial-bounds "))
+    cfgs.append(Configuration(id="lp-mecq-topo-soplex-exact", note="LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds "))
+    cfgs.append(Configuration(id="lp-mecq-topo-z3-exact", note="LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds "))
+    cfgs.append(Configuration(id="lp-nobnds", note="LP using Gurobi (1 thread)", command="--minmax:method lp  --lpsolver gurobi"))
+    cfgs.append(Configuration(id="lp-soplex-exactnobnds", note="LP using soplex (exact)", command="--minmax:method lp  --lpsolver soplex --exact "))
+    cfgs.append(Configuration(id="lp-soplex-nobnds", note="LP using soplex (inexact)", command="--minmax:method lp  --lpsolver soplex"))
+    cfgs.append(Configuration(id="lp-topo", note="LP with non-triv bounds using gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax lp  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds"))
+    cfgs.append(Configuration(id="lp-z3-exactnobnds", note="LP using z3 (exact)", command="--minmax:method lp  --lpsolver z3 --exact "))
+    cfgs.append(Configuration(id="ovi-topo", note="Optimistic VI, topological solving", command="--minmax:method topological --topological:minmax ovi  --sound"))
+    cfgs.append(Configuration(id="pi", note="PI with GMRES as LinEqSolver", command="--minmax:method pi "))
+    cfgs.append(Configuration(id="pi-exactlu", note="PI with LU as LinEqSolver (exact)", command="--minmax:method pi --exact"))
+    cfgs.append(Configuration(id="pi-lu", note="PI with LU as LinEqSolver (inexact)", command="--minmax:method pi   --eqsolver eigen --eigen:method sparselu"))
+    cfgs.append(Configuration(id="pi-mecq", note="PI with GMRES as LinEqSolver, MEC Quotient", command="--minmax:method pi --force-require-unique "))
+    cfgs.append(Configuration(id="pi-mecq-topo", note="PI with GMRES as LinEqSolver, topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax pi --force-require-unique "))
+    cfgs.append(Configuration(id="pi-mecq-topo-exactlu", note="PI with LU as LinEqSolver (exact), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax pi --force-require-unique   --exact"))
+    cfgs.append(Configuration(id="pi-ovi", note="PI with OVI as LinEqSolver", command="--minmax:method pi   --eqsolver native --native:method ovi --sound "))
+    cfgs.append(Configuration(id="pi-topo", note="PI with GMRES as LinEqSolver, topological solving", command="--minmax:method topological --topological:minmax pi "))
+    cfgs.append(Configuration(id="pi-vi", note="PI with VI as LinEqSolver", command="--minmax:method pi   --eqsolver native --native:method power "))
+    cfgs.append(Configuration(id="rs-mecq-topo-exact", note="RationalSearch (exact), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax rs --force-require-unique  --exact"))
+    cfgs.append(Configuration(id="vi", note="Classical VI", command="--minmax:method vi "))
+    cfgs.append(Configuration(id="vi-mecq", note="Classical VI, MEC Quotient", command="--minmax:method vi --force-require-unique "))
+    cfgs.append(Configuration(id="vi-mecq-topo", note="Classical VI, topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi --force-require-unique "))
+    cfgs.append(Configuration(id="vi-topo", note="Classical VI, topological solving", command="--minmax:method topological --topological:minmax vi "))
+    cfgs.append(Configuration(id="vi2lp-mecq-topo-gurobi", note="LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique"))
+    cfgs.append(Configuration(id="vi2lp-mecq-topo-soplex-exact", note="LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique"))
+    cfgs.append(Configuration(id="vi2pi-mecq-topo-exactlu", note="PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact"))
+    cfgs.append(Configuration(id="vi2pi-mecq-topo-gmres", note="PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi-to-pi --force-require-unique  "))
+    
+    return cfgs
+
+
+def get_invocation(settings, benchmark : Benchmark, configuration : Configuration):
+    """
+    Returns an invocation that invokes the tool for the given benchmark and the given storm configuration.
+    It can be assumed that the current directory is the directory from which execute_invocations.py is executed.
+    """
+    general_arguments = "--timemem" # Prints some timing and memory information
+    
+    invocation = Invocation()
+    invocation.tool = get_name()
+    invocation.configuration_id = configuration.identifier
+    invocation.note = configuration.note
+    invocation.benchmark_id = benchmark.get_identifier()
+    
+    if is_benchmark_supported(benchmark, configuration):
+        bdir = benchmark.get_directory()      
+        storm_executable = os.path.join(settings.storm_binary_dir(), "storm")    
+
+        if (benchmark.is_prism() or benchmark.is_prism_ma()) and not benchmark.is_pta():
+            benchmark_arguments = "--prism {} --prop {} {}".format(os.path.join(bdir, benchmark.get_prism_program_filename()), os.path.join(bdir, benchmark.get_prism_property_filename()), benchmark.get_property_name())
+            if benchmark.get_open_parameter_def_string() != "":
+                benchmark_arguments += " --constants {}".format(benchmark.get_open_parameter_def_string())
+            if benchmark.is_ctmc():
+                benchmark_arguments += " --prismcompat"
+                invocation.note += " Use `--prismcompat` to ensure compatibility with prism benchmark."
+        elif benchmark.is_drn():
+            benchmark_arguments = "--explicit-drn {} --prop {} {}".format(os.path.join(bdir, benchmark.get_drn_filename()), os.path.join(bdir, benchmark.get_drn_property_filename()), benchmark.get_property_name())
+            assert(benchmark.get_open_parameter_def_string() == "")
+        else:
+            # For jani input, it might be the case that preprocessing is necessary using moconv
+            janifile = benchmark.get_janifilename()
+            par_defs = benchmark.get_open_parameter_def_string()
+            moconv_options = []
+            if "nondet-selection" in benchmark.get_jani_features():
+                moconv_options.append("--remove-disc-nondet")
+                invocation.note += " Use moconv to handle currently unsupported jani feature 'nondet-selection'."
+            if benchmark.is_pta():
+                if benchmark.get_model_short_name() in ["repudiation_honest", "repudiation_malicious", "csma-pta", "csma_abst-pta"]:
+                    invocation.note += " Unsupported PTA Benchmark."
+                else:
+                    moconv_options.append("--digital-clocks")
+                    if benchmark.load_jani_file()["type"] == "sta":
+                        moconv_options.append(" --unroll-distrs")
+                    invocation.note += " Use moconv to convert the PTA to an MDP using digital-clocks semantics."
+            if len(moconv_options) != 0:
+                janifile_split = os.path.splitext(janifile)
+                moconvoutfilename = "converted_{}.{}{}".format(janifile_split[0], par_defs, janifile_split[1])
+                moconvoutfile = os.path.join(bdir, moconvoutfilename)
+                if par_defs != "":
+                    moconv_options.append(" --experiment " + par_defs)
+                    par_defs = ""
+                if not os.path.isfile(moconvoutfile):
+                    moconv_command = "moconv {} {} --output {} --overwrite\n".format(os.path.join(bdir, janifile), " ".join(moconv_options), moconvoutfile)
+                    with open("moconv.sh", 'a') as moconvscript :
+                        moconvscript.write(moconv_command)
+                    print("Required moconv call appended to file 'moconv.sh'")
+                janifile = moconvoutfilename
+            benchmark_arguments = "--jani {} --janiproperty {}".format(os.path.join(bdir, janifile), benchmark.get_property_name())
+            if par_defs != "":
+                benchmark_arguments += " --constants " + par_defs
+        invocation.add_command(storm_executable + " " + benchmark_arguments + " " + configuration.command + " " + general_arguments)
+    else:
+        invocation.note += " Benchmark not supported by Storm."    
+    return invocation
+
+
+
+def get_result(log, benchmark : Benchmark):
+    """
+    Parses the tool result
+    The returned value should be either 'true', 'false', a decimal number, or a fraction.
+    """
+
+    pos = log.find("Model checking property \"{}\":".format(benchmark.get_property_name()))
+    if pos < 0:
+        return None
+    pos = log.find("Result (for initial states): ", pos)
+    if pos < 0:
+        return None
+    pos = pos + len("Result (for initial states): ")
+    eol_pos = log.find("\n", pos)
+    result = log[pos:eol_pos]
+    pos_appr = result.find("(approx. ")
+    if pos_appr >= 0:
+        result = result[:pos_appr]
+    return result
+    
+def get_MC_Time(logfile):
+    """
+    Tries to parse the model checking time
+    """
+    pos = logfile.find("Time for model checking: ")
+    if pos >= 0:
+        pos += len("Time for model checking: ")
+        pos2 = logfile.find("s.", pos)
+        num = logfile[pos:pos2]
+        return float(num)
+    return None
+
+def get_Solve_Time(logfile):
+  """
+  Tries to parse the solving time of the underlying solution method (model checking time without prob0/1, ... preprocessing)
+  """
+  pos = logfile.find("Time for solving: ")
+  if pos >= 0:
+      pos += len("Time for solving: ")
+      pos2 = logfile.find("s\n", pos)
+      num = logfile[pos:pos2]
+      return float(num)
+  return None
+    
+def get_Build_Time(logfile):
+    """
+    Tries to parse the model building time
+    """
+    pos = logfile.find("Time for model construction: ")
+    if pos >= 0:
+        pos += len("Time for model construction: ")
+        pos2 = logfile.find("s.", pos)
+        num = logfile[pos:pos2]
+        return float(num)
+    return None
+
+
+def get_Acyclic(logfile):
+    """
+    Tries to find information whether or not the model is acyclic. Returns None if the information was not found
+    """
+    if "##Acyclic" in logfile:
+        return True
+    elif "##Cyclic" in logfile:
+        return False
+    else:
+        return None
+    
+      
+def get_NonTriv_Scc_States(logfile):
+    """
+    Tries to parse the number of non-trivial scc states from the logfile
+    """
+    pos = logfile.find("Number of states in non-trivial SCC: ")
+    if pos >= 0:
+        pos += len("Number of states in non-trivial SCC: ")
+        pos2 = logfile.find(".", pos)
+        num = logfile[pos:pos2]
+        return int(num)
+    return None
+
+def is_not_supported(logfile):
+    """
+    Returns true if the logfile contains error messages that mean that the input is not supported.
+    """
+    # if one of the following error messages occurs, we are sure that the model is not supported.
+    known_messages = []
+    known_messages.append("The model type Markov Automaton is not supported by the dd engine.")
+    known_messages.append("The model type CTMC is not supported by the dd engine.")
+    known_messages.append("Cannot build symbolic model from JANI model whose system composition that refers to the automaton ")
+    known_messages.append("Cannot build symbolic model from JANI model whose system composition refers to the automaton ")
+    known_messages.append("The symbolic JANI model builder currently does not support assignment levels.")
+    known_messages.append("repudiation") # Unsupported PTA benchmark
+    known_messages.append("csma_abst") # Unsupported PTA benchmark
+    known_messages.append("csma-pta") # Unsupported PTA benchmark
+    known_messages.append("rectangle-tireworld.30.jani.gz") # too large jani benchmark
+    for m in known_messages:
+        if m in logfile:
+            return True
+            
+    return False
+
+
+def is_expected_error(logfile):
+    """
+    Returns true if the logfile contains a known error message that is to be expected.
+    """
+    known_messages = []
+    known_messages.append("This version of storm was compiled without support for")
+    known_messages.append("Unable to optimize glpk model (5)")
+    known_messages.append("Soplex gives up on this problem")
+    known_messages.append("Soplex failed")
+    known_messages.append("Unable to find optimal solution for MinMax equation system")
+    known_messages.append("The MinMax equation system is infeasible")
+    for m in known_messages:
+        if m in logfile:
+            return True
+    return False
+
+def is_memout(logfile):
+    """
+    Returns true if the logfile indicates an out of memory situation.
+    Assumes that a result could not be parsed successfully.
+    """
+    known_messages = []
+    known_messages.append("Maximum memory exceeded.")
+    known_messages.append("BDD Unique table full")
+    known_messages.append("ERROR: The program received signal 11")
+    for m in known_messages:
+        if m in logfile:
+            return True
+    # if there is no error message and no result is produced, we assume out of memory.
+    return "ERROR" not in logfile

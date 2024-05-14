@@ -1,0 +1,2162 @@
+[
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.time_min",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_min --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_max --constants K=2 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.steps_min",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props steps_min --constants K=2 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.num_collisions",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props num_collisions --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_min",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_min --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.5-0.time_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.5.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props time_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "wlan.6-0.cost_max",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/wlan/wlan.props cost_max --constants COL=0 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "consensus.6-2.disagree",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.6.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/consensus/consensus.props disagree --constants K=2 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.pr_network",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty pr_network --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.4-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "dpm.8-4-5.TminQueuesFull",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/dpm/dpm.jani --janiproperty TminQueuesFull --constants N=8,C=4,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "polling-system.3-3-5.TmaxBothFull",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient Use moconv to handle currently unsupported jani feature 'nondet-selection'.",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/polling-system/converted_polling-system.JOB_TYPES=3,C=3,TIME_BOUND=5.jani --janiproperty TmaxBothFull --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "ftwc.8-5.TimeMax",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/ftwc/ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "readers-writers.20.exp_time_many_requests",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/readers-writers/readers-writers.20.jani --janiproperty exp_time_many_requests --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60
+	},
+	{
+		"benchmark-id": "flexible-manufacturing.9-1.M2Fail_E",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --jani $MDPMC_DIR/qcomp/benchmarks/ma/flexible-manufacturing/flexible-manufacturing.9.jani --janiproperty M2Fail_E --constants T=1 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60
+	}
+]

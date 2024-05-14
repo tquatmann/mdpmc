@@ -1,0 +1,235 @@
+@import url("fonts/Tajawal/Tajawal.css");
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 16px auto; width: 67%; min-width: 960px; max-width: 1280px; padding: 0px;
+	font-family: 'Tajawal', sans-serif; font-size: 15px;
+	background-color: #FFFFFF; color: #000000;
+	hyphens: auto;
+	line-height: 1.3;
+}
+
+.light { color: #808080; }
+.clickable { cursor: pointer; }
+
+h1 {
+	font-size: 28px; font-weight: bold;
+	color: #404040;
+	padding: 0px; margin-top: 20px; margin-bottom: 1ex;
+}
+
+div.belowh1 {
+	padding: 0px; margin-top: -1ex; margin-bottom: 1ex;
+}
+
+h2 {
+	font-size: 20px; font-weight: bold;
+	color: #202020;
+	padding: 0px; margin-top: 16px; margin-bottom: 0px;
+}
+
+h3 {
+	font-size: 15px; font-weight: bold;
+	color: #000000;
+	padding: 0px; margin-top: 10px; margin-bottom: 0px;
+}
+
+h4 {
+	font-size: 15px; font-weight: bold;
+	color: #000000;
+	padding: 0px; margin: 0px;
+}
+
+h5 {
+	font-size: 13px; font-weight: bold;
+	color: #606060;
+	padding: 0px; margin: 0px; margin-top: 2px;
+}
+
+p {
+	padding: 0px; margin: 0.75ex 0ex; text-align: justify;
+}
+
+ul, ol {
+	padding: 0px; padding-left: 16px; margin: 0px; text-align: justify;
+}
+
+li {
+	padding: 0px; margin: 0px; margin-bottom: 2px;
+}
+
+.linkcolour {
+	color: #4F85CA;
+}
+
+a {
+	text-decoration: none; color: #4F85CA;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #356ab1;
+}
+
+a.nodec {
+	text-decoration: none;
+}
+
+a.nodec:hover {
+	text-decoration: none;
+}
+
+a.disabled {
+	color: #606060; cursor: default;
+}
+
+tt, .tt {
+	font-family: 'Courier New', monospace; font-size: 105%; line-height: 1.2;
+}
+
+p.tt {
+	text-align: left; text-indent: -3ex; padding-left: 3ex;
+}
+
+.reference {
+	font-size: 90%;
+}
+
+.ellipsis {
+	text-overflow: ellipsis; overflow: hidden; white-space: nowrap;
+}
+
+div.checkbox {
+	cursor: default;
+}
+
+div.checkbox input[type='checkbox'] {
+	opacity: 0;
+}
+
+tr:hover td div.checkbox input[type='checkbox'] {
+	opacity: 1;
+}
+
+tr:hover th div.checkbox input[type='checkbox'] {
+	opacity: 1;
+}
+
+div.checkbox input[type='checkbox']:checked {
+	opacity: 1;
+}
+
+label {
+	margin: 0px; padding: 0px !important;
+}
+
+/* Tables */
+
+table {
+	margin: 0px; padding: 0px; border-collapse: collapse; empty-cells: show; border-spacing: 0px; border-width: 0px;
+}
+
+thead {
+}
+
+tr.evenrow {}
+
+tr.oddrow {
+	/*background-color: #F0F0F0;*/
+}
+
+#modelsTable {
+	width: 100%; table-layout: fixed; line-height: 1.5;
+}
+
+#modelsTable tr:hover {
+	background-color: #F0F0FF;
+}
+
+#modelsTable thead tr:hover {
+	background-color: #FFFFFF;
+}
+
+th {
+	margin: 0px; padding: 0px; padding-right: 1ex; font-weight: bold; text-align: left; vertical-align: baseline;
+}
+
+td {
+	margin: 0px; padding: 0px; padding-right: 1ex; vertical-align: baseline;
+}
+
+#results {
+	margin-left: -1ex;
+}
+
+#results th {
+	padding: 0ex 1ex;
+}
+
+#results td {
+	padding: 0ex 1ex;
+}
+
+
+/* Form elements */
+
+fieldset {
+	font-size: 1em; border: 0px; padding: 0px; margin: 0px;
+}
+
+label, input, button, select {
+	font-size: inherit; padding: 0px 0.5ex; margin: 0px; font-family: 'Tajawal', sans-serif; 
+}
+
+
+/* Boxes */
+
+.box {
+	margin: 2.5ex 0ex 1ex 0ex; border: 1px solid #D0D0D0; padding: 1.6ex 1.5ex 1ex 1.5ex; position: relative;
+}
+
+.boxlabelo {
+	position: absolute; pointer-events: none; margin-bottom: 0.5ex;
+}
+
+.boxlabel {
+	position: relative; top: -3.35ex; left: -0.5ex; padding: 0px 0.5ex; background-color: #FFFFFF; display: inline-block;
+}
+.boxlabelc {
+	position: relative; top: -3.17ex; left: -0.5ex; padding: 0px 0.5ex; background-color: #FFFFFF; display: inline-block;
+}
+
+
+/* Lists */
+ul.text {
+	list-style: '— ' outside; padding: 0em 0em 0em 0.9em; margin: 0ex;
+}
+ol.text {
+	list-style: decimal outside; padding: 0em 0em 0em 1.4em; margin: 0ex;
+}
+ul.none {
+	list-style: none outside; padding: 0em; margin: 0ex;
+}
+ul.text li, ol.text li, ul.none li {
+	padding: 0ex; margin: 0ex;
+}
+p + ul.continue, p + ol.continue {
+	margin-top: -0.75ex;
+}
+ul.text + p.continue, ol.text + p.continue, ul.none + p.continue {
+	margin-top: 0ex;
+}
+
+
+
+

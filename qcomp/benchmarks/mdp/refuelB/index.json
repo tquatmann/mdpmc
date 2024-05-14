@@ -1,0 +1,603 @@
+{
+	"name": "refuelB",
+	"short": "refuelB",
+	"type": "mdp",
+	"original": "DRN",
+	"version": 1,
+	"date": "2022-10-05",
+	"author": "Sebastian Junges",
+	"source": "https://github.com/sjunges/premise-mdp-benchmarks",
+	"description": "Set of challenging MDP model checking queries from the Premise tool (https://github.com/monitoring-MDPs/premise). We created a set of challenging benchmarks by scaling up the original benchmarks and filtering such that not all the standard configurations solved every benchmark within a second.",
+	"references": [
+		"https://doi.org/10.1007/978-3-030-81688-9_26"
+	],
+	"notes": "Challenging",
+	"parameters": [
+		{
+			"name": "N0",
+			"kind": "file",
+			"description": "File parameter 0",
+			"type": "integer"
+		},
+		{
+			"name": "N1",
+			"kind": "file",
+			"description": "File parameter 1",
+			"type": "integer"
+		},
+		{
+			"name": "N2",
+			"kind": "file",
+			"description": "File parameter 2",
+			"type": "integer"
+		},
+		{
+			"name": "N3",
+			"kind": "file",
+			"description": "File parameter 3",
+			"type": "integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "MaxGoal",
+			"description": "The maximal probability to finally reach a goal state.",
+			"type": "prob-reach"
+		}
+	],
+	"files": [
+		{
+			"original-file": [
+				"refuelB-18-200-19-550.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 19
+				},
+				{
+					"name": "N3",
+					"value": 550
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-9-450.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 9
+				},
+				{
+					"name": "N3",
+					"value": 450
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-9-900.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 9
+				},
+				{
+					"name": "N3",
+					"value": 900
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-9-650.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 9
+				},
+				{
+					"name": "N3",
+					"value": 650
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-14-600.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 14
+				},
+				{
+					"name": "N3",
+					"value": 600
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-12-150.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 12
+				},
+				{
+					"name": "N3",
+					"value": 150
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-21-200.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 21
+				},
+				{
+					"name": "N3",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-5-200.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 5
+				},
+				{
+					"name": "N3",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-24-550.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 24
+				},
+				{
+					"name": "N3",
+					"value": 550
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-16-200.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 16
+				},
+				{
+					"name": "N3",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-5-400.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 5
+				},
+				{
+					"name": "N3",
+					"value": 400
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-11-900.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 11
+				},
+				{
+					"name": "N3",
+					"value": 900
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-11-500.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 11
+				},
+				{
+					"name": "N3",
+					"value": 500
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-10-300.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 10
+				},
+				{
+					"name": "N3",
+					"value": 300
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-17-350.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 17
+				},
+				{
+					"name": "N3",
+					"value": 350
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-23-450.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 23
+				},
+				{
+					"name": "N3",
+					"value": 450
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-19-700.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 19
+				},
+				{
+					"name": "N3",
+					"value": 700
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-13-1000.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 13
+				},
+				{
+					"name": "N3",
+					"value": 1000
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-7-150.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 7
+				},
+				{
+					"name": "N3",
+					"value": 150
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-19-200.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 19
+				},
+				{
+					"name": "N3",
+					"value": 200
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-13-500.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 13
+				},
+				{
+					"name": "N3",
+					"value": 500
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-7-800.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 7
+				},
+				{
+					"name": "N3",
+					"value": 800
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelB-18-200-6-150.drn",
+				"refuelB.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 18
+				},
+				{
+					"name": "N1",
+					"value": 200
+				},
+				{
+					"name": "N2",
+					"value": 6
+				},
+				{
+					"name": "N3",
+					"value": 150
+				}
+			]
+		}
+	],
+	"results": []
+}

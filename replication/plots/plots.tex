@@ -1,0 +1,429 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{xspace}
+\usepackage[tableposition=top]{caption}
+\usepackage{amssymb}
+\usepackage{subfigure}
+\usepackage{xifthen}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,calc,automata,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{shapes,positioning,arrows,calc,automata,matrix,fit}
+\usepackage{xfrac}
+
+\newcommand{\solver}[1]{\textsf{#1}\xspace}
+\newcommand{\tool}[1]{\textsf{#1}\xspace}
+
+% Commands for Plots
+\newcommand{\numqvbsfull}{367}
+\newcommand{\numqvbshard}{18}
+\newcommand{\numpremise}{200}
+\newtoggle{showplots}
+\toggletrue{showplots}
+%% Colours
+\definecolor{plotred}{RGB}{255,0,0}
+\definecolor{plotgreen}{RGB}{0,255,0}
+\definecolor{plotblue}{RGB}{0,0,255}
+\definecolor{plotyellow}{RGB}{230,230,0}
+\definecolor{plotcyan}{RGB}{0,255,255}
+\definecolor{plotorange}{RGB}{255,127,0}
+\definecolor{plotpink}{RGB}{255,0,255}
+\definecolor{plotlightgray}{RGB}{192,192,192}
+\definecolor{plotdarkgray}{RGB}{128,128,128}
+\definecolor{plotdarkred}{RGB}{128,0,0}
+\definecolor{plotgreenyellow}{RGB}{128,128,0}
+\definecolor{plotdarkgreen}{RGB}{0,128,0}
+\definecolor{plotpurple}{RGB}{128,0,128}
+\definecolor{plotteal}{RGB}{0,128,128}
+\definecolor{plotdarkblue}{RGB}{0,0,128}
+\definecolor{plotlightred}{RGB}{205,92,92}
+\definecolor{plotlightblue}{RGB}{176,196,222}
+\colorlet{color1}{plotred}
+\colorlet{color2}{plotgreen}
+\colorlet{color3}{plotblue}
+\colorlet{color4}{plotyellow}
+\colorlet{color5}{plotcyan}
+\colorlet{color6}{plotorange}
+\colorlet{color7}{plotpink}
+\colorlet{color8}{plotlightgray}
+\colorlet{color9}{plotdarkgray}
+\colorlet{color10}{plotdarkred}
+\colorlet{color11}{plotgreenyellow}
+\colorlet{color12}{plotdarkgreen}
+\colorlet{color13}{plotpurple}
+\colorlet{color14}{plotteal}
+\colorlet{color15}{plotdarkblue}
+\colorlet{color16}{plotlightred}
+\colorlet{color17}{plotlightblue}
+
+%% Quantileplots
+\newcommand{\quantileplotxlabel}{}
+\newcommand{\quantileplotylabel}{}
+\newlength{\quantileplotwidth}
+\newlength{\quantileplotheight}
+\setlength{\quantileplotwidth}{0.5\linewidth}
+\setlength{\quantileplotheight}{0.5\linewidth}
+\newcommand{\quantileplotlegendcols}{1}
+\newcommand{\quantileplot}[8]{%
+% Arguments:
+% #1: csv filename
+% #2: comma separated list of tool.config/color items}
+% #3: comma separated list of readable config names 
+% #4: xmin
+% #5: xmax
+% #6: ymin
+% #7: ymax
+% #8: legend pos (e.g. "north west")
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=\quantileplotwidth,
+	height=\quantileplotheight,
+	xmin=#4,
+	xmax=#5,
+	ymin=#6,
+	ymax=#7,
+	ymajorgrids,
+	ymode=log,
+	axis x line=bottom,
+	axis y line=left,
+	unbounded coords=discard,filter discard warning=false, % properly deal with missing data points
+	% ytick= {1, 6, 60, 600, 1200, 1800 },
+	% yticklabels={$\le$1, 6, 60, 600, 1200, 1800},
+	xlabel=\quantileplotxlabel,
+	ylabel=\quantileplotylabel,
+%	x label style={at={(axis description cs:0.5,-0.05)},anchor=north},
+%	y label style={at={(axis description cs:-0.1,0.5)},anchor=south},
+	log ticks with fixed point, % enable to avoid 10^-x notation
+	yticklabel style={font=\scriptsize},
+	scaled y ticks=false,
+	xticklabel style={font=\scriptsize},
+	legend columns=\quantileplotlegendcols,
+	legend pos={#8},
+	legend style={nodes={scale=0.75, transform shape},inner sep=1pt},
+/pgfplots/legend image code/.code={\draw[mark repeat=2,mark phase=2,##1] plot coordinates {(0cm,0cm) (0.3cm,0cm)};}, % make the legend lines a bit smaller
+	every axis plot/.append style={ultra thick},
+	legend cell align={left}
+	]
+	\iftoggle{showplots}{
+	\foreach \tool\color in {#2}{%
+		\edef\loopbody{
+			\noexpand\addplot[\color] table [x=n,y=\tool shifted, col sep=tab] {#1};
+		}
+		\loopbody
+	}
+	\legend{#3}}{\node[anchor=south west, align=center, red] {\huge NOT\\ COMPILED};}
+	\end{axis}
+	\end{tikzpicture}%
+}
+
+
+%% Scatter plots
+\newlength\scatterplotsize
+\setlength{\scatterplotsize}{0.365\linewidth}
+\newcommand{\scatterplot}[6]{%
+% Arguments:
+% #1: csv filename
+% #2: tool.config identifier for x-axis
+% #3: label for x-axis
+% #4: tool.config identifier for y-axis
+% #5: label for y-axis
+% #6: trigger showing the legend (true/false)
+	\begin{tikzpicture}
+	\begin{axis}[
+	width=\scatterplotsize,
+	height=\scatterplotsize,
+	axis equal image,
+	xmin=1,
+	ymin=1,
+	ymax=1280,
+	xmax=1280,
+	xmode=log,
+	ymode=log,
+	axis x line=bottom,
+	axis y line=left,
+	xtick={2,4,8,16,32,64,128,256},
+	xticklabels={2,4,8,16,,64,,\!\!256},
+	extra x ticks = {1,512,724},
+	extra x tick labels = {${\le}1$,,\,\,n/a},
+	extra x tick style = {grid = major},
+	ytick={2,4,8,16,32,64,128,256},
+	yticklabels={2,4,8,16,32,64,,},
+	extra y ticks = {1,512,724},
+	extra y tick labels = {${\le}1$,$\ge$512},
+	extra y tick style = {grid = major},
+	xlabel={#3},
+	xlabel style={font=\scriptsize,yshift=5pt},%{yshift=16pt},
+	ylabel={#5},
+	ylabel style={font=\scriptsize,yshift=-9pt},%{yshift=-0.4cm},
+	yticklabel style={font=\scriptsize},
+	xticklabel style={font=\scriptsize},%rotate=290,anchor=west,
+	legend pos=north east,
+	legend columns=3,
+	legend style={nodes={scale=0.75, transform shape},inner sep=1.5pt, xshift=1mm, yshift=7mm},
+	set layers,
+	mark layer=axis background
+	%legend cell align={left}
+	]
+	
+	\iftoggle{showplots}{\addplot[
+	scatter,
+	only marks,
+	scatter/classes={
+		ma={mark=square*,color1,mark size=1.25},
+		mdp={mark=triangle*,color2,mark size=1.75},
+		pta={mark=o,color3,mark size=1.75}
+	},
+	scatter src=explicit symbolic
+	]%
+	table [col sep=tab,x=#2,y=#4,meta=Type] {#1};
+	}{\node[anchor=south west, align=center, red] {\huge NOT\\ COMPILED};}
+	\ifthenelse{\NOT\equal{#6}{false}}{\legend{MA, MDP,PTA}}{}
+	\addplot[no marks] coordinates {(0.01,0.01) (512,512) };
+	\addplot[no marks, densely dotted] coordinates {(0.01,0.02) (256,512)};
+	\addplot[no marks, densely dotted] coordinates {(0.02,0.01) (512,256)};
+	\end{axis}
+	\end{tikzpicture}
+}
+
+
+\begin{document}
+\title{A Practitioner's Guide to\\MDP Model Checking Algorithms\\---Experimental Results---}%
+\maketitle
+\setcounter{figure}{2}    
+
+\begin{figure}[hp]
+\centering
+\setlength{\quantileplotwidth}{0.65\textwidth}
+\setlength{\quantileplotheight}{6.5cm}
+\setlength{\scatterplotsize}{0.37\textwidth}
+\quantileplot{../qvbs-full/quantile.csv}
+{Storm.vi/plotdarkblue, mcsta.vi/plotblue, mcsta.lp-copt-mono/plotcyan, mcsta.lp-cplex-mono/plotyellow, mcsta.lp-glop-mono/plotorange, Storm.lp-glpk-nobnds/plotpurple, Storm.lp-nobnds/plotlightred, mcsta.lp-gurobi-mono/plotred, mcsta.lp-highs-mono/plotdarkred, mcsta.lp-lpsolve-mono/plotdarkgray, mcsta.lp-mosek-mono/plotgreen, Storm.lp-soplex-nobnds/plotpink, Storm.lp-soplex-exactnobnds/plotteal, Storm.lp-z3-exactnobnds/plotlightgray}
+{$\text{VI}_\tool{s}$, $\text{VI}_\tool{m}$, $\solver{COPT}_\tool{m}$, $\solver{CPLEX}_\tool{m}$, $\solver{Glop}_\tool{m}$, $\solver{GLPK}_\tool{s}$, $\solver{Gurobi}_\tool{s}$, $\solver{Gurobi}_\tool{m}$, $\solver{HiGHS}_\tool{m}$, $\solver{lp\_solve}_\tool{m}$, $\solver{Mosek}_\tool{m}$, $\solver{SoPlex}_\tool{s}$, $\solver{SoPlex}_\tool{s}^\mathrm{X}$, $\solver{Z3}_\tool{s}^\mathrm{X}$ }
+{0}{365}{0.1}{1800}{north west}
+\hfill
+\scatterplot{../qvbs-full/scatter.csv}{mcsta.lp-gurobi-mono}{$\solver{Gurobi}_\tool{m}$}{mcsta.lp-copt-mono}{$\solver{COPT}_\tool{m}$}{true}%
+\caption{Comparison of LP solver runtime on the \textit{qvbs} set}
+\label{Figure 3}
+\end{figure}
+
+\begin{figure}[hp]
+\setlength{\quantileplotwidth}{0.65\textwidth}
+\setlength{\quantileplotheight}{5cm}
+\setlength{\scatterplotsize}{0.4\textwidth}
+\quantileplot{../qvbs-full/quantile.csv}
+{Storm.lp-gurobi-4autonobnds/color1, Storm.lp-gurobi-4auto/color2, Storm.lp-gurobi-4autoinit/color3, Storm.lp-gurobi-4autoeq/color4, Storm.lp-gurobi-4autoiniteq/color5}
+{simple/all/ineq, bounds/all/ineq, bounds/init/ineq, bounds/all/eq, bounds/init/eq}
+{125}{330}{0.1}{1800}{north west}%
+\scatterplot{../qvbs-full/scatter.csv}{Storm.lp-gurobi-4auto}{bounds/all/ineq}{Storm.lp-gurobi-4autoinit}{bounds/init/ineq}{false}
+\caption{Performance impact of LP problem formulation variants (using $\solver{Gurobi}_\tool{s}$)}
+\label{Figure 4}
+\end{figure}
+
+\begin{figure}[hp]
+\vspace{-2.5em} % needed when the next paragraph is not the first on a page
+%\setlength{\quantileplotwidth}{0.5\linewidth}
+\setlength{\quantileplotheight}{4cm}%
+\centering%
+\quantileplot{../qvbs-full/quantile.csv}
+{Storm.pi/color1, Storm.pi-vi/color2, Storm.pi-ovi/color3, Storm.pi-lu/color4, Storm.pi-exactlu/color5}
+{PI/gmres, PI/VI, PI/OVI, PI/LU, PI/LU$^\mathrm{X}$}
+{0}{330}{0.1}{1800}{north west}
+\captionsetup{labelformat=empty}
+\caption{PI methods comparison}
+\addtocounter{figure}{-1}
+\label{Unnamed figure on page 13}
+\end{figure}
+
+\begin{figure}[hp]
+\centering
+\setlength{\quantileplotwidth}{0.55\textwidth}
+\setlength{\quantileplotheight}{4cm}
+\quantileplot{../qvbs-full/quantile.csv}
+{Storm.vi-mecq-topo/color6, Storm.ovi-topo/color4, Storm.pi-mecq-topo/color3, Storm.lp-mecq-topo-gurobi-4auto/color1, Storm.vi2pi-mecq-topo-gmres/color7, Storm.vi2lp-mecq-topo-gurobi/color2}
+{VI, OVI, PI, LP, VI2PI, VI2LP}
+{150}{375}{0.1}{1800}{north west}%
+\quantileplot{../qvbs-full/quantile.csv}
+{Storm.rs-mecq-topo-exact/color9, Storm.pi-mecq-topo-exactlu/color3, Storm.vi2pi-mecq-topo-exactlu/color7, Storm.lp-mecq-topo-soplex-exact/color1, Storm.lp-mecq-topo-z3-exact/color16, Storm.vi2lp-mecq-topo-soplex-exact/color2}
+{RS$^\mathrm{X}$, PI/LU$^\mathrm{X}$, VI2PI/LU$^\mathrm{X}$, LP/$\solver{SoPlex}^\mathrm{X}$, LP/$\solver{Z3}^\mathrm{X}$, VI2LP/$\solver{SoPlex}^\mathrm{X}$}
+{50}{335}{0.1}{1800}{north west}
+\caption{Comparison of MDP model checking algorithms on the \textit{qvbs} set}
+\label{Figure 5}
+\end{figure}
+
+\begin{figure}[hp]
+	\setlength{\scatterplotsize}{0.33\textwidth}
+    \centering
+    \subfigure[\emph{qvbs} OVI vs.\ VI2PI$^\mathrm{X}$]{
+    \scatterplot{../qvbs-full/scatter.csv}{Storm.ovi-topo}{OVI}{Storm.vi2pi-mecq-topo-exactlu}{VI2PI/LU$^\mathrm{X}$}{false} \label{Figure 6a}}
+	\hspace{-2em}
+	\subfigure[\emph{hard} OVI vs.\ VI2PI$^\mathrm{X}$]{
+		\scatterplot{../qvbs-hard/scatter.csv}{Storm.ovi-topo}{OVI}{Storm.vi2pi-mecq-topo-exactlu}{VI2PI/LU$^\mathrm{X}$}{false} \label{Figure 6b}
+	}
+	\hspace{-2em}
+    \subfigure[\emph{hard} OVI vs.\ LP]{
+    \scatterplot{../qvbs-hard/scatter.csv}{Storm.ovi-topo}{OVI}{Storm.lp-mecq-topo-gurobi-4auto}{LP}{false} 
+    \label{Figure 6c}
+    }
+    
+     \vspace{-1em}
+    \caption{Additional direct performance comparisons}
+    \label{Figure 6}
+   
+\end{figure}
+
+
+\begin{figure}[hp]
+\centering
+\setlength{\quantileplotwidth}{0.55\textwidth}
+\setlength{\quantileplotheight}{4.5cm}
+\quantileplot{../qvbs-hard/quantile.csv}
+{Storm.vi-mecq-topo/color6, Storm.ovi-topo/color4, Storm.pi-mecq-topo/color3, Storm.lp-mecq-topo-gurobi-4auto/color1, Storm.vi2pi-mecq-topo-gmres/color7, Storm.vi2lp-mecq-topo-gurobi/color2}
+{VI, OVI, PI, LP, VI2PI, VI2LP}
+{0}{\numqvbshard}{0.1}{1800}{north west}%
+\quantileplot{../qvbs-hard/quantile.csv}
+{Storm.rs-mecq-topo-exact/color9, Storm.pi-mecq-topo-exactlu/color3, Storm.vi2pi-mecq-topo-exactlu/color7, Storm.lp-mecq-topo-soplex-exact/color1, Storm.lp-mecq-topo-z3-exact/color16, Storm.vi2lp-mecq-topo-soplex-exact/color2}
+{RS$^\mathrm{X}$, PI/LU$^\mathrm{X}$, VI2PI/LU$^\mathrm{X}$, LP/$\solver{SoPlex}^\mathrm{X}$, LP/$\solver{Z3}^\mathrm{X}$, VI2LP/$\solver{SoPlex}^\mathrm{X}$}
+{0}{\numqvbshard}{0.1}{1800}{south east}
+\caption{Comparison of MDP model checking algorithms on the \textit{hard} subset}
+\label{Figure 7}
+\end{figure}
+
+\begin{figure}[hp]
+\centering
+\setlength{\quantileplotwidth}{0.55\textwidth}
+\setlength{\quantileplotheight}{4cm}
+\quantileplot{../premise/quantile.csv}
+{Storm.vi-mecq-topo/color6, Storm.ovi-topo/color4, Storm.pi-mecq-topo/color3, Storm.lp-mecq-topo-gurobi-4auto/color1, Storm.vi2pi-mecq-topo-gmres/color7, Storm.vi2lp-mecq-topo-gurobi/color2}
+{VI, OVI, PI, LP, VI2PI, VI2LP}
+{60}{170}{0.1}{1800}{north west}%
+\quantileplot{../premise/quantile.csv}
+{Storm.rs-mecq-topo-exact/color9, Storm.pi-mecq-topo-exactlu/color3, Storm.vi2pi-mecq-topo-exactlu/color7, Storm.lp-mecq-topo-soplex-exact/color1, Storm.lp-mecq-topo-z3-exact/color16, Storm.vi2lp-mecq-topo-soplex-exact/color2}
+{RS$^\mathrm{X}$, PI/LU$^\mathrm{X}$, VI2PI/LU$^\mathrm{X}$, LP/$\solver{SoPlex}^\mathrm{X}$, LP/$\solver{Z3}^\mathrm{X}$, VI2LP/$\solver{SoPlex}^\mathrm{X}$}
+{0}{210}{0.1}{1800}{north west}
+\caption{Comparison of MDP model checking algorithms on the \textit{premise} set}
+\label{Figure 8}
+\end{figure}
+
+
+\clearpage
+
+\appendix
+\newpage
+\section{The QVBS Benchmarks: LP solver tweaking}\label{app:QVBS-LP-tweaking}
+
+\begin{figure}[h]
+	\centering
+	\setlength{\quantileplotwidth}{0.65\textwidth}
+	\setlength{\quantileplotheight}{5cm}
+	\setlength{\scatterplotsize}{0.4\textwidth}
+	\quantileplot{../qvbs-full/quantile.csv}
+	{Storm.lp-gurobi-4autonobnds/color1, Storm.lp-gurobi-4primalsimplnobnds/color2, Storm.lp-gurobi-4dualsimplnobnds/color3, Storm.lp-gurobi-4barriernobnds/color4}
+	{auto, prim, dual, barrier}
+	{0}{\numqvbsfull}{0.1}{1800}{north west}
+	\hfill
+	\scatterplot{../qvbs-full/scatter.csv}{Storm.lp-gurobi-4autonobnds}{$\solver{Gurobi}_\tool{s}$/auto}{Storm.lp-gurobi-4primalsimplnobnds}{$\solver{Gurobi}_\tool{s}$/primal simplex}{false}
+	
+	\scatterplot{../qvbs-full/scatter.csv}{Storm.lp-gurobi-4autonobnds}{$\solver{Gurobi}_\tool{s}$/auto}{Storm.lp-gurobi-4dualsimplnobnds}{$\solver{Gurobi}_\tool{s}$/dual simplex}{false}
+	\scatterplot{../qvbs-full/scatter.csv}{Storm.lp-gurobi-4autonobnds}{$\solver{Gurobi}_\tool{s}$/auto}{Storm.lp-gurobi-4barriernobnds}{$\solver{Gurobi}_\tool{s}$/barrier}{false}
+	\caption{Comparison of \solver{Gurobi}'s configurations.}
+\label{Figure 9}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\setlength{\quantileplotwidth}{0.65\textwidth}
+	\setlength{\quantileplotheight}{6.5cm}
+	\setlength{\scatterplotsize}{0.4\textwidth}
+	\quantileplot{../qvbs-full/quantile.csv}
+	{Storm.lp-nobnds/color1, Storm.lp-gurobi-4autonobnds/color2, Storm.lp-gurobi-16autonobnds/color3}
+	{1, 4, 16}
+	{0}{\numqvbsfull}{0.1}{1800}{north west}
+
+	
+\scatterplot{../qvbs-full/scatter.csv}{Storm.lp-gurobi-4autonobnds}{$\solver{Gurobi}_\tool{s}$/4}{Storm.lp-nobnds}{$\solver{Gurobi}_\tool{s}$/1}{false}
+\scatterplot{../qvbs-full/scatter.csv}{Storm.lp-gurobi-4autonobnds}{$\solver{Gurobi}_\tool{s}$/4}{Storm.lp-gurobi-16autonobnds}{$\solver{Gurobi}_\tool{s}$/16}{false}
+	\caption{Comparison of how the number of threads affect the performance of \solver{Gurobi}'s auto method.}
+\label{Figure 10}
+\end{figure}
+
+
+\begin{figure}[h]
+	\centering
+	\setlength{\scatterplotsize}{0.4\textwidth}
+	\scatterplot{../qvbs-full/scatter.csv}{Storm.lp-gurobi-4autonobnds}{$\solver{Gurobi}_\tool{s}$/no bounds}{Storm.lp-gurobi-4auto}{$\solver{Gurobi}_\tool{s}$/bounds}{false}
+	\scatterplot{../qvbs-full/scatter.csv}{Storm.lp-gurobi-4auto}{$\solver{Gurobi}_\tool{s}$/bounds/all}{Storm.lp-gurobi-4autoeq}{$\solver{Gurobi}_\tool{s}$/bounds/all/eq}{false}
+	\scatterplot{../qvbs-full/scatter.csv}{Storm.lp-gurobi-4autoinit}{$\solver{Gurobi}_\tool{s}$/bounds/init}{Storm.lp-gurobi-4autoiniteq}{$\solver{Gurobi}_\tool{s}$/bounds/init/eq}{false}
+	
+	\caption{Comparison of further LP problem formulation variants.}
+\label{Figure 11}
+\end{figure}
+
+
+\clearpage
+\section{QVBS Benchmarks: MEC collapsing and topological decomposition}\label{app:QVBS-topo-mecs}
+
+\begin{figure}[h]
+	\centering
+	{\setlength{\quantileplotwidth}{0.7\textwidth}
+		\setlength{\quantileplotheight}{5cm}
+		\quantileplot{../qvbs-full/quantile.csv}
+		{Storm.vi/color1, Storm.vi-topo/color2, Storm.vi-mecq/color3, Storm.vi-mecq-topo/color4}
+		{VI, VI-topo, VI-mec, VI-mec-topo}
+		{150}{\numqvbsfull}{0.1}{1800}{north west}%
+	}
+	
+	{\setlength{\quantileplotwidth}{0.7\textwidth}
+		\setlength{\quantileplotheight}{5cm}
+		\quantileplot{../qvbs-full/quantile.csv}
+		{Storm.pi/color1, Storm.pi-topo/color2, Storm.pi-mecq/color3, Storm.pi-mecq-topo/color4}
+		{PI, PI-topo, PI-mec, PI-mec-topo}
+		{150}{\numqvbsfull}{0.1}{1800}{north west}%
+	}
+	
+	{\setlength{\quantileplotwidth}{0.7\textwidth}
+		\setlength{\quantileplotheight}{5cm}
+		\quantileplot{../qvbs-full/quantile.csv}
+		{Storm.lp/color1, Storm.lp-topo/color2, Storm.lp-mecq/color3, Storm.lp-mecq-topo/color4}
+		{LP, LP-topo, LP-mec, LP-mec-topo}
+		{150}{\numqvbsfull}{0.1}{1800}{north west}%
+	}
+	\caption{Comparison of the vanilla algorithms VI, PI and LP and their variants using MEC collapsing and topological decomposition.}
+\label{Figure 12}
+\end{figure}
+
+\clearpage
+
+\section{Hard benchmarks: LP solver runtime}\label{app:hard-all}
+
+\begin{figure}[h]
+	\centering
+	{
+		\setlength{\quantileplotwidth}{0.65\textwidth}
+		\setlength{\quantileplotheight}{6.5cm}
+		\setlength{\scatterplotsize}{0.4\textwidth}
+		\quantileplot{../qvbs-hard/quantile.csv}
+		{Storm.vi-mecq-topo/plotdarkblue, mcsta.lp-copt-topo/plotcyan, mcsta.lp-cplex-topo/plotyellow, mcsta.lp-glop-topo/plotorange, Storm.lp-mecq-topo-glpk/plotpurple, Storm.lp-mecq-topo/plotlightred, mcsta.lp-gurobi-topo/plotred, mcsta.lp-highs-topo/plotdarkred, mcsta.lp-lpsolve-topo/plotdarkgray, mcsta.lp-mosek-topo/plotgreen, Storm.lp-mecq-topo-soplex/plotpink, Storm.lp-mecq-topo-soplex-exact/plotteal, Storm.lp-mecq-topo-z3-exact/plotlightgray}
+		{$\text{VI}_\tool{s}$, $\solver{COPT}_\tool{m}$, $\solver{CPLEX}_\tool{m}$, $\solver{Glop}_\tool{m}$, $\solver{GLPK}_\tool{s}$, $\solver{Gurobi}_\tool{s}$, $\solver{Gurobi}_\tool{m}$, $\solver{HiGHS}_\tool{m}$, $\solver{lp\_solve}_\tool{m}$, $\solver{Mosek}_\tool{m}$, $\solver{SoPlex}_\tool{s}$, $\solver{SoPlex}_\tool{s}^\mathrm{X}$, $\solver{Z3}_\tool{s}^\mathrm{X}$}
+		{-10}{\numqvbshard}{0.1}{1800}{north west}
+	}
+	
+	{
+		\setlength{\quantileplotwidth}{0.65\textwidth}
+		\setlength{\quantileplotheight}{6.5cm}
+		\setlength{\scatterplotsize}{0.4\textwidth}
+		\quantileplot{../qvbs-hard/quantile.csv}
+		{Storm.vi/plotdarkblue, mcsta.vi/plotblue, mcsta.lp-copt-mono/plotcyan, mcsta.lp-cplex-mono/plotyellow, mcsta.lp-glop-mono/plotorange, Storm.lp-glpk-nobnds/plotpurple, Storm.lp-nobnds/plotlightred, mcsta.lp-gurobi-mono/plotred, mcsta.lp-highs-mono/plotdarkred, mcsta.lp-lpsolve-mono/plotdarkgray, mcsta.lp-mosek-mono/plotgreen, Storm.lp-soplex-nobnds/plotpink, Storm.lp-soplex-exactnobnds/plotteal, Storm.lp-z3-exactnobnds/plotlightgray}
+		{$\text{VI}_\tool{s}$, $\text{VI}_\tool{m}$, $\solver{COPT}_\tool{m}$, $\solver{CPLEX}_\tool{m}$, $\solver{Glop}_\tool{m}$, $\solver{GLPK}_\tool{s}$, $\solver{Gurobi}_\tool{s}$, $\solver{Gurobi}_\tool{m}$, $\solver{HiGHS}_\tool{m}$, $\solver{lp\_solve}_\tool{m}$, $\solver{Mosek}_\tool{m}$, $\solver{SoPlex}_\tool{s}$, $\solver{SoPlex}_\tool{s}^\mathrm{X}$, $\solver{Z3}_\tool{s}^\mathrm{X}$}
+		{-10}{\numqvbshard}{0.1}{1800}{north west}
+	}
+	\caption{Comparison of LP solver runtime on the \emph{hard} subset. The upper plot uses the topological optimization, the lower does not.}
+\label{Figure 13}
+\end{figure}
+
+
+\end{document}

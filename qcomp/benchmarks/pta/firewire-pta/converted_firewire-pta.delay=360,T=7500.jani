@@ -1,0 +1,3395 @@
+﻿{
+	"jani-version": 1,
+	"name": "firewire-pta",
+	"type": "mdp",
+	"features": [ "derived-operators" ],
+	"actions": [
+		{
+			"name": "loop"
+		},
+		{
+			"name": "rec_ack12"
+		},
+		{
+			"name": "rec_ack21"
+		},
+		{
+			"name": "rec_idle12"
+		},
+		{
+			"name": "rec_idle21"
+		},
+		{
+			"name": "rec_req12"
+		},
+		{
+			"name": "rec_req21"
+		},
+		{
+			"name": "snd_ack12"
+		},
+		{
+			"name": "snd_ack21"
+		},
+		{
+			"name": "snd_idle12"
+		},
+		{
+			"name": "snd_idle21"
+		},
+		{
+			"name": "snd_req12"
+		},
+		{
+			"name": "snd_req21"
+		},
+		{
+			"name": "tick"
+		}
+	],
+	"variables": [
+		{
+			"name": "global_time_reward",
+			"type": "real",
+			"transient": true,
+			"initial-value": 0
+		},
+		{
+			"name": "done",
+			"type": "bool",
+			"transient": true,
+			"initial-value": false
+		},
+		{
+			"name": "time",
+			"type": "real",
+			"transient": true,
+			"initial-value": 0
+		},
+		{
+			"name": "time_sending",
+			"type": "real",
+			"transient": true,
+			"initial-value": 0
+		},
+		{
+			"name": "w12",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 9
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "y1",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 361
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "y2",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 361
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "s1",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 8
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "x1",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 1671
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "w21",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 9
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "z1",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 361
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "z2",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 361
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "s2",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 8
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "x2",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 1671
+			},
+			"initial-value": 0
+		}
+	],
+	"properties": [
+		{
+			"name": "deadline",
+			"expression": {
+				"op": "filter",
+				"fun": "values",
+				"values": {
+					"op": "Pmin",
+					"exp": {
+						"op": "U",
+						"left": true,
+						"right": "done",
+						"reward-bounds": [ {
+							"exp": "global_time_reward",
+							"accumulate": [
+								"steps"
+							],
+							"bounds": {
+								"upper": 7500
+							}
+						} ]
+					}
+				},
+				"states": {
+					"op": "initial"
+				}
+			}
+		},
+		{
+			"name": "eventually",
+			"expression": {
+				"op": "filter",
+				"fun": "values",
+				"values": {
+					"op": "Pmin",
+					"exp": {
+						"op": "U",
+						"left": true,
+						"right": "done"
+					}
+				},
+				"states": {
+					"op": "initial"
+				}
+			}
+		}
+	],
+	"automata": [
+		{
+			"name": "wire12",
+			"locations": [ {
+				"name": "l",
+				"transient-values": [
+					{
+						"ref": "done",
+						"value": {
+							"op": "∨",
+							"left": {
+								"op": "∧",
+								"left": {
+									"op": "=",
+									"left": "s1",
+									"right": 8
+								},
+								"right": {
+									"op": "=",
+									"left": "s2",
+									"right": 7
+								}
+							},
+							"right": {
+								"op": "∧",
+								"left": {
+									"op": "=",
+									"left": "s1",
+									"right": 7
+								},
+								"right": {
+									"op": "=",
+									"left": "s2",
+									"right": 8
+								}
+							}
+						},
+						"comment": "done <- (((s1 = 8) & (s2 = 7)) | ((s1 = 7) & (s2 = 8)))"
+					},
+					{
+						"ref": "time",
+						"value": 1,
+						"comment": "time <- 1"
+					},
+					{
+						"ref": "time_sending",
+						"value": {
+							"op": "ite",
+							"if": {
+								"op": "∨",
+								"left": {
+									"op": ">",
+									"left": "w12",
+									"right": 0
+								},
+								"right": {
+									"op": ">",
+									"left": "w21",
+									"right": 0
+								}
+							},
+							"then": 1,
+							"else": 0
+						},
+						"comment": "time_sending <- (((w12 > 0) | (w21 > 0)) ? 1 : 0)"
+					}
+				]
+			} ],
+			"initial-locations": [ "l" ],
+			"edges": [
+				{
+					"location": "l",
+					"action": "rec_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 3
+						},
+						"comment": "(w12 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 0,
+								"comment": "w12 <- 0"
+							},
+							{
+								"ref": "y1",
+								"value": 0,
+								"comment": "y1 <- 0"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 4
+						},
+						"comment": "(w12 = 4)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 5,
+							"comment": "w12 <- 5"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 7
+						},
+						"comment": "(w12 = 7)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 1,
+							"comment": "w12 <- 1"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 6
+						},
+						"comment": "(w12 = 6)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 1,
+							"comment": "w12 <- 1"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 5
+						},
+						"comment": "(w12 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 0,
+								"comment": "w12 <- 0"
+							},
+							{
+								"ref": "y1",
+								"value": 0,
+								"comment": "y1 <- 0"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 9
+						},
+						"comment": "(w12 = 9)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 3,
+							"comment": "w12 <- 3"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 2
+						},
+						"comment": "(w12 = 2)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 3,
+							"comment": "w12 <- 3"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 1
+						},
+						"comment": "(w12 = 1)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 0,
+								"comment": "w12 <- 0"
+							},
+							{
+								"ref": "y1",
+								"value": 0,
+								"comment": "y1 <- 0"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 8
+						},
+						"comment": "(w12 = 8)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 5,
+							"comment": "w12 <- 5"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 0
+						},
+						"comment": "(w12 = 0)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 3,
+								"comment": "w12 <- 3"
+							},
+							{
+								"ref": "y1",
+								"value": 0,
+								"comment": "y1 <- 0"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 1
+						},
+						"comment": "(w12 = 1)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 2,
+								"comment": "w12 <- 2"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 3
+						},
+						"comment": "(w12 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 3,
+							"comment": "w12 <- 3"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 5
+						},
+						"comment": "(w12 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 9,
+								"comment": "w12 <- 9"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 2
+						},
+						"comment": "(w12 = 2)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 2,
+							"comment": "w12 <- 2"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 9
+						},
+						"comment": "(w12 = 9)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 9,
+							"comment": "w12 <- 9"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 3
+						},
+						"comment": "(w12 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 4,
+								"comment": "w12 <- 4"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 1
+						},
+						"comment": "(w12 = 1)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 8,
+								"comment": "w12 <- 8"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 8
+						},
+						"comment": "(w12 = 8)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 8,
+							"comment": "w12 <- 8"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 5
+						},
+						"comment": "(w12 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 5,
+							"comment": "w12 <- 5"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 0
+						},
+						"comment": "(w12 = 0)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 5,
+								"comment": "w12 <- 5"
+							},
+							{
+								"ref": "y1",
+								"value": 0,
+								"comment": "y1 <- 0"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 4
+						},
+						"comment": "(w12 = 4)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 4,
+							"comment": "w12 <- 4"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 0
+						},
+						"comment": "(w12 = 0)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 1,
+								"comment": "w12 <- 1"
+							},
+							{
+								"ref": "y1",
+								"value": 0,
+								"comment": "y1 <- 0"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 3
+						},
+						"comment": "(w12 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 7,
+								"comment": "w12 <- 7"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 5
+						},
+						"comment": "(w12 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w12",
+								"value": 6,
+								"comment": "w12 <- 6"
+							},
+							{
+								"ref": "y2",
+								"value": 0,
+								"comment": "y2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 6
+						},
+						"comment": "(w12 = 6)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 6,
+							"comment": "w12 <- 6"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 7
+						},
+						"comment": "(w12 = 7)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 7,
+							"comment": "w12 <- 7"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w12",
+							"right": 1
+						},
+						"comment": "(w12 = 1)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w12",
+							"value": 1,
+							"comment": "w12 <- 1"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "tick",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "∧",
+								"left": {
+									"op": "∧",
+									"left": {
+										"op": "∧",
+										"left": {
+											"op": "∧",
+											"left": {
+												"op": "∧",
+												"left": {
+													"op": "∧",
+													"left": {
+														"op": "∧",
+														"left": {
+															"op": "∨",
+															"left": {
+																"op": "≠",
+																"left": "w12",
+																"right": 9
+															},
+															"right": {
+																"op": "<",
+																"left": "y1",
+																"right": 360
+															}
+														},
+														"right": {
+															"op": "∨",
+															"left": {
+																"op": "≠",
+																"left": "w12",
+																"right": 2
+															},
+															"right": {
+																"op": "<",
+																"left": "y1",
+																"right": 360
+															}
+														}
+													},
+													"right": {
+														"op": "∨",
+														"left": {
+															"op": "≠",
+															"left": "w12",
+															"right": 5
+														},
+														"right": {
+															"op": "<",
+															"left": "y2",
+															"right": 360
+														}
+													}
+												},
+												"right": {
+													"op": "∨",
+													"left": {
+														"op": "≠",
+														"left": "w12",
+														"right": 7
+													},
+													"right": {
+														"op": "<",
+														"left": "y1",
+														"right": 360
+													}
+												}
+											},
+											"right": {
+												"op": "∨",
+												"left": {
+													"op": "≠",
+													"left": "w12",
+													"right": 3
+												},
+												"right": {
+													"op": "<",
+													"left": "y2",
+													"right": 360
+												}
+											}
+										},
+										"right": {
+											"op": "∨",
+											"left": {
+												"op": "≠",
+												"left": "w12",
+												"right": 8
+											},
+											"right": {
+												"op": "<",
+												"left": "y1",
+												"right": 360
+											}
+										}
+									},
+									"right": {
+										"op": "∨",
+										"left": {
+											"op": "≠",
+											"left": "w12",
+											"right": 1
+										},
+										"right": {
+											"op": "<",
+											"left": "y2",
+											"right": 360
+										}
+									}
+								},
+								"right": {
+									"op": "∨",
+									"left": {
+										"op": "≠",
+										"left": "w12",
+										"right": 6
+									},
+									"right": {
+										"op": "<",
+										"left": "y1",
+										"right": 360
+									}
+								}
+							},
+							"right": {
+								"op": "∨",
+								"left": {
+									"op": "≠",
+									"left": "w12",
+									"right": 4
+								},
+								"right": {
+									"op": "<",
+									"left": "y1",
+									"right": 360
+								}
+							}
+						},
+						"comment": "((((((((((w12 = 1) => (y2 <= delay)) & ((w12 = 2) => (y1 <= delay))) & ((w12 = 3) => (y2 <= delay))) & ((w12 = 4) => (y1 <= delay))) & ((w12 = 5) => (y2 <= delay))) & ((w12 = 6) => (y1 <= delay))) & ((w12 = 7) => (y1 <= delay))) & ((w12 = 8) => (y1 <= delay))) & ((w12 = 9) => (y1 <= delay)))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "done",
+								"value": {
+									"op": "∨",
+									"left": {
+										"op": "∧",
+										"left": {
+											"op": "=",
+											"left": "s1",
+											"right": 8
+										},
+										"right": {
+											"op": "=",
+											"left": "s2",
+											"right": 7
+										}
+									},
+									"right": {
+										"op": "∧",
+										"left": {
+											"op": "=",
+											"left": "s1",
+											"right": 7
+										},
+										"right": {
+											"op": "=",
+											"left": "s2",
+											"right": 8
+										}
+									}
+								},
+								"index": 1,
+								"comment": "done <- (((s1 = 8) & (s2 = 7)) | ((s1 = 7) & (s2 = 8)))"
+							},
+							{
+								"ref": "time",
+								"value": 1,
+								"index": 1,
+								"comment": "time <- 1"
+							},
+							{
+								"ref": "time_sending",
+								"value": {
+									"op": "ite",
+									"if": {
+										"op": "∨",
+										"left": {
+											"op": ">",
+											"left": "w12",
+											"right": 0
+										},
+										"right": {
+											"op": ">",
+											"left": "w21",
+											"right": 0
+										}
+									},
+									"then": 1,
+									"else": 0
+								},
+								"index": 1,
+								"comment": "time_sending <- (((w12 > 0) | (w21 > 0)) ? 1 : 0)"
+							}
+						]
+					} ]
+				}
+			]
+		},
+		{
+			"name": "node1",
+			"locations": [ {
+				"name": "l"
+			} ],
+			"initial-locations": [ "l" ],
+			"edges": [
+				{
+					"location": "l",
+					"action": "loop",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s1",
+							"right": 7
+						},
+						"comment": "(s1 = 7)"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "loop",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s1",
+							"right": 8
+						},
+						"comment": "(s1 = 8)"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s1",
+							"right": 6
+						},
+						"comment": "(s1 = 6)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s1",
+								"value": 8,
+								"comment": "s1 <- 8"
+							},
+							{
+								"ref": "x1",
+								"value": 0,
+								"comment": "x1 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s1",
+							"right": 3
+						},
+						"comment": "(s1 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s1",
+							"value": 5,
+							"comment": "s1 <- 5"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle21",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s1",
+								"right": 0
+							},
+							"right": {
+								"op": "=",
+								"left": "x1",
+								"right": 0
+							}
+						},
+						"comment": "((s1 = 0) & (x1 = 0))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s1",
+							"value": 1,
+							"comment": "s1 <- 1"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s1",
+							"right": 2
+						},
+						"comment": "(s1 = 2)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s1",
+							"value": 4,
+							"comment": "s1 <- 4"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s1",
+							"right": 5
+						},
+						"comment": "(s1 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s1",
+							"value": 3,
+							"comment": "s1 <- 3"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req21",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s1",
+								"right": 1
+							},
+							"right": {
+								"op": "=",
+								"left": "x1",
+								"right": 0
+							}
+						},
+						"comment": "((s1 = 1) & (x1 = 0))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s1",
+							"value": 0,
+							"comment": "s1 <- 0"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s1",
+							"right": 4
+						},
+						"comment": "(s1 = 4)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s1",
+							"value": 2,
+							"comment": "s1 <- 2"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s1",
+							"right": 6
+						},
+						"comment": "(s1 = 6)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s1",
+								"value": 0,
+								"comment": "s1 <- 0"
+							},
+							{
+								"ref": "x1",
+								"value": 0,
+								"comment": "x1 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack12",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s1",
+								"right": 2
+							},
+							"right": {
+								"op": "≥",
+								"left": "x1",
+								"right": 760
+							}
+						},
+						"comment": "((s1 = 2) & (x1 >= 760))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s1",
+								"value": 7,
+								"comment": "s1 <- 7"
+							},
+							{
+								"ref": "x1",
+								"value": 0,
+								"comment": "x1 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack12",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s1",
+								"right": 3
+							},
+							"right": {
+								"op": "≥",
+								"left": "x1",
+								"right": 1590
+							}
+						},
+						"comment": "((s1 = 3) & (x1 >= 1590))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s1",
+								"value": 7,
+								"comment": "s1 <- 7"
+							},
+							{
+								"ref": "x1",
+								"value": 0,
+								"comment": "x1 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle12",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s1",
+								"right": 0
+							},
+							"right": {
+								"op": "=",
+								"left": "x1",
+								"right": 0
+							}
+						},
+						"comment": "((s1 = 0) & (x1 = 0))"
+					},
+					"destinations": [
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "1/2"
+							},
+							"assignments": [ {
+								"ref": "s1",
+								"value": 2,
+								"comment": "s1 <- 2"
+							} ]
+						},
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "(1 - 1/2)"
+							},
+							"assignments": [ {
+								"ref": "s1",
+								"value": 3,
+								"comment": "s1 <- 3"
+							} ]
+						}
+					]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle12",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s1",
+								"right": 1
+							},
+							"right": {
+								"op": "=",
+								"left": "x1",
+								"right": 0
+							}
+						},
+						"comment": "((s1 = 1) & (x1 = 0))"
+					},
+					"destinations": [
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "1/2"
+							},
+							"assignments": [ {
+								"ref": "s1",
+								"value": 4,
+								"comment": "s1 <- 4"
+							} ]
+						},
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "(1 - 1/2)"
+							},
+							"assignments": [ {
+								"ref": "s1",
+								"value": 5,
+								"comment": "s1 <- 5"
+							} ]
+						}
+					]
+				},
+				{
+					"location": "l",
+					"action": "snd_req12",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s1",
+								"right": 4
+							},
+							"right": {
+								"op": "≥",
+								"left": "x1",
+								"right": 760
+							}
+						},
+						"comment": "((s1 = 4) & (x1 >= 760))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s1",
+								"value": 6,
+								"comment": "s1 <- 6"
+							},
+							{
+								"ref": "x1",
+								"value": 0,
+								"comment": "x1 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req12",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s1",
+								"right": 5
+							},
+							"right": {
+								"op": "≥",
+								"left": "x1",
+								"right": 1590
+							}
+						},
+						"comment": "((s1 = 5) & (x1 >= 1590))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s1",
+								"value": 6,
+								"comment": "s1 <- 6"
+							},
+							{
+								"ref": "x1",
+								"value": 0,
+								"comment": "x1 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "tick",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "∧",
+								"left": {
+									"op": "∧",
+									"left": {
+										"op": "∧",
+										"left": {
+											"op": "∧",
+											"left": {
+												"op": "∨",
+												"left": {
+													"op": "≠",
+													"left": "s1",
+													"right": 1
+												},
+												"right": {
+													"op": "<",
+													"left": "x1",
+													"right": 0
+												}
+											},
+											"right": {
+												"op": "∨",
+												"left": {
+													"op": "≠",
+													"left": "s1",
+													"right": 3
+												},
+												"right": {
+													"op": "<",
+													"left": "x1",
+													"right": 1670
+												}
+											}
+										},
+										"right": {
+											"op": "∨",
+											"left": {
+												"op": "≠",
+												"left": "s1",
+												"right": 5
+											},
+											"right": {
+												"op": "<",
+												"left": "x1",
+												"right": 1670
+											}
+										}
+									},
+									"right": {
+										"op": "∨",
+										"left": {
+											"op": "≠",
+											"left": "s1",
+											"right": 4
+										},
+										"right": {
+											"op": "<",
+											"left": "x1",
+											"right": 850
+										}
+									}
+								},
+								"right": {
+									"op": "∨",
+									"left": {
+										"op": "≠",
+										"left": "s1",
+										"right": 0
+									},
+									"right": {
+										"op": "<",
+										"left": "x1",
+										"right": 0
+									}
+								}
+							},
+							"right": {
+								"op": "∨",
+								"left": {
+									"op": "≠",
+									"left": "s1",
+									"right": 2
+								},
+								"right": {
+									"op": "<",
+									"left": "x1",
+									"right": 850
+								}
+							}
+						},
+						"comment": "(((((((s1 = 2) => (x1 <= 850)) & ((s1 = 3) => (x1 <= 1670))) & ((s1 = 4) => (x1 <= 850))) & ((s1 = 5) => (x1 <= 1670))) & ((s1 = 0) => (x1 <= 0))) & ((s1 = 1) => (x1 <= 0)))"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				}
+			]
+		},
+		{
+			"name": "wire21",
+			"locations": [ {
+				"name": "l"
+			} ],
+			"initial-locations": [ "l" ],
+			"edges": [
+				{
+					"location": "l",
+					"action": "rec_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 3
+						},
+						"comment": "(w21 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 0,
+								"comment": "w21 <- 0"
+							},
+							{
+								"ref": "z1",
+								"value": 0,
+								"comment": "z1 <- 0"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 4
+						},
+						"comment": "(w21 = 4)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 5,
+							"comment": "w21 <- 5"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 7
+						},
+						"comment": "(w21 = 7)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 1,
+							"comment": "w21 <- 1"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 6
+						},
+						"comment": "(w21 = 6)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 1,
+							"comment": "w21 <- 1"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 5
+						},
+						"comment": "(w21 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 0,
+								"comment": "w21 <- 0"
+							},
+							{
+								"ref": "z1",
+								"value": 0,
+								"comment": "z1 <- 0"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 9
+						},
+						"comment": "(w21 = 9)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 3,
+							"comment": "w21 <- 3"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 2
+						},
+						"comment": "(w21 = 2)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 3,
+							"comment": "w21 <- 3"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 1
+						},
+						"comment": "(w21 = 1)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 0,
+								"comment": "w21 <- 0"
+							},
+							{
+								"ref": "z1",
+								"value": 0,
+								"comment": "z1 <- 0"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 8
+						},
+						"comment": "(w21 = 8)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 5,
+							"comment": "w21 <- 5"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 0
+						},
+						"comment": "(w21 = 0)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 3,
+								"comment": "w21 <- 3"
+							},
+							{
+								"ref": "z1",
+								"value": 0,
+								"comment": "z1 <- 0"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 1
+						},
+						"comment": "(w21 = 1)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 2,
+								"comment": "w21 <- 2"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 3
+						},
+						"comment": "(w21 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 3,
+							"comment": "w21 <- 3"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 5
+						},
+						"comment": "(w21 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 9,
+								"comment": "w21 <- 9"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 2
+						},
+						"comment": "(w21 = 2)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 2,
+							"comment": "w21 <- 2"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 9
+						},
+						"comment": "(w21 = 9)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 9,
+							"comment": "w21 <- 9"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 3
+						},
+						"comment": "(w21 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 4,
+								"comment": "w21 <- 4"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 1
+						},
+						"comment": "(w21 = 1)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 8,
+								"comment": "w21 <- 8"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 8
+						},
+						"comment": "(w21 = 8)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 8,
+							"comment": "w21 <- 8"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 5
+						},
+						"comment": "(w21 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 5,
+							"comment": "w21 <- 5"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 0
+						},
+						"comment": "(w21 = 0)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 5,
+								"comment": "w21 <- 5"
+							},
+							{
+								"ref": "z1",
+								"value": 0,
+								"comment": "z1 <- 0"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 4
+						},
+						"comment": "(w21 = 4)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 4,
+							"comment": "w21 <- 4"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 0
+						},
+						"comment": "(w21 = 0)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 1,
+								"comment": "w21 <- 1"
+							},
+							{
+								"ref": "z1",
+								"value": 0,
+								"comment": "z1 <- 0"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 3
+						},
+						"comment": "(w21 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 7,
+								"comment": "w21 <- 7"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 5
+						},
+						"comment": "(w21 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "w21",
+								"value": 6,
+								"comment": "w21 <- 6"
+							},
+							{
+								"ref": "z2",
+								"value": 0,
+								"comment": "z2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 6
+						},
+						"comment": "(w21 = 6)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 6,
+							"comment": "w21 <- 6"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 7
+						},
+						"comment": "(w21 = 7)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 7,
+							"comment": "w21 <- 7"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req21",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "w21",
+							"right": 1
+						},
+						"comment": "(w21 = 1)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "w21",
+							"value": 1,
+							"comment": "w21 <- 1"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "tick",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "∧",
+								"left": {
+									"op": "∧",
+									"left": {
+										"op": "∧",
+										"left": {
+											"op": "∧",
+											"left": {
+												"op": "∧",
+												"left": {
+													"op": "∧",
+													"left": {
+														"op": "∧",
+														"left": {
+															"op": "∨",
+															"left": {
+																"op": "≠",
+																"left": "w21",
+																"right": 9
+															},
+															"right": {
+																"op": "<",
+																"left": "z1",
+																"right": 360
+															}
+														},
+														"right": {
+															"op": "∨",
+															"left": {
+																"op": "≠",
+																"left": "w21",
+																"right": 2
+															},
+															"right": {
+																"op": "<",
+																"left": "z1",
+																"right": 360
+															}
+														}
+													},
+													"right": {
+														"op": "∨",
+														"left": {
+															"op": "≠",
+															"left": "w21",
+															"right": 5
+														},
+														"right": {
+															"op": "<",
+															"left": "z2",
+															"right": 360
+														}
+													}
+												},
+												"right": {
+													"op": "∨",
+													"left": {
+														"op": "≠",
+														"left": "w21",
+														"right": 7
+													},
+													"right": {
+														"op": "<",
+														"left": "z1",
+														"right": 360
+													}
+												}
+											},
+											"right": {
+												"op": "∨",
+												"left": {
+													"op": "≠",
+													"left": "w21",
+													"right": 3
+												},
+												"right": {
+													"op": "<",
+													"left": "z2",
+													"right": 360
+												}
+											}
+										},
+										"right": {
+											"op": "∨",
+											"left": {
+												"op": "≠",
+												"left": "w21",
+												"right": 8
+											},
+											"right": {
+												"op": "<",
+												"left": "z1",
+												"right": 360
+											}
+										}
+									},
+									"right": {
+										"op": "∨",
+										"left": {
+											"op": "≠",
+											"left": "w21",
+											"right": 1
+										},
+										"right": {
+											"op": "<",
+											"left": "z2",
+											"right": 360
+										}
+									}
+								},
+								"right": {
+									"op": "∨",
+									"left": {
+										"op": "≠",
+										"left": "w21",
+										"right": 6
+									},
+									"right": {
+										"op": "<",
+										"left": "z1",
+										"right": 360
+									}
+								}
+							},
+							"right": {
+								"op": "∨",
+								"left": {
+									"op": "≠",
+									"left": "w21",
+									"right": 4
+								},
+								"right": {
+									"op": "<",
+									"left": "z1",
+									"right": 360
+								}
+							}
+						},
+						"comment": "((((((((((w21 = 1) => (z2 <= delay)) & ((w21 = 2) => (z1 <= delay))) & ((w21 = 3) => (z2 <= delay))) & ((w21 = 4) => (z1 <= delay))) & ((w21 = 5) => (z2 <= delay))) & ((w21 = 6) => (z1 <= delay))) & ((w21 = 7) => (z1 <= delay))) & ((w21 = 8) => (z1 <= delay))) & ((w21 = 9) => (z1 <= delay)))"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				}
+			]
+		},
+		{
+			"name": "node2",
+			"locations": [ {
+				"name": "l"
+			} ],
+			"initial-locations": [ "l" ],
+			"edges": [
+				{
+					"location": "l",
+					"action": "loop",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s2",
+							"right": 7
+						},
+						"comment": "(s2 = 7)"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "loop",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s2",
+							"right": 8
+						},
+						"comment": "(s2 = 8)"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_ack12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s2",
+							"right": 6
+						},
+						"comment": "(s2 = 6)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s2",
+								"value": 8,
+								"comment": "s2 <- 8"
+							},
+							{
+								"ref": "x2",
+								"value": 0,
+								"comment": "x2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s2",
+							"right": 3
+						},
+						"comment": "(s2 = 3)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s2",
+							"value": 5,
+							"comment": "s2 <- 5"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle12",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s2",
+								"right": 0
+							},
+							"right": {
+								"op": "=",
+								"left": "x2",
+								"right": 0
+							}
+						},
+						"comment": "((s2 = 0) & (x2 = 0))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s2",
+							"value": 1,
+							"comment": "s2 <- 1"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_idle12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s2",
+							"right": 2
+						},
+						"comment": "(s2 = 2)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s2",
+							"value": 4,
+							"comment": "s2 <- 4"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s2",
+							"right": 5
+						},
+						"comment": "(s2 = 5)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s2",
+							"value": 3,
+							"comment": "s2 <- 3"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req12",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s2",
+								"right": 1
+							},
+							"right": {
+								"op": "=",
+								"left": "x2",
+								"right": 0
+							}
+						},
+						"comment": "((s2 = 1) & (x2 = 0))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s2",
+							"value": 0,
+							"comment": "s2 <- 0"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s2",
+							"right": 4
+						},
+						"comment": "(s2 = 4)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [ {
+							"ref": "s2",
+							"value": 2,
+							"comment": "s2 <- 2"
+						} ]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "rec_req12",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s2",
+							"right": 6
+						},
+						"comment": "(s2 = 6)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s2",
+								"value": 0,
+								"comment": "s2 <- 0"
+							},
+							{
+								"ref": "x2",
+								"value": 0,
+								"comment": "x2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack21",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s2",
+								"right": 2
+							},
+							"right": {
+								"op": "≥",
+								"left": "x2",
+								"right": 760
+							}
+						},
+						"comment": "((s2 = 2) & (x2 >= 760))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s2",
+								"value": 7,
+								"comment": "s2 <- 7"
+							},
+							{
+								"ref": "x2",
+								"value": 0,
+								"comment": "x2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_ack21",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s2",
+								"right": 3
+							},
+							"right": {
+								"op": "≥",
+								"left": "x2",
+								"right": 1590
+							}
+						},
+						"comment": "((s2 = 3) & (x2 >= 1590))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s2",
+								"value": 7,
+								"comment": "s2 <- 7"
+							},
+							{
+								"ref": "x2",
+								"value": 0,
+								"comment": "x2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle21",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s2",
+								"right": 0
+							},
+							"right": {
+								"op": "=",
+								"left": "x2",
+								"right": 0
+							}
+						},
+						"comment": "((s2 = 0) & (x2 = 0))"
+					},
+					"destinations": [
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "1/2"
+							},
+							"assignments": [ {
+								"ref": "s2",
+								"value": 2,
+								"comment": "s2 <- 2"
+							} ]
+						},
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "(1 - 1/2)"
+							},
+							"assignments": [ {
+								"ref": "s2",
+								"value": 3,
+								"comment": "s2 <- 3"
+							} ]
+						}
+					]
+				},
+				{
+					"location": "l",
+					"action": "snd_idle21",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s2",
+								"right": 1
+							},
+							"right": {
+								"op": "=",
+								"left": "x2",
+								"right": 0
+							}
+						},
+						"comment": "((s2 = 1) & (x2 = 0))"
+					},
+					"destinations": [
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "1/2"
+							},
+							"assignments": [ {
+								"ref": "s2",
+								"value": 4,
+								"comment": "s2 <- 4"
+							} ]
+						},
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "(1 - 1/2)"
+							},
+							"assignments": [ {
+								"ref": "s2",
+								"value": 5,
+								"comment": "s2 <- 5"
+							} ]
+						}
+					]
+				},
+				{
+					"location": "l",
+					"action": "snd_req21",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s2",
+								"right": 4
+							},
+							"right": {
+								"op": "≥",
+								"left": "x2",
+								"right": 760
+							}
+						},
+						"comment": "((s2 = 4) & (x2 >= 760))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s2",
+								"value": 6,
+								"comment": "s2 <- 6"
+							},
+							{
+								"ref": "x2",
+								"value": 0,
+								"comment": "x2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "snd_req21",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s2",
+								"right": 5
+							},
+							"right": {
+								"op": "≥",
+								"left": "x2",
+								"right": 1590
+							}
+						},
+						"comment": "((s2 = 5) & (x2 >= 1590))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s2",
+								"value": 6,
+								"comment": "s2 <- 6"
+							},
+							{
+								"ref": "x2",
+								"value": 0,
+								"comment": "x2 <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "tick",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "∧",
+								"left": {
+									"op": "∧",
+									"left": {
+										"op": "∧",
+										"left": {
+											"op": "∧",
+											"left": {
+												"op": "∨",
+												"left": {
+													"op": "≠",
+													"left": "s2",
+													"right": 1
+												},
+												"right": {
+													"op": "<",
+													"left": "x2",
+													"right": 0
+												}
+											},
+											"right": {
+												"op": "∨",
+												"left": {
+													"op": "≠",
+													"left": "s2",
+													"right": 3
+												},
+												"right": {
+													"op": "<",
+													"left": "x2",
+													"right": 1670
+												}
+											}
+										},
+										"right": {
+											"op": "∨",
+											"left": {
+												"op": "≠",
+												"left": "s2",
+												"right": 5
+											},
+											"right": {
+												"op": "<",
+												"left": "x2",
+												"right": 1670
+											}
+										}
+									},
+									"right": {
+										"op": "∨",
+										"left": {
+											"op": "≠",
+											"left": "s2",
+											"right": 4
+										},
+										"right": {
+											"op": "<",
+											"left": "x2",
+											"right": 850
+										}
+									}
+								},
+								"right": {
+									"op": "∨",
+									"left": {
+										"op": "≠",
+										"left": "s2",
+										"right": 0
+									},
+									"right": {
+										"op": "<",
+										"left": "x2",
+										"right": 0
+									}
+								}
+							},
+							"right": {
+								"op": "∨",
+								"left": {
+									"op": "≠",
+									"left": "s2",
+									"right": 2
+								},
+								"right": {
+									"op": "<",
+									"left": "x2",
+									"right": 850
+								}
+							}
+						},
+						"comment": "(((((((s2 = 2) => (x2 <= 850)) & ((s2 = 3) => (x2 <= 1670))) & ((s2 = 4) => (x2 <= 850))) & ((s2 = 5) => (x2 <= 1670))) & ((s2 = 0) => (x2 <= 0))) & ((s2 = 1) => (x2 <= 0)))"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				}
+			]
+		},
+		{
+			"name": "GlobalSync",
+			"locations": [ {
+				"name": "loop_loc"
+			} ],
+			"initial-locations": [ "loop_loc" ],
+			"edges": [
+				{
+					"location": "loop_loc",
+					"action": "tick",
+					"destinations": [ {
+						"location": "loop_loc",
+						"assignments": [
+							{
+								"ref": "y1",
+								"value": {
+									"op": "min",
+									"left": {
+										"op": "+",
+										"left": "y1",
+										"right": 1
+									},
+									"right": 361
+								}
+							},
+							{
+								"ref": "y2",
+								"value": {
+									"op": "min",
+									"left": {
+										"op": "+",
+										"left": "y2",
+										"right": 1
+									},
+									"right": 361
+								}
+							},
+							{
+								"ref": "x1",
+								"value": {
+									"op": "min",
+									"left": {
+										"op": "+",
+										"left": "x1",
+										"right": 1
+									},
+									"right": 1671
+								}
+							},
+							{
+								"ref": "z1",
+								"value": {
+									"op": "min",
+									"left": {
+										"op": "+",
+										"left": "z1",
+										"right": 1
+									},
+									"right": 361
+								}
+							},
+							{
+								"ref": "z2",
+								"value": {
+									"op": "min",
+									"left": {
+										"op": "+",
+										"left": "z2",
+										"right": 1
+									},
+									"right": 361
+								}
+							},
+							{
+								"ref": "x2",
+								"value": {
+									"op": "min",
+									"left": {
+										"op": "+",
+										"left": "x2",
+										"right": 1
+									},
+									"right": 1671
+								}
+							},
+							{
+								"ref": "global_time_reward",
+								"value": 1
+							}
+						]
+					} ]
+				}
+			]
+		}
+	],
+	"system": {
+		"elements": [
+			{
+				"automaton": "wire12"
+			},
+			{
+				"automaton": "node1"
+			},
+			{
+				"automaton": "wire21"
+			},
+			{
+				"automaton": "node2"
+			},
+			{
+				"automaton": "GlobalSync"
+			}
+		],
+		"syncs": [
+			{
+				"synchronise": [
+					null,
+					"loop",
+					null,
+					"loop",
+					null
+				],
+				"result": "loop"
+			},
+			{
+				"synchronise": [
+					"rec_ack12",
+					null,
+					null,
+					"rec_ack12",
+					null
+				],
+				"result": "rec_ack12"
+			},
+			{
+				"synchronise": [
+					null,
+					"rec_ack21",
+					"rec_ack21",
+					null,
+					null
+				],
+				"result": "rec_ack21"
+			},
+			{
+				"synchronise": [
+					"rec_idle12",
+					null,
+					null,
+					"rec_idle12",
+					null
+				],
+				"result": "rec_idle12"
+			},
+			{
+				"synchronise": [
+					null,
+					"rec_idle21",
+					"rec_idle21",
+					null,
+					null
+				],
+				"result": "rec_idle21"
+			},
+			{
+				"synchronise": [
+					"rec_req12",
+					null,
+					null,
+					"rec_req12",
+					null
+				],
+				"result": "rec_req12"
+			},
+			{
+				"synchronise": [
+					null,
+					"rec_req21",
+					"rec_req21",
+					null,
+					null
+				],
+				"result": "rec_req21"
+			},
+			{
+				"synchronise": [
+					"snd_ack12",
+					"snd_ack12",
+					null,
+					null,
+					null
+				],
+				"result": "snd_ack12"
+			},
+			{
+				"synchronise": [
+					null,
+					null,
+					"snd_ack21",
+					"snd_ack21",
+					null
+				],
+				"result": "snd_ack21"
+			},
+			{
+				"synchronise": [
+					"snd_idle12",
+					"snd_idle12",
+					null,
+					null,
+					null
+				],
+				"result": "snd_idle12"
+			},
+			{
+				"synchronise": [
+					null,
+					null,
+					"snd_idle21",
+					"snd_idle21",
+					null
+				],
+				"result": "snd_idle21"
+			},
+			{
+				"synchronise": [
+					"snd_req12",
+					"snd_req12",
+					null,
+					null,
+					null
+				],
+				"result": "snd_req12"
+			},
+			{
+				"synchronise": [
+					null,
+					null,
+					"snd_req21",
+					"snd_req21",
+					null
+				],
+				"result": "snd_req21"
+			},
+			{
+				"synchronise": [
+					"tick",
+					"tick",
+					"tick",
+					"tick",
+					"tick"
+				],
+				"result": "tick"
+			}
+		]
+	}
+}

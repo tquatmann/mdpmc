@@ -1,0 +1,147 @@
+{
+	"name": "refuelA",
+	"short": "refuelA",
+	"type": "mdp",
+	"original": "DRN",
+	"version": 1,
+	"date": "2022-10-05",
+	"author": "Sebastian Junges",
+	"source": "https://github.com/sjunges/premise-mdp-benchmarks",
+	"description": "Set of challenging MDP model checking queries from the Premise tool (https://github.com/monitoring-MDPs/premise). We created a set of challenging benchmarks by scaling up the original benchmarks and filtering such that not all the standard configurations solved every benchmark within a second.",
+	"references": [
+		"https://doi.org/10.1007/978-3-030-81688-9_26"
+	],
+	"notes": "Challenging",
+	"parameters": [
+		{
+			"name": "N0",
+			"kind": "file",
+			"description": "File parameter 0",
+			"type": "integer"
+		},
+		{
+			"name": "N1",
+			"kind": "file",
+			"description": "File parameter 1",
+			"type": "integer"
+		},
+		{
+			"name": "N2",
+			"kind": "file",
+			"description": "File parameter 2",
+			"type": "integer"
+		},
+		{
+			"name": "N3",
+			"kind": "file",
+			"description": "File parameter 3",
+			"type": "integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "MaxGoal",
+			"description": "The maximal probability to finally reach a goal state.",
+			"type": "prob-reach"
+		}
+	],
+	"files": [
+		{
+			"original-file": [
+				"refuelA-25-100-11-800.drn",
+				"refuelA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 25
+				},
+				{
+					"name": "N1",
+					"value": 100
+				},
+				{
+					"name": "N2",
+					"value": 11
+				},
+				{
+					"name": "N3",
+					"value": 800
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelA-30-70-16-600.drn",
+				"refuelA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 30
+				},
+				{
+					"name": "N1",
+					"value": 70
+				},
+				{
+					"name": "N2",
+					"value": 16
+				},
+				{
+					"name": "N3",
+					"value": 600
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelA-30-70-11-850.drn",
+				"refuelA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 30
+				},
+				{
+					"name": "N1",
+					"value": 70
+				},
+				{
+					"name": "N2",
+					"value": 11
+				},
+				{
+					"name": "N3",
+					"value": 850
+				}
+			]
+		},
+		{
+			"original-file": [
+				"refuelA-25-100-3-900.drn",
+				"refuelA.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N0",
+					"value": 25
+				},
+				{
+					"name": "N1",
+					"value": 100
+				},
+				{
+					"name": "N2",
+					"value": 3
+				},
+				{
+					"name": "N3",
+					"value": 900
+				}
+			]
+		}
+	],
+	"results": []
+}

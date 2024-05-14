@@ -1,0 +1,21 @@
+* text=auto
+
+*.csl text
+*.css text
+*.html text
+*.jani text
+*.js text
+*.json text
+*.ma text
+*.md text
+*.modest text
+*.pddl text
+*.pm text
+*.prctl text
+*.prism text
+*.props text
+*.txt text
+
+*.gz binary
+*.pdf binary
+*.woff2 binary

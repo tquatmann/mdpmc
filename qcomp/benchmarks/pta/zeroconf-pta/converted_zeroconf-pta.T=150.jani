@@ -1,0 +1,819 @@
+﻿{
+	"jani-version": 1,
+	"name": "zeroconf-pta",
+	"type": "mdp",
+	"features": [ "derived-operators" ],
+	"actions": [
+		{
+			"name": "recv"
+		},
+		{
+			"name": "send_fresh"
+		},
+		{
+			"name": "send_used"
+		},
+		{
+			"name": "tick"
+		}
+	],
+	"variables": [
+		{
+			"name": "global_time_reward",
+			"type": "real",
+			"transient": true,
+			"initial-value": 0
+		},
+		{
+			"name": "done",
+			"type": "bool",
+			"transient": true,
+			"initial-value": false
+		},
+		{
+			"name": "time",
+			"type": "real",
+			"transient": true,
+			"initial-value": 0
+		},
+		{
+			"name": "s",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 2
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "probes",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 4
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "ip",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 2
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "x",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 21
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "e",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 2
+			},
+			"initial-value": 0
+		},
+		{
+			"name": "y",
+			"type": {
+				"kind": "bounded",
+				"base": "int",
+				"lower-bound": 0,
+				"upper-bound": 6
+			},
+			"initial-value": 0
+		}
+	],
+	"properties": [
+		{
+			"name": "deadline",
+			"expression": {
+				"op": "filter",
+				"fun": "values",
+				"values": {
+					"op": "Pmax",
+					"exp": {
+						"op": "U",
+						"left": true,
+						"right": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s",
+								"right": 2
+							},
+							"right": {
+								"op": "=",
+								"left": "ip",
+								"right": 2
+							}
+						},
+						"reward-bounds": [ {
+							"exp": "global_time_reward",
+							"accumulate": [
+								"steps"
+							],
+							"bounds": {
+								"upper": 150
+							}
+						} ]
+					}
+				},
+				"states": {
+					"op": "initial"
+				}
+			}
+		},
+		{
+			"name": "incorrect",
+			"expression": {
+				"op": "filter",
+				"fun": "values",
+				"values": {
+					"op": "Pmax",
+					"exp": {
+						"op": "U",
+						"left": true,
+						"right": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "s",
+								"right": 2
+							},
+							"right": {
+								"op": "=",
+								"left": "ip",
+								"right": 2
+							}
+						}
+					}
+				},
+				"states": {
+					"op": "initial"
+				}
+			}
+		}
+	],
+	"automata": [
+		{
+			"name": "sender",
+			"locations": [ {
+				"name": "l",
+				"transient-values": [
+					{
+						"ref": "done",
+						"value": {
+							"op": "=",
+							"left": "s",
+							"right": 2
+						},
+						"comment": "done <- (s = 2)"
+					},
+					{
+						"ref": "time",
+						"value": 1,
+						"comment": "time <- 1"
+					}
+				]
+			} ],
+			"initial-locations": [ "l" ],
+			"edges": [
+				{
+					"location": "l",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s",
+							"right": 0
+						},
+						"comment": "(s = 0)"
+					},
+					"destinations": [
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "1/2"
+							},
+							"assignments": [
+								{
+									"ref": "s",
+									"value": 1,
+									"comment": "s <- 1"
+								},
+								{
+									"ref": "ip",
+									"value": 1,
+									"comment": "ip <- 1"
+								}
+							]
+						},
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 5,
+									"right": 10
+								},
+								"comment": "1/2"
+							},
+							"assignments": [
+								{
+									"ref": "s",
+									"value": 1,
+									"comment": "s <- 1"
+								},
+								{
+									"ref": "ip",
+									"value": 2,
+									"comment": "ip <- 2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"location": "l",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "∧",
+								"left": {
+									"op": "=",
+									"left": "s",
+									"right": 1
+								},
+								"right": {
+									"op": "=",
+									"left": "x",
+									"right": 20
+								}
+							},
+							"right": {
+								"op": "=",
+								"left": "probes",
+								"right": 4
+							}
+						},
+						"comment": "(((s = 1) & (x = 20)) & (probes = 4))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s",
+								"value": 2,
+								"comment": "s <- 2"
+							},
+							{
+								"ref": "x",
+								"value": 0,
+								"comment": "x <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s",
+							"right": 2
+						},
+						"comment": "(s = 2)"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "recv",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "s",
+							"right": 1
+						},
+						"comment": "(s = 1)"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "s",
+								"value": 0,
+								"comment": "s <- 0"
+							},
+							{
+								"ref": "probes",
+								"value": 0,
+								"comment": "probes <- 0"
+							},
+							{
+								"ref": "ip",
+								"value": 0,
+								"comment": "ip <- 0"
+							},
+							{
+								"ref": "x",
+								"value": 0,
+								"comment": "x <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "send_fresh",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "∧",
+								"left": {
+									"op": "<",
+									"left": "probes",
+									"right": 4
+								},
+								"right": {
+									"op": "=",
+									"left": "x",
+									"right": 20
+								}
+							},
+							"right": {
+								"op": "∧",
+								"left": {
+									"op": "=",
+									"left": "ip",
+									"right": 1
+								},
+								"right": {
+									"op": "=",
+									"left": "s",
+									"right": 1
+								}
+							}
+						},
+						"comment": "((((s = 1) & (x = 20)) & (ip = 1)) & (probes < 4))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "probes",
+								"value": {
+									"op": "+",
+									"left": "probes",
+									"right": 1
+								},
+								"comment": "probes <- (probes + 1)"
+							},
+							{
+								"ref": "x",
+								"value": 0,
+								"comment": "x <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "send_used",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "∧",
+								"left": {
+									"op": "<",
+									"left": "probes",
+									"right": 4
+								},
+								"right": {
+									"op": "=",
+									"left": "x",
+									"right": 20
+								}
+							},
+							"right": {
+								"op": "∧",
+								"left": {
+									"op": "=",
+									"left": "ip",
+									"right": 2
+								},
+								"right": {
+									"op": "=",
+									"left": "s",
+									"right": 1
+								}
+							}
+						},
+						"comment": "((((s = 1) & (x = 20)) & (ip = 2)) & (probes < 4))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "probes",
+								"value": {
+									"op": "+",
+									"left": "probes",
+									"right": 1
+								},
+								"comment": "probes <- (probes + 1)"
+							},
+							{
+								"ref": "x",
+								"value": 0,
+								"comment": "x <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "tick",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "∨",
+								"left": {
+									"op": "≠",
+									"left": "s",
+									"right": 0
+								},
+								"right": {
+									"op": "<",
+									"left": "x",
+									"right": 0
+								}
+							},
+							"right": {
+								"op": "∨",
+								"left": {
+									"op": "≠",
+									"left": "s",
+									"right": 1
+								},
+								"right": {
+									"op": "<",
+									"left": "x",
+									"right": 20
+								}
+							}
+						},
+						"comment": "((((s = 0) => (x <= 0)) & ((s = 1) => (x <= 20))) & ((s = 2) => true))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "done",
+								"value": {
+									"op": "=",
+									"left": "s",
+									"right": 2
+								},
+								"index": 1,
+								"comment": "done <- (s = 2)"
+							},
+							{
+								"ref": "time",
+								"value": 1,
+								"index": 1,
+								"comment": "time <- 1"
+							}
+						]
+					} ]
+				}
+			]
+		},
+		{
+			"name": "environment",
+			"locations": [ {
+				"name": "l"
+			} ],
+			"initial-locations": [ "l" ],
+			"edges": [
+				{
+					"location": "l",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "e",
+								"right": 1
+							},
+							"right": {
+								"op": "≥",
+								"left": "y",
+								"right": 1
+							}
+						},
+						"comment": "((e = 1) & (y >= 1))"
+					},
+					"destinations": [
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 1,
+									"right": 10
+								},
+								"comment": "1/10"
+							},
+							"assignments": [
+								{
+									"ref": "e",
+									"value": 0,
+									"comment": "e <- 0"
+								},
+								{
+									"ref": "y",
+									"value": 0,
+									"comment": "y <- 0"
+								}
+							]
+						},
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 9,
+									"right": 10
+								},
+								"comment": "9/10"
+							},
+							"assignments": [
+								{
+									"ref": "e",
+									"value": 2,
+									"comment": "e <- 2"
+								},
+								{
+									"ref": "y",
+									"value": 0,
+									"comment": "y <- 0"
+								}
+							]
+						}
+					]
+				},
+				{
+					"location": "l",
+					"action": "recv",
+					"guard": {
+						"exp": {
+							"op": "∧",
+							"left": {
+								"op": "=",
+								"left": "e",
+								"right": 2
+							},
+							"right": {
+								"op": "≥",
+								"left": "y",
+								"right": 1
+							}
+						},
+						"comment": "((e = 2) & (y >= 1))"
+					},
+					"destinations": [ {
+						"location": "l",
+						"assignments": [
+							{
+								"ref": "e",
+								"value": 0,
+								"comment": "e <- 0"
+							},
+							{
+								"ref": "y",
+								"value": 0,
+								"comment": "y <- 0"
+							}
+						]
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "send_fresh",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "e",
+							"right": 0
+						},
+						"comment": "(e = 0)"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				},
+				{
+					"location": "l",
+					"action": "send_used",
+					"guard": {
+						"exp": {
+							"op": "=",
+							"left": "e",
+							"right": 0
+						},
+						"comment": "(e = 0)"
+					},
+					"destinations": [
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 1,
+									"right": 10
+								},
+								"comment": "1/10"
+							},
+							"assignments": [
+								{
+									"ref": "e",
+									"value": 0,
+									"comment": "e <- 0"
+								},
+								{
+									"ref": "y",
+									"value": 0,
+									"comment": "y <- 0"
+								}
+							]
+						},
+						{
+							"location": "l",
+							"probability": {
+								"exp": {
+									"op": "/",
+									"left": 9,
+									"right": 10
+								},
+								"comment": "9/10"
+							},
+							"assignments": [
+								{
+									"ref": "e",
+									"value": 1,
+									"comment": "e <- 1"
+								},
+								{
+									"ref": "y",
+									"value": 0,
+									"comment": "y <- 0"
+								}
+							]
+						}
+					]
+				},
+				{
+					"location": "l",
+					"action": "tick",
+					"guard": {
+						"exp": {
+							"op": "∨",
+							"left": {
+								"op": "<",
+								"left": "e",
+								"right": 1
+							},
+							"right": {
+								"op": "<",
+								"left": "y",
+								"right": 5
+							}
+						},
+						"comment": "(((e = 0) => true) & ((e >= 1) => (y <= 5)))"
+					},
+					"destinations": [ {
+						"location": "l"
+					} ]
+				}
+			]
+		},
+		{
+			"name": "GlobalSync",
+			"locations": [ {
+				"name": "loop_loc"
+			} ],
+			"initial-locations": [ "loop_loc" ],
+			"edges": [
+				{
+					"location": "loop_loc",
+					"action": "tick",
+					"destinations": [ {
+						"location": "loop_loc",
+						"assignments": [
+							{
+								"ref": "x",
+								"value": {
+									"op": "min",
+									"left": {
+										"op": "+",
+										"left": "x",
+										"right": 1
+									},
+									"right": 21
+								}
+							},
+							{
+								"ref": "y",
+								"value": {
+									"op": "min",
+									"left": {
+										"op": "+",
+										"left": "y",
+										"right": 1
+									},
+									"right": 6
+								}
+							},
+							{
+								"ref": "global_time_reward",
+								"value": 1
+							}
+						]
+					} ]
+				}
+			]
+		}
+	],
+	"system": {
+		"elements": [
+			{
+				"automaton": "sender"
+			},
+			{
+				"automaton": "environment"
+			},
+			{
+				"automaton": "GlobalSync"
+			}
+		],
+		"syncs": [
+			{
+				"synchronise": [
+					"recv",
+					"recv",
+					null
+				],
+				"result": "recv"
+			},
+			{
+				"synchronise": [
+					"send_fresh",
+					"send_fresh",
+					null
+				],
+				"result": "send_fresh"
+			},
+			{
+				"synchronise": [
+					"send_used",
+					"send_used",
+					null
+				],
+				"result": "send_used"
+			},
+			{
+				"synchronise": [
+					"tick",
+					"tick",
+					"tick"
+				],
+				"result": "tick"
+			}
+		]
+	}
+}
