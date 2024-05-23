@@ -7,6 +7,9 @@ def get_name():
     """ should return the name of the tool """
     return "Storm"
 
+# This token can be used in a configuration command and will be replaced by some (integer) seed value (allowing to determinize random executions)
+RANDOM_SEED_TOKEN = "<%SEED%>"
+
 def test_installation(settings, configuration = None):
     """
     Performs a quick check to test wether the installation works. 
@@ -16,6 +19,7 @@ def test_installation(settings, configuration = None):
     if not os.path.exists(storm_executable):
          return "Binary '{}' does not exist.".format(storm_executable)    
     command_line = storm_executable + " {}".format("" if configuration is None else configuration.command)
+    command_line = command_line.replace(RANDOM_SEED_TOKEN, str(get_seed(0)))
     try:
         test_out, test_time, test_code = execute_command_line(command_line, 10)
         if test_code != 0:
@@ -77,11 +81,13 @@ def get_configurations():
     cfgs.append(Configuration(id="vi2lp-mecq-topo-soplex-exact", note="LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique"))
     cfgs.append(Configuration(id="vi2pi-mecq-topo-exactlu", note="PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact"))
     cfgs.append(Configuration(id="vi2pi-mecq-topo-gmres", note="PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi-to-pi --force-require-unique  "))
-    
+
+    # cfgs.append(Configuration(id="rnd-vi", note="Random permutation, classical VI", command="--minmax:method vi --permute random {}".format(RANDOM_SEED_TOKEN)))
+
     return cfgs
 
 
-def get_invocation(settings, benchmark : Benchmark, configuration : Configuration):
+def get_invocation(settings, benchmark : Benchmark, configuration : Configuration, run_id : int):
     """
     Returns an invocation that invokes the tool for the given benchmark and the given storm configuration.
     It can be assumed that the current directory is the directory from which execute_invocations.py is executed.
@@ -93,10 +99,11 @@ def get_invocation(settings, benchmark : Benchmark, configuration : Configuratio
     invocation.configuration_id = configuration.identifier
     invocation.note = configuration.note
     invocation.benchmark_id = benchmark.get_identifier()
+    invocation.run_id = run_id
     
     if is_benchmark_supported(benchmark, configuration):
-        bdir = benchmark.get_directory()      
-        storm_executable = os.path.join(settings.storm_binary_dir(), "storm")    
+        bdir = benchmark.get_portable_directory()
+        storm_executable = os.path.join(settings.storm_binary_dir(), "storm")
 
         if (benchmark.is_prism() or benchmark.is_prism_ma()) and not benchmark.is_pta():
             benchmark_arguments = "--prism {} --prop {} {}".format(os.path.join(bdir, benchmark.get_prism_program_filename()), os.path.join(bdir, benchmark.get_prism_property_filename()), benchmark.get_property_name())
@@ -131,7 +138,7 @@ def get_invocation(settings, benchmark : Benchmark, configuration : Configuratio
                 if par_defs != "":
                     moconv_options.append(" --experiment " + par_defs)
                     par_defs = ""
-                if not os.path.isfile(moconvoutfile):
+                if not os.path.isfile(set_mdpmc_dir(moconvoutfile)):
                     moconv_command = "moconv {} {} --output {} --overwrite\n".format(os.path.join(bdir, janifile), " ".join(moconv_options), moconvoutfile)
                     with open("moconv.sh", 'a') as moconvscript :
                         moconvscript.write(moconv_command)
@@ -140,7 +147,8 @@ def get_invocation(settings, benchmark : Benchmark, configuration : Configuratio
             benchmark_arguments = "--jani {} --janiproperty {}".format(os.path.join(bdir, janifile), benchmark.get_property_name())
             if par_defs != "":
                 benchmark_arguments += " --constants " + par_defs
-        invocation.add_command(storm_executable + " " + benchmark_arguments + " " + configuration.command + " " + general_arguments)
+        cfg_cmd = configuration.command.replace(RANDOM_SEED_TOKEN, str(get_seed(run_id)))
+        invocation.add_command(storm_executable + " " + benchmark_arguments + " " + cfg_cmd + " " + general_arguments)
     else:
         invocation.note += " Benchmark not supported by Storm."    
     return invocation

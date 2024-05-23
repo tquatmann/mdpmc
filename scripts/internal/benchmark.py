@@ -216,9 +216,12 @@ class Benchmark(object):
     def is_steady_state_probability(self):
         return self.get_property_type() == "steady-state-prob"
 
+    def get_portable_directory(self):
+        return os.path.join(self.settings.benchmark_dir(), "{}/{}".format(self.get_model_type(), self.get_model_short_name()))
+
     def get_directory(self):
-        return os.path.realpath(os.path.join(self.settings.benchmark_dir(), "{}/{}".format(self.get_model_type(), self.get_model_short_name())))
-    
+        return os.path.realpath(set_mdpmc_dir(self.get_portable_directory()))
+
     def has_janifile(self):
         return "file" in self.index_json["files"][self.model_file_index]
 
@@ -526,11 +529,12 @@ def get_benchmark_from_id(settings, id):
     short_name = id_info[0]
     parameter_definition_str = ".".join(id_info[1:-1])
     property_name = id_info[-1]
+    benchmark_dir = set_mdpmc_dir(settings.benchmark_dir())
 
     # find the correct benchmark
-    benchmark_directories = load_json(os.path.join(settings.benchmark_dir(), "index.json"))
+    benchmark_directories = load_json(os.path.join(benchmark_dir, "index.json"))
     for p in benchmark_directories:
-        model_path = os.path.join(settings.benchmark_dir(), p["path"])
+        model_path = os.path.join(benchmark_dir, p["path"])
         # get the correct index.json file
         if short_name == os.path.basename(model_path):
             model_index_json = load_json(os.path.join(model_path, "index.json"))

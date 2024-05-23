@@ -1,7 +1,7 @@
 from .benchmark import *
 from .utility import *
-import internal.storm
-import internal.mcsta
+from . import storm
+from . import  mcsta
 import sys
 import os
 
@@ -53,54 +53,66 @@ def parse_tool_output(settings, execution_json):
     benchmark = get_benchmark_from_id(settings, execution_json["benchmark-id"])
     
     notes = []
-    if execution_json["tool"] == internal.storm.get_name():
-        execution_json["supported"] = not internal.storm.is_not_supported(log)
+    if execution_json["tool"] == storm.get_name():
+        execution_json["supported"] = not storm.is_not_supported(log)
         result = None
-        mctime = internal.storm.get_MC_Time(log)
+        mctime = storm.get_MC_Time(log)
         if mctime is not None:
             if float(mctime) <= 1800:
                 execution_json["model-checking-time"] = mctime
-                result = internal.storm.get_result(log, benchmark)
+                result = storm.get_result(log, benchmark)
             else:
                 execution_json["timeout"] = True
             execution_json["memout"] = False
             execution_json["expected-error"] = False
         else:
-            execution_json["memout"] = internal.storm.is_memout(log)
-            execution_json["expected-error"] = internal.storm.is_expected_error(log)
+            execution_json["memout"] = storm.is_memout(log)
+            execution_json["expected-error"] = storm.is_expected_error(log)
     elif execution_json["tool"] == "mcsta":
-        execution_json["supported"] = not internal.mcsta.is_not_supported(log)
+        execution_json["supported"] = not mcsta.is_not_supported(log)
         result = None
-        mctime = internal.mcsta.get_MC_Time(log)
+        mctime = mcsta.get_MC_Time(log)
         if mctime is not None:
             if float(mctime) <= 1800:
                 execution_json["model-checking-time"] = mctime
-                result = internal.mcsta.get_result(log, benchmark)
+                result = mcsta.get_result(log, benchmark)
             else:
                 execution_json["timeout"] = True
             execution_json["memout"] = False
             execution_json["expected-error"] = False
         else:
-            execution_json["memout"] = internal.mcsta.is_memout(log)
-            execution_json["expected-error"] = internal.mcsta.is_expected_error(log)
+            execution_json["memout"] = mcsta.is_memout(log)
+            execution_json["expected-error"] = mcsta.is_expected_error(log)
     else:
         print("Error: Unknown tool '{}'".format(execution_jsion["tool"]))
     
     process_tool_result(result, notes, settings, benchmark, execution_json)
     execution_json["notes"] = notes    
 
-def get_all_tools_configs():
-    return [("Storm", c.identifier) for c in internal.storm.get_configurations()] + [("mcsta", c.identifier) for c in internal.mcsta.get_configurations()] 
+def get_group_name_from_logdir(logdir):
+    if os.path.basename(logdir) == "":
+        return os.path.dirname(logdir)
+    else:
+        return os.path.basename(logdir)
 
-def gather_execution_data(settings, logdirs, tools_configs):
-    exec_data = OrderedDict() # Tool -> Config -> Benchmark -> Data
-    for t,c in tools_configs:
-        if t not in exec_data: exec_data[t] = OrderedDict()
-        exec_data[t][c] = OrderedDict()
+def get_all_groups_tools_configs(logdirs):
+    tc = [("Storm", c.identifier) for c in storm.get_configurations()] + [("mcsta", c.identifier) for c in mcsta.get_configurations()]
+    group_names = [get_group_name_from_logdir(logdir) for logdir in logdirs]
+    if len(set(group_names)) != len(group_names):
+        raise AssertionError("log file directory names must be unique. Got {}".format(group_names))
+    return [(group, t, c) for group in group_names for t,c in tc]
+
+def gather_execution_data(settings, logdirs, groups_tools_configs):
+    exec_data = OrderedDict() # Group -> Tool -> Config -> Benchmark -> [Data Array]
+    for g,t,c in groups_tools_configs:
+        if g not in exec_data: exec_data[g] = OrderedDict()
+        if t not in exec_data[g]: exec_data[g][t] = OrderedDict()
+        exec_data[g][t][c] = OrderedDict()
     for logdir_input in logdirs:
         logdir = os.path.expanduser(logdir_input)
         assert os.path.isdir(logdir), f"Error: directory '{logdir}' does not exist."
-        print("\nGathering execution data for logfiles in {} ...".format(logdir))
+        group = get_group_name_from_logdir(logdir)
+        print("\nGathering execution data for logfiles in group '{}' directory: {} ...".format(group, logdir))
         json_files = [ f for f in os.listdir(logdir) if f.endswith(".json") and os.path.isfile(os.path.join(logdir, f)) ]
         progress = Progressbar(len(json_files))   
         i = 0
@@ -110,11 +122,10 @@ def gather_execution_data(settings, logdirs, tools_configs):
             tool = execution_json["tool"]
             config = execution_json["configuration-id"]
             benchmark = execution_json["benchmark-id"]
-            if benchmark in exec_data[tool][config]:
-                print("Error: Multiple result files found for {}.{}.{}".format(tool,config,benchmark))
-            else:
-                execution_json["log"] = os.path.join(logdir, execution_json["log"])
-                parse_tool_output(settings, execution_json)
-                exec_data[tool][config][benchmark] = execution_json    
+            if benchmark not in exec_data[group][tool][config]:
+                exec_data[group][tool][config][benchmark] = []
+            execution_json["log"] = os.path.join(logdir, execution_json["log"])
+            parse_tool_output(settings, execution_json)
+            exec_data[group][tool][config][benchmark].append(execution_json)
     print("\n")
     return exec_data

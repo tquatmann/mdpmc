@@ -23,7 +23,7 @@ if __name__ == "__main__":
     print("")
 
     tools_configs = get_all_tools_configs() 
-    exec_data = gather_execution_data(settings, logdirs, tools_configs)  # Tool -> Config -> Benchmark -> Data
+    exec_data = gather_execution_data(settings, logdirs, tools_configs)  # Tool -> Config -> Benchmark -> [Data array]
     unsuccessful = OrderedDict()
     for t,c in tools_configs:
         tc_data = exec_data[t][c]
@@ -34,8 +34,10 @@ if __name__ == "__main__":
             fail_reason = "Not tested"
         elif "firewire.false-3-800.time_sending" not in tc_data:
             fail_reason = "Wrong benchmark"
+        elif len(tc_data["firewire.false-3-800.time_sending"]) != 1:
+            fail_reason = "not a unique run"
         else:
-            exec_json = tc_data["firewire.false-3-800.time_sending"]
+            exec_json = tc_data["firewire.false-3-800.time_sending"][0]
             if exec_json["timeout"]:
                 fail_reason = "Timeout"
             elif "result" not in exec_json:

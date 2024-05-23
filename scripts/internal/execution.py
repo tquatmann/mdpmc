@@ -16,11 +16,7 @@ class CommandExecution(object):
         self.proc.kill()
 
     def run(self, command_line_str, time_limit):
-        if os.environ.get('MDPMC_DIR') is None:
-            mdpmc_dir = os.path.realpath(os.path.join(sys.path[0], ".."))
-        else:
-            mdpmc_dir = os.environ.get('MDPMC_DIR')
-        command_line_str = command_line_str.replace("$MDPMC_DIR", mdpmc_dir)
+        command_line_str = set_mdpmc_dir(command_line_str)
         command_line_list = command_line_str.split()
         command_line_list[0] = os.path.expanduser(command_line_list[0])
         self.proc = subprocess.Popen(command_line_list, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -81,7 +77,7 @@ class Execution(object):
         for command in self.invocation.commands:
             log, wall_time, return_code = execute_command_line(command, self.invocation.time_limit - self.wall_time, warm_up_run)
             self.wall_time = self.wall_time + wall_time
-            self.logs.append("Command:\t{}\nWallclock time:\t{}\nReturn code:\t{}\nOutput:\n{}\n".format(command, wall_time, return_code, log))
+            self.logs.append("Command:\t{}\nRepitition:\t{}\nWallclock time:\t{}\nReturn code:\t{}\nOutput:\n{}\n".format(command, self.invocation.run_id, wall_time, return_code, log))
             if return_code is None:
                 self.timeout = True
                 self.error = False
