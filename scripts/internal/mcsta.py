@@ -37,7 +37,7 @@ def test_installation(settings, configuration = None):
     Performs a quick check to test wether the installation works. 
     Returns an error message if something went wrong and 'None' otherwise.
     """
-    mcsta_executable = os.path.join(settings.mcsta_binary_dir(), "modest")
+    mcsta_executable = set_mdpmc_dir(os.path.join(settings.mcsta_binary_dir(), "modest"))
     if not os.path.exists(mcsta_executable):
          return "Binary '{}' does not exist.".format(mcsta_executable)    
     command_line = mcsta_executable + " mcsta {}".format("" if configuration is None else configuration.command)

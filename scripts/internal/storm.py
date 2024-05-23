@@ -15,7 +15,7 @@ def test_installation(settings, configuration = None):
     Performs a quick check to test wether the installation works. 
     Returns an error message if something went wrong and 'None' otherwise.
     """
-    storm_executable = os.path.join(settings.storm_binary_dir(), "storm")    
+    storm_executable = set_mdpmc_dir(os.path.join(settings.storm_binary_dir(), "storm"))
     if not os.path.exists(storm_executable):
          return "Binary '{}' does not exist.".format(storm_executable)    
     command_line = storm_executable + " {}".format("" if configuration is None else configuration.command)
