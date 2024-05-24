@@ -24,8 +24,8 @@ def get_configurations():
     cfgs.append(Configuration(id="lp-gurobi-topo", note="LP with Gurobi, topological",  command="--alg LinearProgramming --lp-solver Gurobi --topological"))
     cfgs.append(Configuration(id="lp-highs-mono", note="LP with HiGHS, monolithical", command="--alg LinearProgramming --lp-solver HiGHS"))
     cfgs.append(Configuration(id="lp-highs-topo", note="LP with HiGHS, topological",  command="--alg LinearProgramming --lp-solver HiGHS --topological"))
-    cfgs.append(Configuration(id="lp-lpsolve-mono", note="LP with lp\_solve, monolithical", command="--alg LinearProgramming --lp-solver LPSolve"))
-    cfgs.append(Configuration(id="lp-lpsolve-topo", note="LP with lp\_solve, topological",  command="--alg LinearProgramming --lp-solver LPSolve --topological"))
+    cfgs.append(Configuration(id="lp-lpsolve-mono", note="LP with lp\\_solve, monolithical", command="--alg LinearProgramming --lp-solver LPSolve"))
+    cfgs.append(Configuration(id="lp-lpsolve-topo", note="LP with lp\\_solve, topological",  command="--alg LinearProgramming --lp-solver LPSolve --topological"))
     cfgs.append(Configuration(id="lp-mosek-mono", note="LP with Mosek, monolithical", command="--alg LinearProgramming --lp-solver Mosek"))
     cfgs.append(Configuration(id="lp-mosek-topo", note="LP with Mosek, topological",  command="--alg LinearProgramming --lp-solver Mosek --topological"))
 
@@ -37,7 +37,7 @@ def test_installation(settings, configuration = None):
     Performs a quick check to test wether the installation works. 
     Returns an error message if something went wrong and 'None' otherwise.
     """
-    mcsta_executable = os.path.join(settings.mcsta_binary_dir(), "modest")
+    mcsta_executable = set_mdpmc_dir(os.path.join(settings.mcsta_binary_dir(), "modest"))
     if not os.path.exists(mcsta_executable):
          return "Binary '{}' does not exist.".format(mcsta_executable)    
     command_line = mcsta_executable + " mcsta {}".format("" if configuration is None else configuration.command)
@@ -56,7 +56,7 @@ def is_benchmark_supported(benchmark : Benchmark, configuration : Configuration)
     return benchmark.has_janifile()
 
 
-def get_invocation(settings, benchmark : Benchmark, configuration : Configuration):
+def get_invocation(settings, benchmark : Benchmark, configuration : Configuration, run_id : int):
     """
     Returns an invocation that invokes the tool for the given benchmark and the given storm configuration.
     It can be assumed that the current directory is the directory from which execute_invocations.py is executed.
@@ -68,9 +68,10 @@ def get_invocation(settings, benchmark : Benchmark, configuration : Configuratio
     invocation.configuration_id = configuration.identifier
     invocation.note = configuration.note
     invocation.benchmark_id = benchmark.get_identifier()
-    
+    invocation.run_id = run_id
+
     if is_benchmark_supported(benchmark, configuration):
-        bdir = benchmark.get_directory()
+        bdir = benchmark.get_portable_directory()
         mcsta_executable = os.path.join(settings.mcsta_binary_dir(), "modest")    
     
         janifile = benchmark.get_janifilename()

@@ -52,7 +52,7 @@ def create_invocations(settings):
                     print("Error when testing configuration '{}':".format(config.identifier))
                     print(test_result)
                     input("Press Return to continue or CTRL+C to abort.")
-                selected_configurations[mcsta.get_name()].append(config)    
+                selected_configurations[mcsta.get_name()].append(config)
 
     # Select benchmark sets
     quickcheck = load_json(os.path.join(sys.path[0], "internal/quickcheck.json"))
@@ -107,13 +107,14 @@ def create_invocations(settings):
         property_type_str = property_types[property_type_number][0] # e.g. 'mdp (7)'
         for benchmark in selected_benchmarks_per_property[property_type_str]:
             selected_benchmarks.append(benchmark)
+
+    num_runs = input_number_of_runs()
     num_configurations = sum([len(cfgs) for cfgs in selected_configurations.values()])
-    num_invocations = len(selected_benchmarks) * num_configurations
-    print("Selected {} benchmarks and {} configurations yielding {} invocations in total.".format(len(selected_benchmarks), num_configurations, num_invocations))
+    num_invocations = len(selected_benchmarks) * num_configurations * num_runs
+    print("Selected {} benchmarks and {} configurations {}yielding {} invocations in total.".format(len(selected_benchmarks), num_configurations, "" if num_invocations == 1 else " and {} repetitions ".format(num_runs), num_invocations))
     
     input_time_limit(settings)
     input_logs_dir(settings)
-    
     # Creating invocations
     invocations = []
     progressbar = Progressbar(num_invocations, "Generating invocations")
@@ -122,19 +123,20 @@ def create_invocations(settings):
     for benchmark in selected_benchmarks:
         for tool in selected_configurations:    
             for configuration in selected_configurations[tool]:
-                i += 1
-                progressbar.print_progress(i)
-                if tool == storm.get_name():
-                    invocation = storm.get_invocation(settings, benchmark, configuration)
-                elif tool == mcsta.get_name():
-                    invocation = mcsta.get_invocation(settings, benchmark, configuration)
-                else:
-                    raise AssertionError("tool {} unknown.".format(tool))
-                if len(invocation.commands) == 0:
-                    unsupported.append(invocation.get_identifier() + ": " + invocation.note)
-                else:
-                    invocation.time_limit = settings.time_limit()
-                    invocations.append(invocation) 
+                for run_id in range(1, num_runs + 1):
+                    i += 1
+                    progressbar.print_progress(i)
+                    if tool == storm.get_name():
+                        invocation = storm.get_invocation(settings, benchmark, configuration, run_id)
+                    elif tool == mcsta.get_name():
+                        invocation = mcsta.get_invocation(settings, benchmark, configuration, run_id)
+                    else:
+                        raise AssertionError("tool {} unknown.".format(tool))
+                    if len(invocation.commands) == 0:
+                        unsupported.append(invocation.get_identifier() + ": " + invocation.note)
+                    else:
+                        invocation.time_limit = settings.time_limit()
+                        invocations.append(invocation)
     print("")
     if len(unsupported) > 0:
         print("{} invocations are not supported:".format(len(unsupported)))
@@ -151,6 +153,7 @@ def check_invocations(settings, invocations):
         sys.stdout.write("Checking invocation ... ")
         sys.stdout.flush()
     invocation_identifiers = set()
+    result = True
     for invocation in invocations:
         invocation_number = invocation_number + 1
         if len(invocations) > 1:
@@ -174,7 +177,9 @@ def check_invocations(settings, invocations):
         except Exception:
             print("Error when checking invocation #{}: {}".format(invocation_number - 1, invocation.get_identifier()))
             traceback.print_exc()
+            result = False
     print("")
+    return result
     
 def run_invocations(settings, invocations):
     invocation_number = 0
@@ -206,21 +211,34 @@ def run_invocations(settings, invocations):
         traceback.print_exc()
     
 if __name__ == "__main__":
-    print("Storm benchmarking tool.")
+    print("MDP benchmarking tool.")
     print("This script selects and executes benchmarks.")
     print("Usages:")
-    print("python3 {}                 Creates and executes a set of invocations.".format(sys.argv[0]))
-    print("python3 {} <filename>      Executes benchmarks from a previously created invocations file located at <filename>.".format(sys.argv[0]))
-    print("python3 {} <filename> <i>  Executes the <i>th invocation (0 based) from a previously created invocations file located at <filename>.".format(sys.argv[0]))
+    print("python3 {}                            Creates an invocations file.".format(sys.argv[0]))
+    print("python3 {} <filename>                 Executes benchmarks from a previously created invocations file located at <filename>.".format(sys.argv[0]))
+    print("python3 {} <filename> <i>             Executes the <i>th invocation (0 based) from a previously created invocations file located at <filename>.".format(sys.argv[0]))
+    print("python3 {} merge <file1> <file2> ...  Merges previously created (and disjoint) invocation files located at <file1>, <file2>, ....".format(sys.argv[0]))
     print("")
-    if (len(sys.argv) == 2 and sys.argv[1] in ["-h", "-help", "--help"]) or len(sys.argv) > 3:
+    if (len(sys.argv) == 2 and sys.argv[1] in ["-h", "-help", "--help"]) or (len(sys.argv) > 3 and sys.argv[1] != "merge"):
+        print("ERROR: Invalid arguments.)")
         exit(1)
     
     settings = Settings()
     
-    if len(sys.argv) == 1:
-        input("No invocations file loaded. Press Return to create one now or CTRL+C to abort.")
-        invocations = create_invocations(settings)
+    if len(sys.argv) == 1 or sys.argv[1] == "merge":
+        # generate new invocations or merge existing once
+        if len(sys.argv) == 1:
+            input("No invocations file loaded. Press Return to create one now or CTRL+C to abort.")
+            invocations = create_invocations(settings)
+            invocations_json = [inv.to_json() for inv in invocations]
+        else:
+            invocations_json = []
+            for filename in sys.argv[2:]:
+                if not os.path.isfile(filename):  raise AssertionError("Invocations input file {} does not exist".format(filename))
+                invocations_json += load_json(filename)
+            invocations = [Invocation(inv) for inv in invocations_json]
+            print("Loaded {} invocations from {} files".format(len(invocations_json), len(sys.argv) - 2))
+        # save invocations
         while True:
             response = input("Enter a filename to store the invocations for later usage or press Return to continue: ")
             if response == "": break
@@ -235,7 +253,15 @@ if __name__ == "__main__":
                 break
             else:
                 print("Invalid file name {}".format(response))
+        if not check_invocations(settings, invocations):
+            input("Checking invocations failed. Press Return to continue at your own risk or CTRL+C to abort.")
+        while True:
+            response = input("Type 'run' to run the generated invocations or press Return to quit: ")
+            if response == "run": run_invocations(settings, invocations)
+            if response in ["", "run"]: break
+            print("Unrecognized response '{}'".format(response))
     else:
+        # run invocations (either all of them or a specific one)
         if not os.path.isfile(sys.argv[1]):
             raise AssertionError("Invocations file {} does not exist".format(sys.argv[1]))
         invocations_json = load_json(sys.argv[1])
@@ -247,9 +273,8 @@ if __name__ == "__main__":
             if selected_index not in range(0,len(invocations)): raise AssertionError("Second argument is out of range: got '{}' but index has to be at least 0 at less than {}".format(selected_index, len(invocations)))
             invocations = [invocations[selected_index]]    
             print("Selected invocation #{}: {}".format(selected_index, invocations[0].get_identifier()))
-            
-    check_invocations(settings, invocations)
-    run_invocations(settings, invocations)
+        check_invocations(settings, invocations)
+        run_invocations(settings, invocations)
     
     
     

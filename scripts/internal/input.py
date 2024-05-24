@@ -13,8 +13,20 @@ def input_mcsta_binary_dir(settings):
     if response != "":
         settings.json_data["mcsta-binary-dir"] = response
         settings.save()
-    
-    
+
+def input_number_of_runs():
+    """ Asks the user to enter a number of times the experiment is executed."""
+    result = 1
+    while True:
+        response = input("Enter the number of times each experiment should be repeated [{}]: ".format(result))
+        if response == "": break
+        if is_number(response) and int(response) > 0:
+            result = int(response)
+            break
+        else:
+            print("Number of runs should be a positive integer number.")
+    return result
+
 def input_logs_dir(settings):
     """ Asks the user to enter a directory in which the tool logs are stored."""
     response = input("Enter a directory in which the tool logs are stored [{}]: ".format(settings.logs_dir()))
