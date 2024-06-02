@@ -1,0 +1,1532 @@
+{
+    "actions": [
+        {
+            "name": "ack1_0"
+        },
+        {
+            "name": "ack1_1"
+        },
+        {
+            "name": "ack1_2"
+        },
+        {
+            "name": "alert"
+        },
+        {
+            "name": "crash"
+        },
+        {
+            "name": "data"
+        },
+        {
+            "name": "detect1"
+        },
+        {
+            "name": "done"
+        },
+        {
+            "name": "extract"
+        },
+        {
+            "name": "noack1"
+        },
+        {
+            "name": "process"
+        },
+        {
+            "name": "s1_to_c"
+        },
+        {
+            "name": "stop"
+        },
+        {
+            "name": "work"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 6)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 0",
+                                    "ref": "y1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 1)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 4",
+                                    "ref": "y1",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg1 <- 3",
+                                    "ref": "msg1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 3)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 6",
+                                    "ref": "y1",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 5)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "detect1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 2",
+                                    "ref": "y1",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "msg1 <- 2",
+                                    "ref": "msg1",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 0)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 0",
+                                    "ref": "y1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 1)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 2",
+                                    "ref": "y1",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 4",
+                                    "ref": "y1",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "msg1 <- 3",
+                                    "ref": "msg1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 3)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 3
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 4",
+                                    "ref": "y1",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 6",
+                                    "ref": "y1",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "0",
+                                "exp": 0
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 5)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 5
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s1_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 1",
+                                    "ref": "y1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 0)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s1_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 3",
+                                    "ref": "y1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 2)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s1_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "y1 <- 5",
+                                    "ref": "y1",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(y1 = 4)",
+                        "exp": {
+                            "left": "y1",
+                            "op": "=",
+                            "right": 4
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "sensor1",
+            "variables": [
+                {
+                    "initial-value": 0,
+                    "name": "y1",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 0,
+                        "upper-bound": 6
+                    }
+                }
+            ]
+        },
+        {
+            "edges": [
+                {
+                    "action": "ack1_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg1",
+                                    "ref": "cb1",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 1) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_0",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg1",
+                                    "ref": "cb2",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 1) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg1",
+                                    "ref": "cb1",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 1) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg1",
+                                    "ref": "cb2",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 1) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- msg1",
+                                    "ref": "cb1",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 1) & (cbs = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "ack1_2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb2 <- msg1",
+                                    "ref": "cb2",
+                                    "value": "msg1"
+                                },
+                                {
+                                    "comment": "cbs <- 2",
+                                    "ref": "cbs",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 1) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "alert",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 3) & (what = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "what",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "data",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 3) & (what = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "what",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "extract",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 3",
+                                    "ref": "c",
+                                    "value": 3
+                                },
+                                {
+                                    "comment": "what <- cb1",
+                                    "ref": "what",
+                                    "value": "cb1"
+                                },
+                                {
+                                    "comment": "cb1 <- 0",
+                                    "ref": "cb1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cbs <- 0",
+                                    "ref": "cbs",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "4/5",
+                                "exp": {
+                                    "left": 4.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- 0",
+                                    "ref": "cb1",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cbs <- 0",
+                                    "ref": "cbs",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/5",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 2) & (cbs = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "extract",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 3",
+                                    "ref": "c",
+                                    "value": 3
+                                },
+                                {
+                                    "comment": "what <- cb1",
+                                    "ref": "what",
+                                    "value": "cb1"
+                                },
+                                {
+                                    "comment": "cb1 <- cb2",
+                                    "ref": "cb1",
+                                    "value": "cb2"
+                                },
+                                {
+                                    "comment": "cb2 <- 0",
+                                    "ref": "cb2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "4/5",
+                                "exp": {
+                                    "left": 4.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cb1 <- cb2",
+                                    "ref": "cb1",
+                                    "value": "cb2"
+                                },
+                                {
+                                    "comment": "cb2 <- 0",
+                                    "ref": "cb2",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "cbs <- 1",
+                                    "ref": "cbs",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/5",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 5.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 2) & (cbs = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "noack1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 1) & (cbs = 2))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": "=",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "process",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 2",
+                                    "ref": "c",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 0) & (cbs > 0))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "cbs",
+                                "op": ">",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "s1_to_c",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 1",
+                                    "ref": "c",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(c = 0)",
+                        "exp": {
+                            "left": "c",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stop",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "c <- 0",
+                                    "ref": "c",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((c = 3) & (what = 3))",
+                        "exp": {
+                            "left": {
+                                "left": "c",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "what",
+                                "op": "=",
+                                "right": 3
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "channel",
+            "variables": [
+                {
+                    "initial-value": 0,
+                    "name": "c",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 0,
+                        "upper-bound": 3
+                    }
+                },
+                {
+                    "initial-value": 0,
+                    "name": "what",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 0,
+                        "upper-bound": 3
+                    }
+                },
+                {
+                    "initial-value": 0,
+                    "name": "cb1",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 0,
+                        "upper-bound": 3
+                    }
+                },
+                {
+                    "initial-value": 0,
+                    "name": "cb2",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 0,
+                        "upper-bound": 3
+                    }
+                },
+                {
+                    "initial-value": 0,
+                    "name": "cbs",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 0,
+                        "upper-bound": 2
+                    }
+                }
+            ]
+        },
+        {
+            "edges": [
+                {
+                    "action": "alert",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "count <- 0",
+                                    "ref": "count",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(x = 0)",
+                        "exp": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "crash",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "failure <- 1",
+                                    "ref": "failure",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(x = 2)",
+                        "exp": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "data",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "count <- 10",
+                                    "ref": "count",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(x = 0)",
+                        "exp": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "done",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "success <- 1",
+                                    "ref": "success",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(x = 1)",
+                        "exp": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stop",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "x <- 1",
+                                    "ref": "x",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "19/20",
+                                "exp": 0.95
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "x <- 2",
+                                    "ref": "x",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/20",
+                                "exp": {
+                                    "left": 1.0,
+                                    "op": "/",
+                                    "right": 20.0
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((x = 0) & (count > 0))",
+                        "exp": {
+                            "left": {
+                                "left": "x",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "count",
+                                "op": ">",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "stop",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "x <- 1",
+                                    "ref": "x",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((x = 0) & (count = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "x",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "count",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "work",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "count <- (count - 1)",
+                                    "ref": "count",
+                                    "value": {
+                                        "left": "count",
+                                        "op": "-",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "working <- 1",
+                                    "ref": "working",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((x = 0) & (count > 0))",
+                        "exp": {
+                            "left": {
+                                "left": "x",
+                                "op": "=",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "count",
+                                "op": ">",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "proc",
+            "variables": [
+                {
+                    "initial-value": 0,
+                    "name": "count",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 0,
+                        "upper-bound": 10
+                    }
+                }
+            ]
+        }
+    ],
+    "constants": [
+        {
+            "name": "p_succ",
+            "type": "real",
+            "value": {
+                "left": 4.0,
+                "op": "/",
+                "right": 5.0
+            }
+        },
+        {
+            "name": "q_succ",
+            "type": "real",
+            "value": {
+                "left": 1.0,
+                "op": "/",
+                "right": 5.0
+            }
+        },
+        {
+            "name": "p_succ1",
+            "type": "real",
+            "value": 1
+        },
+        {
+            "name": "q_succ1",
+            "type": "real",
+            "value": 0
+        },
+        {
+            "name": "K",
+            "type": "int",
+            "value": 10
+        }
+    ],
+    "features": [
+        "derived-operators"
+    ],
+    "jani-version": 1,
+    "name": "sensor.1",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": "x",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "max_success"
+        }
+    ],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "sensor1"
+            },
+            {
+                "automaton": "channel"
+            },
+            {
+                "automaton": "proc"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "ack1_0",
+                "synchronise": [
+                    "ack1_0",
+                    "ack1_0",
+                    null
+                ]
+            },
+            {
+                "result": "ack1_1",
+                "synchronise": [
+                    "ack1_1",
+                    "ack1_1",
+                    null
+                ]
+            },
+            {
+                "result": "ack1_2",
+                "synchronise": [
+                    "ack1_2",
+                    "ack1_2",
+                    null
+                ]
+            },
+            {
+                "result": "alert",
+                "synchronise": [
+                    null,
+                    "alert",
+                    "alert"
+                ]
+            },
+            {
+                "result": "crash",
+                "synchronise": [
+                    null,
+                    null,
+                    "crash"
+                ]
+            },
+            {
+                "result": "data",
+                "synchronise": [
+                    null,
+                    "data",
+                    "data"
+                ]
+            },
+            {
+                "result": "detect1",
+                "synchronise": [
+                    "detect1",
+                    null,
+                    null
+                ]
+            },
+            {
+                "result": "done",
+                "synchronise": [
+                    null,
+                    null,
+                    "done"
+                ]
+            },
+            {
+                "result": "extract",
+                "synchronise": [
+                    null,
+                    "extract",
+                    null
+                ]
+            },
+            {
+                "result": "noack1",
+                "synchronise": [
+                    "noack1",
+                    "noack1",
+                    null
+                ]
+            },
+            {
+                "result": "process",
+                "synchronise": [
+                    null,
+                    "process",
+                    null
+                ]
+            },
+            {
+                "result": "s1_to_c",
+                "synchronise": [
+                    "s1_to_c",
+                    "s1_to_c",
+                    null
+                ]
+            },
+            {
+                "result": "stop",
+                "synchronise": [
+                    null,
+                    "stop",
+                    "stop"
+                ]
+            },
+            {
+                "result": "work",
+                "synchronise": [
+                    null,
+                    null,
+                    "work"
+                ]
+            }
+        ]
+    },
+    "type": "mdp",
+    "variables": [
+        {
+            "initial-value": 0.0,
+            "name": "working",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0.0,
+            "name": "success",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0.0,
+            "name": "failure",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 1,
+            "name": "msg1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "x",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        }
+    ]
+}

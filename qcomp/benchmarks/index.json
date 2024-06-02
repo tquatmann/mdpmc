@@ -82,5 +82,6 @@
   { "short": "airportA", "path": "mdp/airportA" },
   { "short": "refuelB", "path": "mdp/refuelB" },
   { "short": "evadeI", "path": "mdp/evadeI" },
-  { "short": "refuelA", "path": "mdp/refuelA" }
+  { "short": "refuelA", "path": "mdp/refuelA" },
+  { "short": "sensor", "path": "mdp/sensor" }
 ]

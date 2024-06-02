@@ -1,0 +1,111 @@
+{
+	"name": "sensor network",
+	"short": "sensors",
+	"type": "mdp",
+	"original": "PRISM",
+	"version": 1,
+	"date": "2024-06-02",
+	"author": "?",
+	"source": "https://doi.org/10.1007/978-3-642-31424-7_25",
+	"description": "Sensor Network",
+	"references": [
+		"https://doi.org/10.1007/978-3-319-68167-2_25"
+	],
+	"notes": "Mecs",
+	"parameters": [
+		{
+			"name": "N",
+			"kind": "file",
+			"description": "Number of Sensors",
+			"type": "integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "max_success",
+			"description": "The maximal probability to successfully transfer data",
+			"type": "prob-reach"
+		}
+	],
+	"files": [
+		{
+			"file": "sensor.1.jani",
+			"original-file": [
+				"sensor.1.prism",
+				"sensor.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 1
+				}
+			]
+		},
+		{
+			"file": "sensor.2.jani",
+			"original-file": [
+				"sensor.2.prism",
+				"sensor.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 2
+				}
+			]
+		},
+		{
+			"file": "sensor.3.jani",
+			"original-file": [
+				"sensor.3.prism",
+				"sensor.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 3
+				}
+			]
+		},
+		{
+			"file": "sensor.4.jani",
+			"original-file": [
+				"sensor.4.prism",
+				"sensor.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 4
+				}
+			]
+		},
+		{
+			"file": "sensor.5.jani",
+			"original-file": [
+				"sensor.5.prism",
+				"sensor.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 5
+				}
+			]
+		},
+		{
+			"file": "sensor.6.jani",
+			"original-file": [
+				"sensor.6.prism",
+				"sensor.props"
+			],
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 6
+				}
+			]
+		}
+	],
+	"results": []
+}
