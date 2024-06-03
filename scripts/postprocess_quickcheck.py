@@ -22,22 +22,22 @@ if __name__ == "__main__":
     print("Selected log dir(s): {}".format(", ".join(logdirs)))
     print("")
 
-    tools_configs = get_all_tools_configs() 
-    exec_data = gather_execution_data(settings, logdirs, tools_configs)  # Tool -> Config -> Benchmark -> [Data array]
+    groups_tools_configs = get_all_groups_tools_configs(logdirs)
+    exec_data = gather_execution_data(settings, logdirs, groups_tools_configs)  # Tool -> Config -> Benchmark -> [Data array]
     unsuccessful = OrderedDict()
-    for t,c in tools_configs:
-        tc_data = exec_data[t][c]
+    for g,t,c in groups_tools_configs:
+        gtc_data = exec_data[g][t][c]
         fail_reason = None
-        if len(tc_data) > 1:
+        if len(gtc_data) > 1:
             fail_reason = "Multiple benchmark files"
-        elif len(tc_data) == 0:
+        elif len(gtc_data) == 0:
             fail_reason = "Not tested"
-        elif "firewire.false-3-800.time_sending" not in tc_data:
+        elif "firewire.false-3-800.time_sending" not in gtc_data:
             fail_reason = "Wrong benchmark"
-        elif len(tc_data["firewire.false-3-800.time_sending"]) != 1:
+        elif len(gtc_data["firewire.false-3-800.time_sending"]) != 1:
             fail_reason = "not a unique run"
         else:
-            exec_json = tc_data["firewire.false-3-800.time_sending"][0]
+            exec_json = gtc_data["firewire.false-3-800.time_sending"][0]
             if exec_json["timeout"]:
                 fail_reason = "Timeout"
             elif "result" not in exec_json:
@@ -49,11 +49,11 @@ if __name__ == "__main__":
             elif not exec_json["result-correct"]:
                 fail_reason = f"Incorrect result: {exec_json['result']}"
         if fail_reason is not None:
-            unsuccessful[f"{t}.{c}"] = fail_reason
+            unsuccessful[f"{g}.{t}.{c}"] = fail_reason
     
-    print("{}/{} configurations were tested successfully.".format(len(tools_configs) - len(unsuccessful), len(tools_configs)))
+    print("{}/{} configurations were tested successfully.".format(len(groups_tools_configs) - len(unsuccessful), len(groups_tools_configs)))
     if len(unsuccessful) > 0:
-        print("{}/{} configurations do not work:".format(len(unsuccessful), len(tools_configs)))
+        print("{}/{} configurations do not work:".format(len(unsuccessful), len(groups_tools_configs)))
         print("\t" + "\n\t".join([f"{c}: {reason}" for c,reason in unsuccessful.items()]))
         print("Note: failed tests for configurations that use an uninstalled LP solver are expected.")
     
