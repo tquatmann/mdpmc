@@ -83,5 +83,6 @@
   { "short": "refuelB", "path": "mdp/refuelB" },
   { "short": "evadeI", "path": "mdp/evadeI" },
   { "short": "refuelA", "path": "mdp/refuelA" },
-  { "short": "sensor", "path": "mdp/sensor" }
+  { "short": "sensor", "path": "mdp/sensor" },
+  { "short": "refuel-mdp", "path": "mdp/refuel-mdp" }
 ]

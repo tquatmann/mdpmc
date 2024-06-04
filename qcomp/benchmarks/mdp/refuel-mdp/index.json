@@ -1,0 +1,123 @@
+{
+	"name": "Refuel-mdp gridworld",
+	"short": "refuel-mdp",
+	"type": "mdp",
+	"original": "PRISM",
+	"version": 1,
+	"date": "2024-06-04",
+	"version-history": [
+		{
+			"date": "2024-06-04",
+			"notes": "Initial version.",
+			"version": 1
+		}
+	],
+	"author": [
+		"Sebastian Junges"
+	],
+	"submitter": "Tim Quatmann",
+	"source": "https://github.com/sjunges/gridworld-by-storm/tree/master",
+	"description": "Grid world",
+	"references": [],
+	"notes": "hard for vi",
+	"parameters": [
+		{
+			"name": "N",
+			"kind": "open",
+			"description": "N",
+			"type": "positive integer"
+		},
+		{
+			"name": "ENERGY",
+			"kind": "open",
+			"description": "Energy",
+			"type": "positive integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "cost_min",
+			"description": "",
+			"type": "exp-reward"
+		}
+	],
+	"files": [
+		{
+			"file": "refuel-mdp.jani",
+			"original-file": [
+				"refuel-mdp.prism",
+				"refuel-mdp.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.8.2 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv"
+			},
+			"file-parameter-values": [],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 45
+						},
+						{
+							"name": "ENERGY",
+							"value": 60
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 60
+						},
+						{
+							"name": "ENERGY",
+							"value": 91
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 120
+						},
+						{
+							"name": "ENERGY",
+							"value": 182
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 180
+						},
+						{
+							"name": "ENERGY",
+							"value": 273
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 200
+						},
+						{
+							"name": "ENERGY",
+							"value": 300
+						}
+					]
+				}
+			]
+		}
+	],
+	"results": []
+}
