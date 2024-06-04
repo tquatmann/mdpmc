@@ -85,5 +85,6 @@
   { "short": "refuelA", "path": "mdp/refuelA" },
   { "short": "sensor", "path": "mdp/sensor" },
   { "short": "refuel-mdp", "path": "mdp/refuel-mdp" },
-  { "short": "obstacle-mdp", "path": "mdp/obstacle-mdp" }
+  { "short": "obstacle-mdp", "path": "mdp/obstacle-mdp" },
+  { "short": "avoid-mdp", "path": "mdp/avoid-mdp" }
 ]
