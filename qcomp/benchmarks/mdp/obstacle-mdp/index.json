@@ -1,0 +1,97 @@
+{
+	"name": "Obstacle Gridworld",
+	"short": "obstacle-mdp",
+	"type": "mdp",
+	"original": "PRISM",
+	"version": 1,
+	"date": "2024-06-04",
+	"version-history": [
+		{
+			"date": "2024-06-04",
+			"notes": "Initial version.",
+			"version": 1
+		}
+	],
+	"author": [
+		"Sebastian Junges"
+	],
+	"submitter": "Tim Quatmann",
+	"source": "https://github.com/sjunges/gridworld-by-storm/tree/master",
+	"description": "Grid world",
+	"references": [],
+	"notes": "hard for vi",
+	"parameters": [
+		{
+			"name": "N",
+			"kind": "open",
+			"description": "N",
+			"type": "positive integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "time_min",
+			"description": "",
+			"type": "exp-reward"
+		}
+	],
+	"files": [
+		{
+			"file": "obstacle-mdp.jani",
+			"original-file": [
+				"obstacle-mdp.prism",
+				"obstacle-mdp.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.8.2 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv"
+			},
+			"file-parameter-values": [],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 400
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 800
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 1200
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 1600
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 2000
+						}
+					]
+				}
+			]
+		}
+	],
+	"results": []
+}
