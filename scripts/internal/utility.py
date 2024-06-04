@@ -5,14 +5,11 @@ import math
 import csv
 import json
 import shutil
-
 from decimal import *
 from fractions import *
 
 from collections import OrderedDict
 from .configuration import Configuration
-
-sys.set_int_max_str_digits(100000) # needed to parse large integer literals in json files
 
 def load_json(path : str):
     with open(path, 'r', encoding='utf-8-sig') as json_file:
@@ -30,13 +27,6 @@ def save_csv(csv_data, path : str, delim='\t'):
     with open(path, 'w') as csv_file:
         writer = csv.writer(csv_file, delimiter=delim)
         writer.writerows(csv_data)
-
-def set_mdpmc_dir(s : str):
-    if os.environ.get('MDPMC_DIR') is None:
-        mdpmc_dir = os.path.realpath(os.path.join(sys.path[0], ".."))
-    else:
-        mdpmc_dir = os.environ.get('MDPMC_DIR')
-    return s.replace("$MDPMC_DIR", mdpmc_dir)
 
 def ensure_directory(path : str):
     if not os.path.exists(path):
@@ -199,9 +189,6 @@ def is_result_correct(settings, reference, result):
     else:
         return reference == result
 
-def get_seed(index : int) -> int:
-    return index ^ ((index<<6) + (index>>2))
-
 class Progressbar(object):
     def __init__(self, max_value, label="Progress", width=50, delay=0.5):
         self.progress = 0
@@ -240,7 +227,7 @@ class Settings(object):
         
         set_an_option = False
         if not "benchmarks-directory" in self.json_data:
-            self.json_data["benchmarks-directory"] = "$MDPMC_DIR/qcomp/benchmarks/"
+            self.json_data["benchmarks-directory"] = os.path.realpath(os.path.join(sys.path[0], "../qcomp/benchmarks/"))
             set_an_option = True
         if not "logs-directory-name" in self.json_data:
             self.json_data["logs-directory-name"] = "logs/"
@@ -267,10 +254,10 @@ class Settings(object):
             self.json_data["relative-precision"] = True
             set_an_option = True
         if not "storm-binary-dir" in self.json_data:
-            self.json_data["storm-binary-dir"] = "$MDPMC_DIR/tools/storm/build/bin/"
+            self.json_data["storm-binary-dir"] = os.path.realpath(os.path.join(sys.path[0], "/opt/storm/build/bin/"))
             set_an_option = True
         if not "mcsta-binary-dir" in self.json_data:
-            self.json_data["mcsta-binary-dir"] = "$MDPMC_DIR/tools/Modest/"
+            self.json_data["mcsta-binary-dir"] = os.path.realpath(os.path.join(sys.path[0], "/opt/Modest/"))
             set_an_option = True
         if not "filtered-paths" in self.json_data:
             self.json_data["filtered-paths"] = [os.path.realpath(sys.path[0]) + "/", os.path.expanduser("~") + "/"]

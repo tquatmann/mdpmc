@@ -1,0 +1,629 @@
+[
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp",
+		"invocation-note": "LP with non-triv bounds using gurobi (1 thread)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-glpk-nobnds",
+		"invocation-note": "LP using glpk",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver glpk --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-gurobi-16autonobnds",
+		"invocation-note": "LP using gurobi (16 threads)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --gurobi:threads 16  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-gurobi-4autoeq",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), eq. constr",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-eq-unique-actions --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-gurobi-4autoinit",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), only init opt. ",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial --topological:relevant-values --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-gurobi-4autoiniteq",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), only init opt., eq. constr",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial --topological:relevant-values --minmax:lp-eq-unique-actions --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-gurobi-4autonobnds",
+		"invocation-note": "LP using gurobi (4 threads)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-gurobi-4barriernobnds",
+		"invocation-note": "LP using gurobi (4 threads, barrier)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method barrier  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-gurobi-4dualsimplnobnds",
+		"invocation-note": "LP using gurobi (4 threads, dualsimpl)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method dual-simplex  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-gurobi-4primalsimplnobnds",
+		"invocation-note": "LP using gurobi (4 threads, primalsimpl)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method primal-simplex  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq",
+		"invocation-note": "LP with non-triv bounds using Gurobi, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp --force-require-unique  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo",
+		"invocation-note": "LP with non-triv bounds using Gurobi, topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-glpk",
+		"invocation-note": "LP with non-triv bounds using glpk, topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver glpk --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-gurobi-4auto",
+		"invocation-note": "LP with non-triv bounds using gurobi (4 threads), topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex",
+		"invocation-note": "LP with non-triv bounds using soplex (inexact), topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver soplex --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-mecq-topo-z3-exact",
+		"invocation-note": "LP with non-triv bounds using z3 (exact), topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax lp --force-require-unique  --lpsolver z3 --exact  --minmax:lp-use-nontrivial-bounds  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-nobnds",
+		"invocation-note": "LP using Gurobi (1 thread)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver gurobi --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-soplex-exactnobnds",
+		"invocation-note": "LP using soplex (exact)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver soplex --exact  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-soplex-nobnds",
+		"invocation-note": "LP using soplex (inexact)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver soplex --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-topo",
+		"invocation-note": "LP with non-triv bounds using gurobi (1 thread), topological solving",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax lp  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-z3-exactnobnds",
+		"invocation-note": "LP using z3 (exact)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp  --lpsolver z3 --exact  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "ovi-topo",
+		"invocation-note": "Optimistic VI, topological solving",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax ovi  --sound --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "pi",
+		"invocation-note": "PI with GMRES as LinEqSolver",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method pi  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "pi-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method pi --exact --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "pi-lu",
+		"invocation-note": "PI with LU as LinEqSolver (inexact)",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method pi   --eqsolver eigen --eigen:method sparselu --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq",
+		"invocation-note": "PI with GMRES as LinEqSolver, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax pi --force-require-unique  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact), topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "pi-ovi",
+		"invocation-note": "PI with OVI as LinEqSolver",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method pi   --eqsolver native --native:method ovi --sound  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "pi-topo",
+		"invocation-note": "PI with GMRES as LinEqSolver, topological solving",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax pi  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "pi-vi",
+		"invocation-note": "PI with VI as LinEqSolver",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method pi   --eqsolver native --native:method power  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "rs-mecq-topo-exact",
+		"invocation-note": "RationalSearch (exact), topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax rs --force-require-unique  --exact --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "vi",
+		"invocation-note": "Classical VI",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method vi  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq",
+		"invocation-note": "Classical VI, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "vi-mecq-topo",
+		"invocation-note": "Classical VI, topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax vi --force-require-unique  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "vi-topo",
+		"invocation-note": "Classical VI, topological solving",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax vi  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-gurobi",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-mecq-topo-soplex-exact",
+		"invocation-note": "LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-exactlu",
+		"invocation-note": "PI with LU as LinEqSolver (exact) using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --exact --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "vi2pi-mecq-topo-gmres",
+		"invocation-note": "PI with gmres as LinEqSolver using VI warm-start, topological solving, MEC Quotient",
+		"commands": [
+			"/opt/storm/build/bin/storm  --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax vi-to-pi --force-require-unique   --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "vi",
+		"invocation-note": "Classical VI",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg ValueIteration"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-copt-mono",
+		"invocation-note": "LP with COpt, monolithical",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Copt"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-copt-topo",
+		"invocation-note": "LP with COpt, topological",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Copt --topological"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-cplex-mono",
+		"invocation-note": "LP with CPLEX, monolithical",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Cplex"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-cplex-topo",
+		"invocation-note": "LP with CPLEX, topological",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Cplex --topological"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-glop-mono",
+		"invocation-note": "LP with Glop, monolithical",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Glop"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-glop-topo",
+		"invocation-note": "LP with Glop, topological",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Glop --topological"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-gurobi-mono",
+		"invocation-note": "LP with Gurobi, monolithical",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Gurobi"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-gurobi-topo",
+		"invocation-note": "LP with Gurobi, topological",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Gurobi --topological"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-highs-mono",
+		"invocation-note": "LP with HiGHS, monolithical",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver HiGHS"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-highs-topo",
+		"invocation-note": "LP with HiGHS, topological",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver HiGHS --topological"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-lpsolve-mono",
+		"invocation-note": "LP with lp\\_solve, monolithical",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver LPSolve"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-lpsolve-topo",
+		"invocation-note": "LP with lp\\_solve, topological",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver LPSolve --topological"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-mosek-mono",
+		"invocation-note": "LP with Mosek, monolithical",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Mosek"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "mcsta",
+		"configuration-id": "lp-mosek-topo",
+		"invocation-note": "LP with Mosek, topological",
+		"commands": [
+			"/opt/modest/modest mcsta $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.jani --props time_sending -E delay=3,deadline=800 --unsafe -D -S Memory --alg LinearProgramming --lp-solver Mosek --topological"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	}
+]

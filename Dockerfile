@@ -1,5 +1,5 @@
 # Set base image
-ARG BASE_IMG=sjunges/storm:latest
+ARG BASE_IMG=movesrwth/storm:ci
 ARG BASE_PLATFORM=linux/amd64
 FROM --platform=$BASE_PLATFORM  $BASE_IMG
 
@@ -36,8 +36,8 @@ RUN wget https://download.mosek.com/stable/10.0.34/mosektoolslinux64x86.tar.bz2;
 # Download modest
 RUN mkdir /opt/modest-tmp
 WORKDIR /opt/modest-tmp
-RUN wget https://www.modestchecker.net/Downloads/Modest-Toolset-v3.1.242-gebe2cd9c0-linux-x64.zip && \
-    unzip Modest-Toolset-v3.1.242-gebe2cd9c0-linux-x64.zip && \
+RUN wget https://www.modestchecker.net/Downloads/Modest-Toolset-v3.1.246-ga72d2b6fd-linux-x64.zip && \
+    unzip Modest-Toolset-v3.1.246-ga72d2b6fd-linux-x64.zip && \
     mv Modest/ /opt/modest/
 WORKDIR /opt/modest
 RUN rm -rf /opt/modest-tmp
