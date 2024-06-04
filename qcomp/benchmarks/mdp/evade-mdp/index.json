@@ -1,0 +1,123 @@
+{
+	"name": "evade Gridworld",
+	"short": "evade-mdp",
+	"type": "mdp",
+	"original": "PRISM",
+	"version": 1,
+	"date": "2024-06-04",
+	"version-history": [
+		{
+			"date": "2024-06-04",
+			"notes": "Initial version.",
+			"version": 1
+		}
+	],
+	"author": [
+		"Sebastian Junges"
+	],
+	"submitter": "Tim Quatmann",
+	"source": "https://github.com/sjunges/gridworld-by-storm/tree/master",
+	"description": "Grid world",
+	"references": [],
+	"notes": "hard for vi",
+	"parameters": [
+		{
+			"name": "N",
+			"kind": "open",
+			"description": "N",
+			"type": "positive integer"
+		},
+		{
+			"name": "slippery",
+			"kind": "open",
+			"description": "slippery",
+			"type": "probability"
+		}
+	],
+	"properties": [
+		{
+			"name": "goal_max",
+			"description": "",
+			"type": "prob-reach"
+		}
+	],
+	"files": [
+		{
+			"file": "evade-mdp.jani",
+			"original-file": [
+				"evade-mdp.prism",
+				"evade-mdp.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.8.2 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv"
+			},
+			"file-parameter-values": [],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 4
+						},
+						{
+							"name": "slippery",
+							"value": 0.7
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 6
+						},
+						{
+							"name": "slippery",
+							"value": 0.7
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 8
+						},
+						{
+							"name": "slippery",
+							"value": 0.7
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 10
+						},
+						{
+							"name": "slippery",
+							"value": 0.7
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 12
+						},
+						{
+							"name": "slippery",
+							"value": 0.7
+						}
+					]
+				}
+			]
+		}
+	],
+	"results": []
+}
