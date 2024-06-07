@@ -89,5 +89,6 @@
   { "short": "avoid-mdp", "path": "mdp/avoid-mdp" },
   { "short": "evade-mdp", "path": "mdp/evade-mdp" },
   { "short": "intercept-mdp", "path": "mdp/intercept-mdp" },
-  { "short": "airrport-mdp", "path": "mdp/airport-mdp" }
+  { "short": "airrport-mdp", "path": "mdp/airport-mdp" },
+  { "short": "random-grid", "path": "mdp/random-grid" }
 ]
