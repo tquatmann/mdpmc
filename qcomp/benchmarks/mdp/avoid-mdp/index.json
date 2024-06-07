@@ -1,0 +1,152 @@
+{
+	"name": "Avoid Gridworld",
+	"short": "avoid-mdp",
+	"type": "mdp",
+	"original": "PRISM",
+	"version": 1,
+	"date": "2024-06-04",
+	"version-history": [
+		{
+			"date": "2024-06-04",
+			"notes": "Initial version.",
+			"version": 1
+		}
+	],
+	"author": [
+		"Sebastian Junges"
+	],
+	"submitter": "Tim Quatmann",
+	"source": "https://github.com/sjunges/gridworld-by-storm/tree/master",
+	"description": "Grid world",
+	"references": [],
+	"notes": "hard for vi",
+	"parameters": [
+		{
+			"name": "N",
+			"kind": "open",
+			"description": "N",
+			"type": "positive integer"
+		},
+		{
+			"name": "slippery",
+			"kind": "open",
+			"description": "slippery",
+			"type": "probability"
+		}
+	],
+	"properties": [
+		{
+			"name": "goal_max",
+			"description": "",
+			"type": "prob-reach"
+		},	
+		{
+			"name": "time_min",
+			"description": "",
+			"type": "exp-reward"
+		}
+	],
+	"files": [
+		{
+			"file": "avoid-mdp.jani",
+			"original-file": [
+				"avoid-mdp.prism",
+				"avoid-mdp.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.8.2 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv"
+			},
+			"file-parameter-values": [],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 15
+						},
+						{
+							"name": "slippery",
+							"value": 0.2
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 20
+						},
+						{
+							"name": "slippery",
+							"value": 0.2
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 25
+						},
+						{
+							"name": "slippery",
+							"value": 0.2
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 35
+						},
+						{
+							"name": "slippery",
+							"value": 0.0
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 35
+						},
+						{
+							"name": "slippery",
+							"value": 0.2
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 40
+						},
+						{
+							"name": "slippery",
+							"value": 0.0
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 40
+						},
+						{
+							"name": "slippery",
+							"value": 0.2
+						}
+					]
+				}
+			]
+		}
+	],
+	"results": []
+}
