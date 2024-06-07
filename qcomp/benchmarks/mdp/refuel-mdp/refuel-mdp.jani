@@ -225,11 +225,11 @@
                     "name": "l",
                     "transient-values": [
                         {
-                            "comment": "goal <- done",
+                            "comment": "goal <- target",
                             "ref": "goal",
                             "value": {
                                 "args": [],
-                                "function": "done",
+                                "function": "target",
                                 "op": "call"
                             }
                         },
@@ -468,9 +468,9 @@
                                     "value": 1
                                 },
                                 {
-                                    "comment": "costs <- 3",
+                                    "comment": "costs <- 12",
                                     "ref": "costs",
-                                    "value": 3
+                                    "value": 12
                                 }
                             ],
                             "location": "l"
@@ -1115,36 +1115,6 @@
         {
             "body": {
                 "left": {
-                    "left": "start",
-                    "op": "∧",
-                    "right": {
-                        "left": "ax",
-                        "op": "=",
-                        "right": {
-                            "left": "N",
-                            "op": "-",
-                            "right": 1
-                        }
-                    }
-                },
-                "op": "∧",
-                "right": {
-                    "left": "ay",
-                    "op": "=",
-                    "right": {
-                        "left": "N",
-                        "op": "-",
-                        "right": 1
-                    }
-                }
-            },
-            "name": "done",
-            "parameters": [],
-            "type": "bool"
-        },
-        {
-            "body": {
-                "left": {
                     "left": {
                         "left": {
                             "left": "ax",
@@ -1248,6 +1218,20 @@
         },
         {
             "body": {
+                "left": "ay",
+                "op": "≠",
+                "right": {
+                    "left": "N",
+                    "op": "-",
+                    "right": 1
+                }
+            },
+            "name": "eastenabled",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
                 "left": {
                     "left": "ax",
                     "op": "=",
@@ -1282,15 +1266,49 @@
         },
         {
             "body": {
-                "left": "ay",
-                "op": "≠",
+                "left": {
+                    "left": "start",
+                    "op": "∧",
+                    "right": {
+                        "left": "ax",
+                        "op": "=",
+                        "right": {
+                            "left": "N",
+                            "op": "-",
+                            "right": 1
+                        }
+                    }
+                },
+                "op": "∧",
                 "right": {
-                    "left": "N",
-                    "op": "-",
-                    "right": 1
+                    "left": "ay",
+                    "op": "=",
+                    "right": {
+                        "left": "N",
+                        "op": "-",
+                        "right": 1
+                    }
                 }
             },
-            "name": "eastenabled",
+            "name": "target",
+            "parameters": [],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": {
+                    "args": [],
+                    "function": "target",
+                    "op": "call"
+                },
+                "op": "∨",
+                "right": {
+                    "args": [],
+                    "function": "crash",
+                    "op": "call"
+                }
+            },
+            "name": "done",
             "parameters": [],
             "type": "bool"
         }
@@ -1306,15 +1324,15 @@
                     "op": "initial"
                 },
                 "values": {
-                    "accumulate": [
-                        "steps"
-                    ],
-                    "exp": "costs",
-                    "op": "Emin",
-                    "reach": "goal"
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": "goal"
+                    },
+                    "op": "Pmax"
                 }
             },
-            "name": "cost_min"
+            "name": "reach_max"
         }
     ],
     "restrict-initial": {
