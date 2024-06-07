@@ -1,0 +1,97 @@
+{
+	"name": "Many Mecs",
+	"short": "manymecs",
+	"type": "mdp",
+	"original": "PRISM",
+	"version": 1,
+	"date": "2024-06-07",
+	"version-history": [
+		{
+			"date": "2024-06-07",
+			"notes": "Initial version.",
+			"version": 1
+		}
+	],
+	"author": [
+		"Maximilian Weininger"
+	],
+	"submitter": "Tim Quatmann",
+	"source": "https://doi.org/10.1007/978-3-031-19992-9_18",
+	"description": "MDP Variant of the Many Mecs Model from [0]. Handcrafted. Contains many small but non-trivial mecs.",
+	"references": [],
+	"notes": "mecs",
+	"parameters": [
+		{
+			"name": "N",
+			"kind": "open",
+			"description": "N",
+			"type": "positive integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "prob_max",
+			"description": "",
+			"type": "prob-reach"
+		}
+	],
+	"files": [
+		{
+			"file": "manymecs.jani",
+			"original-file": [
+				"manymecs.prism",
+				"manymecs.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.8.2 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv"
+			},
+			"file-parameter-values": [],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 10000
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 100000
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 1000000
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 10000000
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "N",
+							"value": 100000000
+						}
+					]
+				}
+			]
+		}
+	],
+	"results": []
+}

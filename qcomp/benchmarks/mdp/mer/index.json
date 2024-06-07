@@ -1,0 +1,135 @@
+{
+	"name": "mer",
+	"short": "mer",
+	"type": "mdp",
+	"original": "PRISM",
+	"version": 1,
+	"date": "2024-06-07",
+	"version-history": [
+		{
+			"date": "2024-06-07",
+			"notes": "Initial version.",
+			"version": 1
+		}
+	],
+	"author": [
+		"Maximilian Weininger"
+	],
+	"submitter": "Tim Quatmann",
+	"source": "https://doi.org/10.1007/978-3-319-96145-3_36",
+	"description": "mer.",
+	"references": [],
+	"notes": "mecs",
+	"parameters": [
+		{
+			"name": "n",
+			"kind": "open",
+			"description": "n",
+			"type": "positive integer"
+		},
+		{
+			"name": "x",
+			"kind": "open",
+			"description": "x",
+			"type": "probability"
+		}
+	],
+	"properties": [
+		{
+			"name": "prob_max",
+			"description": "",
+			"type": "prob-reach"
+		}
+	],
+	"files": [
+		{
+			"file": "mer.jani",
+			"original-file": [
+				"mer.prism",
+				"mer.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.8.2 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv"
+			},
+			"file-parameter-values": [],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "n",
+							"value": 100
+						},
+						{
+							"name": "x",
+							"value": 0.1
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "n",
+							"value": 250
+						},
+						{
+							"name": "x",
+							"value": 0.1
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "n",
+							"value": 500
+						},
+						{
+							"name": "x",
+							"value": 0.1
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "n",
+							"value": 1000
+						},
+						{
+							"name": "x",
+							"value": 0.1
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "n",
+							"value": 1500
+						},
+						{
+							"name": "x",
+							"value": 0.1
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "n",
+							"value": 3000
+						},
+						{
+							"name": "x",
+							"value": 0.1
+						}
+					]
+				}
+			]
+		}
+	],
+	"results": []
+}

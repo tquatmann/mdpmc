@@ -90,5 +90,8 @@
   { "short": "evade-mdp", "path": "mdp/evade-mdp" },
   { "short": "intercept-mdp", "path": "mdp/intercept-mdp" },
   { "short": "airrport-mdp", "path": "mdp/airport-mdp" },
-  { "short": "random-grid", "path": "mdp/random-grid" }
+  { "short": "random-grid", "path": "mdp/random-grid" },
+  { "short": "bigmec", "path": "mdp/bigmec" },
+  { "short": "manymecs", "path": "mdp/manymecs" },
+  { "short": "mer", "path": "mdp/mer" }
 ]
