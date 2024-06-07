@@ -36,9 +36,9 @@
 	],
 	"properties": [
 		{
-			"name": "cost_min",
+			"name": "reach_max",
 			"description": "",
-			"type": "exp-reward"
+			"type": "prob-reach"
 		}
 	],
 	"files": [

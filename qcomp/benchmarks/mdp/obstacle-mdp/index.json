@@ -32,7 +32,7 @@
 		{
 			"name": "time_min",
 			"description": "",
-			"type": "exp-reward"
+			"type": "exp-steps"
 		}
 	],
 	"files": [
