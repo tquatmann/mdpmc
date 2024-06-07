@@ -1,0 +1,123 @@
+{
+	"name": "Airport gridworld",
+	"short": "airport-mdp",
+	"type": "mdp",
+	"original": "PRISM",
+	"version": 1,
+	"date": "2024-06-07",
+	"version-history": [
+		{
+			"date": "2024-06-07",
+			"notes": "Initial version.",
+			"version": 1
+		}
+	],
+	"author": [
+		"Sebastian Junges"
+	],
+	"submitter": "Tim Quatmann",
+	"source": "https://github.com/sjunges/gridworld-by-storm/tree/master",
+	"description": "Grid world",
+	"references": [],
+	"notes": "hard for vi",
+	"parameters": [
+		{
+			"name": "DMAX",
+			"kind": "open",
+			"description": "DMAX",
+			"type": "positive integer"
+		},
+		{
+			"name": "PMAX",
+			"kind": "open",
+			"description": "PMAX",
+			"type": "positive integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "time_min",
+			"description": "",
+			"type": "exp-steps"
+		}
+	],
+	"files": [
+		{
+			"file": "airport-mdp.jani",
+			"original-file": [
+				"airport-mdp.prism",
+				"airport-mdp.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.8.2 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv"
+			},
+			"file-parameter-values": [],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "DMAX",
+							"value": 100
+						},
+						{
+							"name": "PMAX",
+							"value": 100
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "DMAX",
+							"value": 130
+						},
+						{
+							"name": "PMAX",
+							"value": 130
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "DMAX",
+							"value": 160
+						},
+						{
+							"name": "PMAX",
+							"value": 160
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "DMAX",
+							"value": 200
+						},
+						{
+							"name": "PMAX",
+							"value": 200
+						}
+					]
+				},
+				{
+					"values": [
+						{
+							"name": "DMAX",
+							"value": 250
+						},
+						{
+							"name": "PMAX",
+							"value": 250
+						}
+					]
+				}
+			]
+		}
+	],
+	"results": []
+}
