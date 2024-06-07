@@ -93,5 +93,7 @@
   { "short": "random-grid", "path": "mdp/random-grid" },
   { "short": "bigmec", "path": "mdp/bigmec" },
   { "short": "manymecs", "path": "mdp/manymecs" },
-  { "short": "mer", "path": "mdp/mer" }
+  { "short": "mer", "path": "mdp/mer" },
+  { "short": "consensus-mec", "path": "mdp/consensus-mec" },
+  { "short": "wlan-mec", "path": "mdp/wlan-mec" }
 ]

@@ -1,0 +1,198 @@
+{
+	"name": "Randomized Consensus Protocol with MECs",
+	"short": "consensus-mec",
+	"type": "mdp",
+	"original": "PRISM",
+	"version": 1,
+	"date": "2024-06-07",
+	"version-history": [
+		{
+			"date": "2024-06-07",
+			"notes": "Initial version.",
+			"version": 1
+		}
+	],
+	"author": [
+		"James Aspnes <james.aspnes@yale.edu>",
+		"Maurice Herlihy <mph@cs.brown.edu>"
+	],
+	"submitter": "Tim Quatmann <tim.quatmann@cs.rwth-aachen.de>",
+	"source": "https://doi.org/10.1016/0196-6774(90)90021-6",
+	"part-of": {
+		"name": "the PRISM Benchmark Suite",
+		"url": "http://www.prismmodelchecker.org/benchmarks/"
+	},
+	"description": "This is a PRISM case study [1], with artificially introduced MECs. The randomised consensus protocol consists of `N´ asynchronous processes that communicate via read/write shared registers. The processes proceed through possibly unboundedly many rounds. At each round, they read the status of all other processes and attempt to agree. The agreement attempt involves a distributed random walk (`K´ bounds on random walk): when the processes disagree, they use a shared coin-flipping protocol to decide their next preferred value. See [2] for more details",
+	"references": [
+		"https://doi.org/10.1109/QEST.2012.14",
+		"http://www.prismmodelchecker.org/casestudies/consensus.php"
+	],
+	"notes": "mecs",
+	"parameters": [
+		{
+			"name": "N",
+			"kind": "file",
+			"description": "Number of processes",
+			"type": "positive integer"
+		},
+		{
+			"name": "K",
+			"kind": "open",
+			"description": "Bounds on random walk",
+			"type": "positive integer"
+		}
+	],
+	"properties": [
+		{
+			"name": "disagree",
+			"description": "The max probability of finishing protocol with coins not all equal.",
+			"type": "prob-reach"
+		}
+	],
+	"files": [
+		{
+			"file": "consensus-mec.4.jani",
+			"original-file": [
+				"consensus-mec.4.prism",
+				"consensus-mec.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.2.4 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv --prism consensus-mec.2.prism --tojani consensus-mec.2.jani --prop consensus-mec.props --globalvars"
+			},
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 4
+				}
+			],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "K",
+							"value": 2
+						}
+					]
+				}
+			]
+		},		{
+			"file": "consensus-mec.4.jani",
+			"original-file": [
+				"consensus-mec.4.prism",
+				"consensus-mec.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.2.4 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv --prism consensus-mec.2.prism --tojani consensus-mec.2.jani --prop consensus-mec.props --globalvars"
+			},
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 4
+				}
+			],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "K",
+							"value": 6
+						}
+					]
+				}
+			]
+		},
+		{
+			"file": "consensus-mec.4.jani",
+			"original-file": [
+				"consensus-mec.4.prism",
+				"consensus-mec.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.2.4 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv --prism consensus-mec.2.prism --tojani consensus-mec.2.jani --prop consensus-mec.props --globalvars"
+			},
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 4
+				}
+			],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "K",
+							"value": 8
+						}
+					]
+				}
+			]
+		},
+		{
+			"file": "consensus-mec.6.jani",
+			"original-file": [
+				"consensus-mec.6.prism",
+				"consensus-mec.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.2.4 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv --prism consensus-mec.2.prism --tojani consensus-mec.2.jani --prop consensus-mec.props --globalvars"
+			},
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 6
+				}
+			],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "K",
+							"value": 2
+						}
+					]
+				}
+			]
+		},
+		{
+			"file": "consensus-mec.6.jani",
+			"original-file": [
+				"consensus-mec.6.prism",
+				"consensus-mec.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.2.4 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv --prism consensus-mec.6.prism --tojani consensus-mec.6.jani --prop consensus-mec.props --globalvars"
+			},
+			"file-parameter-values": [
+				{
+					"name": "N",
+					"value": 6
+				}
+			],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "K",
+							"value": 4
+						}
+					]
+				}
+			]
+		}
+	]
+}
