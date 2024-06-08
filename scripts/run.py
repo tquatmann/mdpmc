@@ -55,27 +55,23 @@ def create_invocations(settings):
                 selected_configurations[mcsta.get_name()].append(config)
 
     # Select benchmark sets
-    quickcheck = load_json(os.path.join(sys.path[0], "internal/quickcheck.json"))
-    qvbs_full = load_json(os.path.join(sys.path[0], "internal/qvbs-full.json"))
-    qvbs_hard = load_json(os.path.join(sys.path[0], "internal/qvbs-hard.json"))
-    premise = load_json(os.path.join(sys.path[0], "internal/premise.json"))
     benchmark_sets = OrderedDict()
-    benchmark_sets["quickcheck"] = ["A single QVBS instance to quickly check if the installation was successful.", f"({len(quickcheck)} benchmarks)"]
-    benchmark_sets["qvbs-full"] = ["All QVBS Benchmarks, including 'qvbs-hard' set", f"({len(qvbs_full)} benchmarks)"]
-    benchmark_sets["qvbs-hard"] = ["Hard QVBS Benchmarks (Section 5.2)", f"({len(qvbs_hard)} benchmarks)"]
-    benchmark_sets["premise"] = ["Runtime Monitoring  Benchmarks (Section 5.3)", f"({len(premise)} benchmarks)"]
-    selected_benchmark_sets = input_selection("benchmark sets", benchmark_sets)
-    selected_benchmark_ids = []
+    benchmark_sets["all-jani"] = load_json(os.path.join(sys.path[0], "data/all_jani.json"))
+    benchmark_sets["quickcheck"] = load_json(os.path.join(sys.path[0], "data/quickcheck.json"))
+    benchmark_sets["qvbs-full"] = load_json(os.path.join(sys.path[0], "data/qvbs-full.json"))
+    benchmark_sets["qvbs-hard"] = load_json(os.path.join(sys.path[0], "data/qvbs-hard.json"))
+    benchmark_sets["premise"] = load_json(os.path.join(sys.path[0], "data/premise.json"))
+    benchmark_sets_descr = OrderedDict()
+    benchmark_sets_descr["all-jani"] = ["All benchmarks with Jani files", "({} benchmarks)".format(len(benchmark_sets["all-jani"]))]
+    benchmark_sets_descr["quickcheck"] = ["A single QVBS instance to quickly check if the installation was successful.", "({} benchmarks)".format(len(benchmark_sets["quickcheck"]))]
+    benchmark_sets_descr["qvbs-full"] = ["All QVBS Benchmarks, including 'qvbs-hard' set","({} benchmarks)".format(len(benchmark_sets["qvbs-full"]))]
+    benchmark_sets_descr["qvbs-hard"] = ["Hard QVBS Benchmarks (Section 5.2)", "({} benchmarks)".format(len(benchmark_sets["qvbs-hard"]))]
+    benchmark_sets_descr["premise"] = ["Runtime Monitoring  Benchmarks (Section 5.3)", "({} benchmarks)".format(len(benchmark_sets["premise"]))]
+    selected_benchmark_sets = input_selection("benchmark sets", benchmark_sets_descr)
+    selected_benchmark_ids = set()
+    for setname in selected_benchmark_sets:
+        selected_benchmark_ids.update(benchmark_sets[setname])
     selected_benchmarks = OrderedDict([(mt, []) for mt in ["dtmc", "ctmc", "mdp", "pta", "ma"]])
-    if "qvbs-full" in selected_benchmark_sets:
-        selected_benchmark_ids += qvbs_full
-    else:
-        if "quickcheck" in selected_benchmark_sets:
-            selected_benchmark_ids += quickcheck
-        if "qvbs-hard" in selected_benchmark_sets:
-            selected_benchmark_ids += qvbs_hard
-    if "premise" in selected_benchmark_sets:
-        selected_benchmark_ids += premise
     for benchmark_id in selected_benchmark_ids:
         benchmark = get_benchmark_from_id(settings, benchmark_id)
         selected_benchmarks[benchmark.get_model_type()].append(benchmark)    
