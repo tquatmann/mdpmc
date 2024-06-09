@@ -1,12 +1,13 @@
 from internal.export import *
 from internal.processlogs import *
 from internal.utility import *
+from internal import benchmarksets
 import sys
 import os
 
 def exportData(settings, benchmark_set_id, exec_data, groups_tools_configs_sorted):
     
-    benchmark_set = load_json(os.path.realpath(os.path.join(sys.path[0], "internal/{}.json").format(benchmark_set_id)))
+    benchmark_set = load_json(os.path.realpath(os.path.join(sys.path[0], "data/{}.json").format(benchmark_set_id)))
     ensure_directory(benchmark_set_id)
     scatterfile = os.path.join(benchmark_set_id, settings.results_file_scatter())
     print("\tGenerating file {} for scatter plots".format(scatterfile))
@@ -40,6 +41,6 @@ if __name__ == "__main__":
 
     groups_tools_configs = get_all_groups_tools_configs(logdirs) # group names are derived from the directory names
     exec_data = gather_execution_data(settings, logdirs, groups_tools_configs)  # Group -> Tool -> Config -> Benchmark -> [Data array]
-    exportData(settings, "qvbs-full", exec_data, groups_tools_configs)
-    exportData(settings, "qvbs-hard", exec_data, groups_tools_configs)
-    exportData(settings, "premise", exec_data, groups_tools_configs)
+    for benchmarkset_id in benchmarksets.data.keys():
+        exportData(settings, benchmarkset_id, exec_data, groups_tools_configs)
+

@@ -140,5 +140,5 @@ if len(all) != len(all_classified_ids):
 save_set(premise, "premise")
 save_set(gridworld, "gridworld")
 save_set(qvbs_full, "qvbs-full")
-save_set(all_jani, "all_jani")
+save_set(all_jani, "all-jani")
 save_set(quickcheck, "quickcheck")
