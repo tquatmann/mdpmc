@@ -258,7 +258,7 @@ class Settings(object):
             self.json_data["results-dir-table"] = "table/"
             set_an_option = True
         if not "time-limit" in self.json_data:
-            self.json_data["time-limit"] = 1800
+            self.json_data["time-limit"] = 900
             set_an_option = True
         if not "goal-precision" in self.json_data:
             self.json_data["goal-precision"] = 1e-3
