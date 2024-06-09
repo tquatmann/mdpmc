@@ -391,18 +391,7 @@
                 }
             ],
             "name": "sensor1",
-            "variables": [
-                {
-                    "initial-value": 0,
-                    "name": "y1",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 6
-                    }
-                }
-            ]
+            "variables": []
         },
         {
             "edges": [
@@ -715,18 +704,7 @@
                 }
             ],
             "name": "sensor2",
-            "variables": [
-                {
-                    "initial-value": 0,
-                    "name": "y2",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 6
-                    }
-                }
-            ]
+            "variables": []
         },
         {
             "edges": [
@@ -1039,18 +1017,7 @@
                 }
             ],
             "name": "sensor3",
-            "variables": [
-                {
-                    "initial-value": 0,
-                    "name": "y3",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 6
-                    }
-                }
-            ]
+            "variables": []
         },
         {
             "edges": [
@@ -2475,68 +2442,7 @@
                 }
             ],
             "name": "channel",
-            "variables": [
-                {
-                    "initial-value": 0,
-                    "name": "c",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 3
-                    }
-                },
-                {
-                    "initial-value": 1,
-                    "name": "who",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 1,
-                        "upper-bound": 3
-                    }
-                },
-                {
-                    "initial-value": 0,
-                    "name": "what",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 3
-                    }
-                },
-                {
-                    "initial-value": 0,
-                    "name": "cb1",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 3
-                    }
-                },
-                {
-                    "initial-value": 0,
-                    "name": "cb2",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 3
-                    }
-                },
-                {
-                    "initial-value": 0,
-                    "name": "cbs",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 2
-                    }
-                }
-            ]
+            "variables": []
         },
         {
             "edges": [
@@ -2773,18 +2679,7 @@
                 }
             ],
             "name": "proc",
-            "variables": [
-                {
-                    "initial-value": 0,
-                    "name": "count",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 10
-                    }
-                }
-            ]
+            "variables": []
         }
     ],
     "constants": [
@@ -3156,6 +3051,16 @@
             "type": "real"
         },
         {
+            "initial-value": 0,
+            "name": "y1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 6
+            }
+        },
+        {
             "initial-value": 1,
             "name": "msg1",
             "type": {
@@ -3166,6 +3071,16 @@
             }
         },
         {
+            "initial-value": 0,
+            "name": "y2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 6
+            }
+        },
+        {
             "initial-value": 1,
             "name": "msg2",
             "type": {
@@ -3173,6 +3088,16 @@
                 "kind": "bounded",
                 "lower-bound": 1,
                 "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "y3",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 6
             }
         },
         {
@@ -3187,12 +3112,82 @@
         },
         {
             "initial-value": 0,
+            "name": "c",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 1,
+            "name": "who",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "what",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "cb1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "cb2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "cbs",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 0,
             "name": "x",
             "type": {
                 "base": "int",
                 "kind": "bounded",
                 "lower-bound": 0,
                 "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "count",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 10
             }
         }
     ]

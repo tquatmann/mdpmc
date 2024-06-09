@@ -36,7 +36,7 @@
 	],
 	"properties": [
 		{
-			"name": "goal_max",
+			"name": "prob_max",
 			"description": "",
 			"type": "prob-reach"
 		}

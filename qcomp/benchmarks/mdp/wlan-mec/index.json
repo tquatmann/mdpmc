@@ -57,6 +57,34 @@
 	],
 	"files": [
 		{
+			"file": "wlan-mec.1.jani",
+			"original-file": [
+				"wlan-mec.1.prism",
+				"wlan-mec.props"
+			],
+			"conversion": {
+				"tool": "Storm-conv",
+				"version": "1.2.4 (dev)",
+				"url": "http://www.stormchecker.org",
+				"command": "storm-conv --prism wlan-mec.1.prism --tojani wlan-mec.1.jani --prop wlan-mec.props"
+			},
+			"file-parameter-values": [
+				{
+					"name": "MAX_BACKOFF",
+					"value": 2
+				}
+			],
+			"open-parameter-values": [
+				{
+					"values": [
+						{
+							"name": "COL",
+							"value": 0
+						}
+					]
+				}
+			]
+		},{
 			"file": "wlan-mec.2.jani",
 			"original-file": [
 				"wlan-mec.2.prism",
@@ -159,35 +187,6 @@
 				{
 					"name": "MAX_BACKOFF",
 					"value": 5
-				}
-			],
-			"open-parameter-values": [
-				{
-					"values": [
-						{
-							"name": "COL",
-							"value": 0
-						}
-					]
-				}
-			]
-		},
-		{
-			"file": "wlan-mec.6.jani",
-			"original-file": [
-				"wlan-mec.6.prism",
-				"wlan-mec.props"
-			],
-			"conversion": {
-				"tool": "Storm-conv",
-				"version": "1.2.4 (dev)",
-				"url": "http://www.stormchecker.org",
-				"command": "storm-conv --prism wlan-mec.0.prism --tojani wlan-mec.0.jani --prop wlan-mec.props --globalvars"
-			},
-			"file-parameter-values": [
-				{
-					"name": "MAX_BACKOFF",
-					"value": 6
 				}
 			],
 			"open-parameter-values": [

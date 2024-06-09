@@ -3,7 +3,7 @@ mdp
 
 const int RADIUS = 1;
 const int N;
-const int ARADIUS = max(2,N/4);
+const int ARADIUS = max(2,floor(N/4));
 const int ayPOS = 2;
 const int ay2POS = N-2;
 const int xMAX = N-1;

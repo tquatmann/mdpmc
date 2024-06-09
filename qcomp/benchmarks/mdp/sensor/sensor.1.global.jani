@@ -10,15 +10,6 @@
             "name": "ack1_2"
         },
         {
-            "name": "ack2_0"
-        },
-        {
-            "name": "ack2_1"
-        },
-        {
-            "name": "ack2_2"
-        },
-        {
             "name": "alert"
         },
         {
@@ -31,9 +22,6 @@
             "name": "detect1"
         },
         {
-            "name": "detect2"
-        },
-        {
             "name": "done"
         },
         {
@@ -43,16 +31,10 @@
             "name": "noack1"
         },
         {
-            "name": "noack2"
-        },
-        {
             "name": "process"
         },
         {
             "name": "s1_to_c"
-        },
-        {
-            "name": "s2_to_c"
         },
         {
             "name": "stop"
@@ -378,319 +360,6 @@
         {
             "edges": [
                 {
-                    "destinations": [
-                        {
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 6)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 6
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "ack2_0",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 0",
-                                    "ref": "y2",
-                                    "value": 0
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 1)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 1
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "ack2_1",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 4",
-                                    "ref": "y2",
-                                    "value": 4
-                                },
-                                {
-                                    "comment": "msg2 <- 3",
-                                    "ref": "msg2",
-                                    "value": 3
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 3)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 3
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "ack2_2",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 6",
-                                    "ref": "y2",
-                                    "value": 6
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 5)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 5
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "detect2",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 2",
-                                    "ref": "y2",
-                                    "value": 2
-                                },
-                                {
-                                    "comment": "msg2 <- 2",
-                                    "ref": "msg2",
-                                    "value": 2
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 0)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 0
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "noack2",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 0",
-                                    "ref": "y2",
-                                    "value": 0
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 1)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 1
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "noack2",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 2",
-                                    "ref": "y2",
-                                    "value": 2
-                                }
-                            ],
-                            "location": "l"
-                        },
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 4",
-                                    "ref": "y2",
-                                    "value": 4
-                                },
-                                {
-                                    "comment": "msg2 <- 3",
-                                    "ref": "msg2",
-                                    "value": 3
-                                }
-                            ],
-                            "location": "l",
-                            "probability": {
-                                "comment": "0",
-                                "exp": 0
-                            }
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 3)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 3
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "noack2",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 4",
-                                    "ref": "y2",
-                                    "value": 4
-                                }
-                            ],
-                            "location": "l"
-                        },
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 6",
-                                    "ref": "y2",
-                                    "value": 6
-                                }
-                            ],
-                            "location": "l",
-                            "probability": {
-                                "comment": "0",
-                                "exp": 0
-                            }
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 5)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 5
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "s2_to_c",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 1",
-                                    "ref": "y2",
-                                    "value": 1
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 0)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 0
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "s2_to_c",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 3",
-                                    "ref": "y2",
-                                    "value": 3
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 2)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 2
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "s2_to_c",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "y2 <- 5",
-                                    "ref": "y2",
-                                    "value": 5
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(y2 = 4)",
-                        "exp": {
-                            "left": "y2",
-                            "op": "=",
-                            "right": 4
-                        }
-                    },
-                    "location": "l"
-                }
-            ],
-            "initial-locations": [
-                "l"
-            ],
-            "locations": [
-                {
-                    "name": "l"
-                }
-            ],
-            "name": "sensor2",
-            "variables": []
-        },
-        {
-            "edges": [
-                {
                     "action": "ack1_0",
                     "destinations": [
                         {
@@ -715,20 +384,12 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(((c = 1) & (who = 1)) & (cbs = 0))",
+                        "comment": "((c = 1) & (cbs = 0))",
                         "exp": {
                             "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 1
-                                }
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
                             },
                             "op": "∧",
                             "right": {
@@ -765,20 +426,12 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(((c = 1) & (who = 1)) & (cbs = 1))",
+                        "comment": "((c = 1) & (cbs = 1))",
                         "exp": {
                             "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 1
-                                }
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
                             },
                             "op": "∧",
                             "right": {
@@ -815,20 +468,12 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(((c = 1) & (who = 1)) & (cbs = 0))",
+                        "comment": "((c = 1) & (cbs = 0))",
                         "exp": {
                             "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 1
-                                }
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
                             },
                             "op": "∧",
                             "right": {
@@ -865,20 +510,12 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(((c = 1) & (who = 1)) & (cbs = 1))",
+                        "comment": "((c = 1) & (cbs = 1))",
                         "exp": {
                             "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 1
-                                }
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
                             },
                             "op": "∧",
                             "right": {
@@ -915,20 +552,12 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(((c = 1) & (who = 1)) & (cbs = 0))",
+                        "comment": "((c = 1) & (cbs = 0))",
                         "exp": {
                             "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 1
-                                }
+                                "left": "c",
+                                "op": "=",
+                                "right": 1
                             },
                             "op": "∧",
                             "right": {
@@ -965,320 +594,12 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(((c = 1) & (who = 1)) & (cbs = 1))",
+                        "comment": "((c = 1) & (cbs = 1))",
                         "exp": {
                             "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 1
-                                }
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "cbs",
+                                "left": "c",
                                 "op": "=",
                                 "right": 1
-                            }
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "ack2_0",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "c <- 0",
-                                    "ref": "c",
-                                    "value": 0
-                                },
-                                {
-                                    "comment": "cb1 <- msg2",
-                                    "ref": "cb1",
-                                    "value": "msg2"
-                                },
-                                {
-                                    "comment": "cbs <- 1",
-                                    "ref": "cbs",
-                                    "value": 1
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(((c = 1) & (who = 2)) & (cbs = 0))",
-                        "exp": {
-                            "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 2
-                                }
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "cbs",
-                                "op": "=",
-                                "right": 0
-                            }
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "ack2_0",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "c <- 0",
-                                    "ref": "c",
-                                    "value": 0
-                                },
-                                {
-                                    "comment": "cb2 <- msg2",
-                                    "ref": "cb2",
-                                    "value": "msg2"
-                                },
-                                {
-                                    "comment": "cbs <- 2",
-                                    "ref": "cbs",
-                                    "value": 2
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(((c = 1) & (who = 2)) & (cbs = 1))",
-                        "exp": {
-                            "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 2
-                                }
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "cbs",
-                                "op": "=",
-                                "right": 1
-                            }
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "ack2_1",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "c <- 0",
-                                    "ref": "c",
-                                    "value": 0
-                                },
-                                {
-                                    "comment": "cb1 <- msg2",
-                                    "ref": "cb1",
-                                    "value": "msg2"
-                                },
-                                {
-                                    "comment": "cbs <- 1",
-                                    "ref": "cbs",
-                                    "value": 1
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(((c = 1) & (who = 2)) & (cbs = 0))",
-                        "exp": {
-                            "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 2
-                                }
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "cbs",
-                                "op": "=",
-                                "right": 0
-                            }
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "ack2_1",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "c <- 0",
-                                    "ref": "c",
-                                    "value": 0
-                                },
-                                {
-                                    "comment": "cb2 <- msg2",
-                                    "ref": "cb2",
-                                    "value": "msg2"
-                                },
-                                {
-                                    "comment": "cbs <- 2",
-                                    "ref": "cbs",
-                                    "value": 2
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(((c = 1) & (who = 2)) & (cbs = 1))",
-                        "exp": {
-                            "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 2
-                                }
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "cbs",
-                                "op": "=",
-                                "right": 1
-                            }
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "ack2_2",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "c <- 0",
-                                    "ref": "c",
-                                    "value": 0
-                                },
-                                {
-                                    "comment": "cb1 <- msg2",
-                                    "ref": "cb1",
-                                    "value": "msg2"
-                                },
-                                {
-                                    "comment": "cbs <- 1",
-                                    "ref": "cbs",
-                                    "value": 1
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(((c = 1) & (who = 2)) & (cbs = 0))",
-                        "exp": {
-                            "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 2
-                                }
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "cbs",
-                                "op": "=",
-                                "right": 0
-                            }
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "ack2_2",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "c <- 0",
-                                    "ref": "c",
-                                    "value": 0
-                                },
-                                {
-                                    "comment": "cb2 <- msg2",
-                                    "ref": "cb2",
-                                    "value": "msg2"
-                                },
-                                {
-                                    "comment": "cbs <- 2",
-                                    "ref": "cbs",
-                                    "value": 2
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(((c = 1) & (who = 2)) & (cbs = 1))",
-                        "exp": {
-                            "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 2
-                                }
                             },
                             "op": "∧",
                             "right": {
@@ -1545,60 +866,12 @@
                         }
                     ],
                     "guard": {
-                        "comment": "(((c = 1) & (who = 1)) & (cbs = 2))",
+                        "comment": "((c = 1) & (cbs = 2))",
                         "exp": {
                             "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 1
-                                }
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "cbs",
+                                "left": "c",
                                 "op": "=",
-                                "right": 2
-                            }
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "noack2",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "c <- 0",
-                                    "ref": "c",
-                                    "value": 0
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(((c = 1) & (who = 2)) & (cbs = 2))",
-                        "exp": {
-                            "left": {
-                                "left": {
-                                    "left": "c",
-                                    "op": "=",
-                                    "right": 1
-                                },
-                                "op": "∧",
-                                "right": {
-                                    "left": "who",
-                                    "op": "=",
-                                    "right": 2
-                                }
+                                "right": 1
                             },
                             "op": "∧",
                             "right": {
@@ -1651,40 +924,6 @@
                                     "comment": "c <- 1",
                                     "ref": "c",
                                     "value": 1
-                                },
-                                {
-                                    "comment": "who <- 1",
-                                    "ref": "who",
-                                    "value": 1
-                                }
-                            ],
-                            "location": "l"
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(c = 0)",
-                        "exp": {
-                            "left": "c",
-                            "op": "=",
-                            "right": 0
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "s2_to_c",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "c <- 1",
-                                    "ref": "c",
-                                    "value": 1
-                                },
-                                {
-                                    "comment": "who <- 2",
-                                    "ref": "who",
-                                    "value": 2
                                 }
                             ],
                             "location": "l"
@@ -2021,7 +1260,7 @@
         "derived-operators"
     ],
     "jani-version": 1,
-    "name": "sensor.2",
+    "name": "sensor.1.global",
     "properties": [
         {
             "expression": {
@@ -2055,9 +1294,6 @@
                 "automaton": "sensor1"
             },
             {
-                "automaton": "sensor2"
-            },
-            {
                 "automaton": "channel"
             },
             {
@@ -2069,7 +1305,6 @@
                 "result": "ack1_0",
                 "synchronise": [
                     "ack1_0",
-                    null,
                     "ack1_0",
                     null
                 ]
@@ -2078,7 +1313,6 @@
                 "result": "ack1_1",
                 "synchronise": [
                     "ack1_1",
-                    null,
                     "ack1_1",
                     null
                 ]
@@ -2087,42 +1321,13 @@
                 "result": "ack1_2",
                 "synchronise": [
                     "ack1_2",
-                    null,
                     "ack1_2",
-                    null
-                ]
-            },
-            {
-                "result": "ack2_0",
-                "synchronise": [
-                    null,
-                    "ack2_0",
-                    "ack2_0",
-                    null
-                ]
-            },
-            {
-                "result": "ack2_1",
-                "synchronise": [
-                    null,
-                    "ack2_1",
-                    "ack2_1",
-                    null
-                ]
-            },
-            {
-                "result": "ack2_2",
-                "synchronise": [
-                    null,
-                    "ack2_2",
-                    "ack2_2",
                     null
                 ]
             },
             {
                 "result": "alert",
                 "synchronise": [
-                    null,
                     null,
                     "alert",
                     "alert"
@@ -2133,14 +1338,12 @@
                 "synchronise": [
                     null,
                     null,
-                    null,
                     "crash"
                 ]
             },
             {
                 "result": "data",
                 "synchronise": [
-                    null,
                     null,
                     "data",
                     "data"
@@ -2151,23 +1354,12 @@
                 "synchronise": [
                     "detect1",
                     null,
-                    null,
-                    null
-                ]
-            },
-            {
-                "result": "detect2",
-                "synchronise": [
-                    null,
-                    "detect2",
-                    null,
                     null
                 ]
             },
             {
                 "result": "done",
                 "synchronise": [
-                    null,
                     null,
                     null,
                     "done"
@@ -2177,7 +1369,6 @@
                 "result": "extract",
                 "synchronise": [
                     null,
-                    null,
                     "extract",
                     null
                 ]
@@ -2186,24 +1377,13 @@
                 "result": "noack1",
                 "synchronise": [
                     "noack1",
-                    null,
                     "noack1",
-                    null
-                ]
-            },
-            {
-                "result": "noack2",
-                "synchronise": [
-                    null,
-                    "noack2",
-                    "noack2",
                     null
                 ]
             },
             {
                 "result": "process",
                 "synchronise": [
-                    null,
                     null,
                     "process",
                     null
@@ -2213,24 +1393,13 @@
                 "result": "s1_to_c",
                 "synchronise": [
                     "s1_to_c",
-                    null,
                     "s1_to_c",
-                    null
-                ]
-            },
-            {
-                "result": "s2_to_c",
-                "synchronise": [
-                    null,
-                    "s2_to_c",
-                    "s2_to_c",
                     null
                 ]
             },
             {
                 "result": "stop",
                 "synchronise": [
-                    null,
                     null,
                     "stop",
                     "stop"
@@ -2239,7 +1408,6 @@
             {
                 "result": "work",
                 "synchronise": [
-                    null,
                     null,
                     null,
                     "work"
@@ -2289,42 +1457,12 @@
         },
         {
             "initial-value": 0,
-            "name": "y2",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 0,
-                "upper-bound": 6
-            }
-        },
-        {
-            "initial-value": 1,
-            "name": "msg2",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 1,
-                "upper-bound": 3
-            }
-        },
-        {
-            "initial-value": 0,
             "name": "c",
             "type": {
                 "base": "int",
                 "kind": "bounded",
                 "lower-bound": 0,
                 "upper-bound": 3
-            }
-        },
-        {
-            "initial-value": 1,
-            "name": "who",
-            "type": {
-                "base": "int",
-                "kind": "bounded",
-                "lower-bound": 1,
-                "upper-bound": 2
             }
         },
         {

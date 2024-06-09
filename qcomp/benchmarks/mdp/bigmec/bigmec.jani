@@ -568,7 +568,7 @@
                     "op": "Pmax"
                 }
             },
-            "name": "1"
+            "name": "prob_max"
         }
     ],
     "restrict-initial": {

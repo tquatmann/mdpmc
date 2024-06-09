@@ -1210,26 +1210,7 @@
                 }
             ],
             "name": "sensor",
-            "variables": [
-                {
-                    "initial-value": {
-                        "left": "PMAX",
-                        "op": "-",
-                        "right": 1
-                    },
-                    "name": "pobs",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": {
-                            "left": "PMAX",
-                            "op": "-",
-                            "right": 1
-                        }
-                    }
-                }
-            ]
+            "variables": []
         },
         {
             "edges": [
@@ -1529,18 +1510,7 @@
                 }
             ],
             "name": "master",
-            "variables": [
-                {
-                    "initial-value": 1,
-                    "name": "turn",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 1
-                    }
-                }
-            ]
+            "variables": []
         }
     ],
     "constants": [
@@ -1764,8 +1734,36 @@
             }
         },
         {
+            "initial-value": {
+                "left": "PMAX",
+                "op": "-",
+                "right": 1
+            },
+            "name": "pobs",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": {
+                    "left": "PMAX",
+                    "op": "-",
+                    "right": 1
+                }
+            }
+        },
+        {
             "initial-value": 0,
             "name": "mode",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 1
+            }
+        },
+        {
+            "initial-value": 1,
+            "name": "turn",
             "type": {
                 "base": "int",
                 "kind": "bounded",

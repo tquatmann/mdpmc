@@ -1245,78 +1245,7 @@
                 }
             ],
             "name": "arbiter",
-            "variables": [
-                {
-                    "initial-value": 0,
-                    "name": "s",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": -1,
-                        "upper-bound": 2
-                    }
-                },
-                {
-                    "initial-value": 2,
-                    "name": "r",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 2
-                    }
-                },
-                {
-                    "initial-value": 0,
-                    "name": "k",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": "n"
-                    }
-                },
-                {
-                    "initial-value": 0,
-                    "name": "commUser",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 2
-                    }
-                },
-                {
-                    "initial-value": 0,
-                    "name": "driveUser",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 2
-                    }
-                },
-                {
-                    "initial-value": false,
-                    "name": "gc",
-                    "type": "bool"
-                },
-                {
-                    "initial-value": false,
-                    "name": "dc",
-                    "type": "bool"
-                },
-                {
-                    "initial-value": false,
-                    "name": "gd",
-                    "type": "bool"
-                },
-                {
-                    "initial-value": false,
-                    "name": "dd",
-                    "type": "bool"
-                }
-            ]
+            "variables": []
         },
         {
             "edges": [
@@ -1990,33 +1919,7 @@
                 }
             ],
             "name": "user1",
-            "variables": [
-                {
-                    "initial-value": 0,
-                    "name": "s1",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 4
-                    }
-                },
-                {
-                    "initial-value": 0,
-                    "name": "r1",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 2
-                    }
-                },
-                {
-                    "initial-value": false,
-                    "name": "rescind1",
-                    "type": "bool"
-                }
-            ]
+            "variables": []
         },
         {
             "edges": [
@@ -2690,33 +2593,7 @@
                 }
             ],
             "name": "user2",
-            "variables": [
-                {
-                    "initial-value": 0,
-                    "name": "s2",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 4
-                    }
-                },
-                {
-                    "initial-value": 0,
-                    "name": "r2",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 2
-                    }
-                },
-                {
-                    "initial-value": false,
-                    "name": "rescind2",
-                    "type": "bool"
-                }
-            ]
+            "variables": []
         },
         {
             "edges": [
@@ -3410,18 +3287,7 @@
                 }
             ],
             "name": "property",
-            "variables": [
-                {
-                    "initial-value": 0,
-                    "name": "u",
-                    "type": {
-                        "base": "int",
-                        "kind": "bounded",
-                        "lower-bound": 0,
-                        "upper-bound": 2
-                    }
-                }
-            ]
+            "variables": []
         },
         {
             "edges": [
@@ -3704,12 +3570,142 @@
         },
         {
             "initial-value": 0,
+            "name": "s",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": -1,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 2,
+            "name": "r",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "k",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": "n"
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "commUser",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "driveUser",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": false,
+            "name": "gc",
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "dc",
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "gd",
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "dd",
+            "type": "bool"
+        },
+        {
+            "initial-value": 0,
+            "name": "s1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 4
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "r1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": false,
+            "name": "rescind1",
+            "type": "bool"
+        },
+        {
+            "initial-value": 0,
+            "name": "s2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 4
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "r2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "initial-value": false,
+            "name": "rescind2",
+            "type": "bool"
+        },
+        {
+            "initial-value": 0,
             "name": "e",
             "type": {
                 "base": "int",
                 "kind": "bounded",
                 "lower-bound": 0,
                 "upper-bound": 3
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "u",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
             }
         }
     ]

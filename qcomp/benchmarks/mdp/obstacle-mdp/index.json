@@ -30,7 +30,7 @@
 	],
 	"properties": [
 		{
-			"name": "time_min",
+			"name": "steps_min",
 			"description": "",
 			"type": "exp-steps"
 		}

@@ -151,7 +151,7 @@
 			"file-parameter-values": [
 				{
 					"name": "N",
-					"value": 6
+					"value": 4
 				}
 			],
 			"open-parameter-values": [
@@ -159,7 +159,7 @@
 					"values": [
 						{
 							"name": "K",
-							"value": 2
+							"value": 10
 						}
 					]
 				}
@@ -188,7 +188,7 @@
 					"values": [
 						{
 							"name": "K",
-							"value": 4
+							"value": 2
 						}
 					]
 				}
