@@ -45,6 +45,7 @@ def get_configurations():
     cfgs.append(Configuration(id="vi2pi-topo-gmres", note="PI with gmres as LinEqSolver using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi"))
     cfgs.append(Configuration(id="vi2lp-topo-gurobi", note="LP with VI warm-start using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi"))
     cfgs.append(Configuration(id="vi-topo", note="Classical VI, topological solving", command="--minmax:method topological --topological:minmax vi "))
+    cfgs.append(Configuration(id="vi-topo-mecq", note="Classical VI, topological solving", command="--minmax:method topological --topological:minmax vi --force-require-unique"))
 
 
     # cfgs.append(Configuration(id="lp", note="LP with non-triv bounds using gurobi (1 thread)", command="--minmax:method lp  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds"))
