@@ -70,12 +70,12 @@ def generate_scatter_csv(settings, exec_data, benchmark_ids, groups_tools_config
     ERR_VALUE = 724 # error
     ND_VALUE = 724 # not displayed
     
-    result = [ ["benchmark", "Type", "Orig", "Prop"] + ["{}.{}.{}".format(g,t,c) for (g,t,c) in groups_tools_configs] + ["best"] ]
+    result = [ ["benchmark", "Type", "Orig", "Prop", "Sets"] + ["{}.{}.{}".format(g,t,c) for (g,t,c) in groups_tools_configs] + ["best"] ]
     for benchmark_id in benchmark_ids:
         benchmark = get_benchmark_from_id(settings, benchmark_id)
         if property_filter is not None and benchmark.get_short_property_type() not in property_filter: 
             continue
-        row = [benchmark_id, benchmark.get_model_type().lower(), benchmark.get_original_format().lower(), benchmark.get_short_property_type()]
+        row = [benchmark_id, benchmark.get_model_type().lower(), benchmark.get_original_format().lower(), benchmark.get_short_property_type(), " ".join(benchmark.get_benchmark_sets())]
         best_value = NA_VALUE
         for (group, tool, config) in groups_tools_configs:
             value = NA_VALUE

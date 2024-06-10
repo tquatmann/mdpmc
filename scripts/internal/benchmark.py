@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from .utility import *
+from . import benchmarksets
 
 class Benchmark(object):
     """ This class represents a benchmark, that is
@@ -436,6 +437,10 @@ class Benchmark(object):
             if "features" in model_jani:
                 return model_jani["features"]
         return []
+
+    def get_benchmark_sets(self):
+        ident = self.get_identifier()
+        return [ s for s in benchmarksets.data.keys() if ident in benchmarksets.data[s] ]
     
     def get_property_jani(self):
         model_jani = self.load_jani_file()
