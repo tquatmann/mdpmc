@@ -82,7 +82,18 @@
 		"configuration-id": "lp-topo-gurobi",
 		"invocation-note": "LP using Gurobi (1 thread), topological solving",
 		"commands": [
-			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --timemem"
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax lp --lpsolver gurobi --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-mono-gurobi",
+		"invocation-note": "LP using Gurobi (1 thread), non-topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method lp --lpsolver gurobi --timemem"
 		],
 		"time-limit": 60,
 		"run-id": 1
@@ -94,6 +105,61 @@
 		"invocation-note": "LP with VI warm-start using Gurobi (1 thread), topological solving",
 		"commands": [
 			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-topo-soplex-exact",
+		"invocation-note": "LP using soplex (exact), topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method  topological --topological:minmax lp --lpsolver soplex --exact  --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-topo-soplex",
+		"invocation-note": "LP using soplex, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method  topological --topological:minmax lp --lpsolver soplex --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-topo-glpk",
+		"invocation-note": "LP using glpk, topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method  topological --topological:minmax lp --lpsolver glpk --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "lp-topo-z3-exact",
+		"invocation-note": "LP using z3 (exact), topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method  topological --topological:minmax lp --lpsolver z3 --exact --timemem"
+		],
+		"time-limit": 60,
+		"run-id": 1
+	},
+	{
+		"benchmark-id": "firewire.false-3-800.time_sending",
+		"tool": "Storm",
+		"configuration-id": "vi2lp-topo-soplex-exact",
+		"invocation-note": "LP with VI warm-start using soplex (exact), topological solving",
+		"commands": [
+			"$MDPMC_DIR/tools/storm/build/bin/storm --prism $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.prism --prop $MDPMC_DIR/qcomp/benchmarks/mdp/firewire/firewire.false.props time_sending --constants delay=3,deadline=800 --minmax:method  topological --topological:minmax vi-to-lp --lpsolver soplex --exact  --timemem"
 		],
 		"time-limit": 60,
 		"run-id": 1
