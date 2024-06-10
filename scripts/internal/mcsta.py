@@ -14,6 +14,7 @@ def get_configurations():
     cfgs = []
     
     cfgs.append(Configuration(id="vi", note="Classical VI", command="--alg ValueIteration"))
+    cfgs.append(Configuration(id="vi", note="Optimistic VI", command="--alg OptimisticValueIteration"))
     # cfgs.append(Configuration(id="lp-copt-mono", note="LP with COpt, monolithical", command="--alg LinearProgramming --lp-solver Copt"))
     # cfgs.append(Configuration(id="lp-copt-topo", note="LP with COpt, topological",  command="--alg LinearProgramming --lp-solver Copt --topological"))
     # cfgs.append(Configuration(id="lp-cplex-mono", note="LP with CPLEX, monolithical", command="--alg LinearProgramming --lp-solver Cplex"))
