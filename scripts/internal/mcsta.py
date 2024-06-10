@@ -12,23 +12,34 @@ def get_configurations():
     """ Returns the list of all tool configurations to benchmark """
     
     cfgs = []
-    
+
+    # vi-based
     cfgs.append(Configuration(id="vi", note="Classical VI", command="--alg ValueIteration"))
     cfgs.append(Configuration(id="ovi", note="Optimistic VI", command="--alg OptimisticValueIteration"))
+
+    # lp-based
     # cfgs.append(Configuration(id="lp-copt-mono", note="LP with COpt, monolithical", command="--alg LinearProgramming --lp-solver Copt"))
-    # cfgs.append(Configuration(id="lp-copt-topo", note="LP with COpt, topological",  command="--alg LinearProgramming --lp-solver Copt --topological"))
+    cfgs.append(Configuration(id="lp-copt-topo", note="LP with COpt, topological",  command="--alg LinearProgramming --lp-solver Copt --topological"))
     # cfgs.append(Configuration(id="lp-cplex-mono", note="LP with CPLEX, monolithical", command="--alg LinearProgramming --lp-solver Cplex"))
-    # cfgs.append(Configuration(id="lp-cplex-topo", note="LP with CPLEX, topological",  command="--alg LinearProgramming --lp-solver Cplex --topological"))
+    cfgs.append(Configuration(id="lp-cplex-topo", note="LP with CPLEX, topological",  command="--alg LinearProgramming --lp-solver Cplex --topological"))
     # cfgs.append(Configuration(id="lp-glop-mono", note="LP with Glop, monolithical", command="--alg LinearProgramming --lp-solver Glop"))
-    # cfgs.append(Configuration(id="lp-glop-topo", note="LP with Glop, topological",  command="--alg LinearProgramming --lp-solver Glop --topological"))
+    cfgs.append(Configuration(id="lp-glop-topo", note="LP with Glop, topological",  command="--alg LinearProgramming --lp-solver Glop --topological"))
     # cfgs.append(Configuration(id="lp-gurobi-mono", note="LP with Gurobi, monolithical", command="--alg LinearProgramming --lp-solver Gurobi"))
-    # cfgs.append(Configuration(id="lp-gurobi-topo", note="LP with Gurobi, topological",  command="--alg LinearProgramming --lp-solver Gurobi --topological"))
+    cfgs.append(Configuration(id="lp-gurobi-topo", note="LP with Gurobi, topological",  command="--alg LinearProgramming --lp-solver Gurobi --topological"))
     # cfgs.append(Configuration(id="lp-highs-mono", note="LP with HiGHS, monolithical", command="--alg LinearProgramming --lp-solver HiGHS"))
-    # cfgs.append(Configuration(id="lp-highs-topo", note="LP with HiGHS, topological",  command="--alg LinearProgramming --lp-solver HiGHS --topological"))
+    cfgs.append(Configuration(id="lp-highs-topo", note="LP with HiGHS, topological",  command="--alg LinearProgramming --lp-solver HiGHS --topological"))
     # cfgs.append(Configuration(id="lp-lpsolve-mono", note="LP with lp\\_solve, monolithical", command="--alg LinearProgramming --lp-solver LPSolve"))
-    # cfgs.append(Configuration(id="lp-lpsolve-topo", note="LP with lp\\_solve, topological",  command="--alg LinearProgramming --lp-solver LPSolve --topological"))
+    cfgs.append(Configuration(id="lp-lpsolve-topo", note="LP with lp\\_solve, topological",  command="--alg LinearProgramming --lp-solver LPSolve --topological"))
     # cfgs.append(Configuration(id="lp-mosek-mono", note="LP with Mosek, monolithical", command="--alg LinearProgramming --lp-solver Mosek"))
-    # cfgs.append(Configuration(id="lp-mosek-topo", note="LP with Mosek, topological",  command="--alg LinearProgramming --lp-solver Mosek --topological"))
+    cfgs.append(Configuration(id="lp-mosek-topo", note="LP with Mosek, topological",  command="--alg LinearProgramming --lp-solver Mosek --topological"))
+
+    # vi with reductions
+    cfgs.append(Configuration(id="vi-p0", note="Classical VI", command="--alg ValueIteration --p0"))
+    cfgs.append(Configuration(id="vi-p1", note="Classical VI", command="--alg ValueIteration --p1"))
+    cfgs.append(Configuration(id="vi-p01", note="Classical VI", command="--alg ValueIteration --p0 --p1"))
+    cfgs.append(Configuration(id="vi-es", note="Classical VI", command="--alg ValueIteration --es"))
+    cfgs.append(Configuration(id="vi-es-p01", note="Classical VI", command="--alg ValueIteration --es --p0 --p1"))
+
 
     return cfgs
     
