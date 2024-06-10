@@ -55,12 +55,18 @@ def parse_tool_output(settings, execution_json):
     notes = []
     if execution_json["tool"] == storm.get_name():
         execution_json["supported"] = not storm.is_not_supported(log)
+        build_time = storm.get_Build_Time(log)
+        if build_time is not None: execution_json["model-building-time"] = build_time
+        nontriv_mec = storm.get_nontriv_mec_percentage(log)
+        if nontriv_mec is not None: execution_json["nontrivial-mec-percentage"] = nontriv_mec
         result = None
         mctime = storm.get_MC_Time(log)
         if mctime is not None:
-            if float(mctime) <= 1800:
+            if True: # old: float(mctime) <= 1800
                 execution_json["model-checking-time"] = mctime
                 result = storm.get_result(log, benchmark)
+                solve_time = storm.get_Solve_Time(log)
+                if solve_time is not None: execution_json["model-solving-time"] = solve_time
             else:
                 execution_json["timeout"] = True
             execution_json["memout"] = False
@@ -70,12 +76,16 @@ def parse_tool_output(settings, execution_json):
             execution_json["expected-error"] = storm.is_expected_error(log)
     elif execution_json["tool"] == "mcsta":
         execution_json["supported"] = not mcsta.is_not_supported(log)
+        build_time = mcsta.get_Build_Time(log)
+        if build_time is not None: execution_json["model-building-time"] = build_time
         result = None
         mctime = mcsta.get_MC_Time(log)
         if mctime is not None:
-            if float(mctime) <= 1800:
+            if True: # old: float(mctime) <= 1800
                 execution_json["model-checking-time"] = mctime
                 result = mcsta.get_result(log, benchmark)
+                solve_time = mcsta.get_Solve_Time(log)
+                if solve_time is not None: execution_json["model-solving-time"] = solve_time
             else:
                 execution_json["timeout"] = True
             execution_json["memout"] = False
@@ -84,7 +94,7 @@ def parse_tool_output(settings, execution_json):
             execution_json["memout"] = mcsta.is_memout(log)
             execution_json["expected-error"] = mcsta.is_expected_error(log)
     else:
-        print("Error: Unknown tool '{}'".format(execution_jsion["tool"]))
+        print("Error: Unknown tool '{}'".format(execution_json["tool"]))
     
     process_tool_result(result, notes, settings, benchmark, execution_json)
     execution_json["notes"] = notes    

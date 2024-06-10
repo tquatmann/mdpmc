@@ -200,10 +200,10 @@ def get_Solve_Time(logfile):
   """
   Tries to parse the solving time of the underlying solution method (model checking time without prob0/1, ... preprocessing)
   """
-  pos = logfile.find("Time for solving: ")
+  pos = logfile.find("Time for model solving: ")
   if pos >= 0:
-      pos += len("Time for solving: ")
-      pos2 = logfile.find("s\n", pos)
+      pos += len("Time for model solving: ")
+      pos2 = logfile.find("s.", pos)
       num = logfile[pos:pos2]
       return float(num)
   return None
@@ -217,6 +217,18 @@ def get_Build_Time(logfile):
         pos += len("Time for model construction: ")
         pos2 = logfile.find("s.", pos)
         num = logfile[pos:pos2]
+        return float(num)
+    return None
+
+def get_nontriv_mec_percentage(logfile):
+    """
+    Tries to parse the percentage of MEC states
+    """
+    pos1 = logfile.find("are trivial, i.e., consist of a single state. ")
+    if pos1 >= 0:
+        pos2 = logfile.find("%) are on a non-trivial mec.", pos1)
+        pos1 = logfile.rfind("(", pos1, pos2) + 1
+        num = logfile[pos1:pos2]
         return float(num)
     return None
 
