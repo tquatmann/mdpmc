@@ -24,6 +24,7 @@ class CombinedResult(object):
         self.num_timeout = 0
         self.num_incorrect = 0
         self.runtimes = []
+        self.buildtimes = []
         self.walltimes = []
         self.return_codes = []
 
@@ -148,6 +149,30 @@ def generate_quantile_csv(settings, exec_data, benchmark_ids, groups_tools_confi
                 row.append("")
         result.append(row)
     return result
+
+def generate_stats_json(settings, exec_data, benchmark_ids, groups_tools_configs):
+    stats = OrderedDict()
+    stats["accumulated_walltime"] = OrderedDict()
+    all_walltime = 0.0
+    benchmark_times = OrderedDict()
+    # finished_walltimes = []
+    for (group, tool, config) in groups_tools_configs:
+        gtc_walltime = 0.0
+        for benchmark_id in exec_data[group][tool][config]:
+            b_time =  sum(CombinedResult(exec_data[group][tool][config][benchmark_id]).walltimes)
+            gtc_walltime += b_time
+            if (benchmark_id not in benchmark_times):
+                benchmark_times[benchmark_id] = 0.0
+            benchmark_times[benchmark_id] += b_time
+            # if CombinedResult(exec_data[group][tool][config][benchmark_id]).average_runtime() is not None:
+            #     finished_walltimes.append([b_time, f"{group}.{tool}.{config}.{benchmark_id}"])
+        stats["accumulated_walltime"]["{}.{}.{}".format(group, tool, config)] = round(gtc_walltime/3600, 1)
+        all_walltime += gtc_walltime
+    stats["accumulated_walltime"]["all"] = round(all_walltime / 3600, 1)
+    stats["benchmark_walltime"] = {k: round(v / 3600, 1) for k, v in sorted(benchmark_times.items(), key=lambda item: -item[1])}
+    # stats["finished_walltimes"] = list(sorted(finished_walltimes, key=lambda x: -x[0]))
+    return stats
+
 
 # Aux function for writing in files with proper indention
 def write_line(file, indention, content):

@@ -251,8 +251,8 @@ class Settings(object):
         if not "results-file-quantile" in self.json_data:
             self.json_data["results-file-quantile"] = "quantile.csv"
             set_an_option = True
-        if not "results-file-latex" in self.json_data:
-            self.json_data["results-file-latex"] = "main.tex"
+        if not "results-file-stats" in self.json_data:
+            self.json_data["results-file-stats"] = "stats.json"
             set_an_option = True
         if not "results-dir-table" in self.json_data:
             self.json_data["results-dir-table"] = "table/"
@@ -290,9 +290,9 @@ class Settings(object):
         """ Retrieves the filename to which the tool execution results for quantile plots are stored. """
         return self.json_data["results-file-quantile"]
 
-    def results_file_latex(self):
+    def results_file_stats(self):
         """ Retrieves the filename to which the tool execution results for latex plots are stored. """
-        return self.json_data["results-file-latex"]
+        return self.json_data["results-file-stats"]
 
     def results_dir_table(self):
         """ Retrieves the directory to which the tool execution result table is stored. """
