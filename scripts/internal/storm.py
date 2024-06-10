@@ -51,9 +51,18 @@ def get_configurations():
     cfgs.append(Configuration(id="vi2pi-topo-gmres", note="PI with gmres as LinEqSolver using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi"))
     cfgs.append(Configuration(id="vi2pi-topo-exactlu", note="PI with LU as LinEqSolver (exact) using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi --exact"))
 
-    # LP-based
-    cfgs.append(Configuration(id="lp-topo-gurobi", note="LP using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi"))
+    # LP-based (gurobi)
+    cfgs.append(Configuration(id="lp-topo-gurobi", note="LP using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax lp --lpsolver gurobi"))
+    cfgs.append(Configuration(id="lp-mono-gurobi", note="LP using Gurobi (1 thread), non-topological solving", command="--minmax:method lp --lpsolver gurobi"))
     cfgs.append(Configuration(id="vi2lp-topo-gurobi", note="LP with VI warm-start using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi"))
+
+    # LP-based (other)
+    cfgs.append(Configuration(id="lp-topo-soplex-exact", note="LP using soplex (exact), topological solving", command="--minmax:method  topological --topological:minmax lp --lpsolver soplex --exact "))
+    cfgs.append(Configuration(id="lp-topo-soplex", note="LP using soplex, topological solving", command="--minmax:method  topological --topological:minmax lp --lpsolver soplex"))
+    cfgs.append(Configuration(id="lp-topo-glpk", note="LP using glpk, topological solving", command="--minmax:method  topological --topological:minmax lp --lpsolver glpk"))
+    cfgs.append(Configuration(id="lp-topo-z3-exact", note="LP using z3 (exact), topological solving", command="--minmax:method  topological --topological:minmax lp --lpsolver z3 --exact"))
+    cfgs.append(Configuration(id="vi2lp-topo-soplex-exact", note="LP with VI warm-start using soplex (exact), topological solving", command="--minmax:method  topological --topological:minmax vi-to-lp --lpsolver soplex --exact "))
+
 
 
     # cfgs.append(Configuration(id="lp", note="LP with non-triv bounds using gurobi (1 thread)", command="--minmax:method lp  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds"))
