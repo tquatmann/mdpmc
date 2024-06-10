@@ -5,9 +5,12 @@ import os
 import sys
 from internal.processlogs import *
 
-def is_supported(benchmark):
+def is_considered(benchmark):
     if not any([benchmark.is_mdp(), benchmark.is_ma(), benchmark.is_pta()]): return False
     if not any([benchmark.is_unbounded_probabilistic_reachability(), benchmark.is_unbounded_expected_time(), benchmark.is_unbounded_expected_reward(), benchmark.is_unbounded_expected_steps()]): return False
+    if benchmark.has_reference_result():
+        if benchmark.get_reference_result() == 0.0: return False
+        if benchmark.is_unbounded_probabilistic_reachability() and benchmark.get_reference_result() == 1.0: return False
     if benchmark.is_unbounded_probabilistic_reachability() and benchmark.has_reference_result() and benchmark.get_reference_result() == 1.0: return False
     if benchmark.get_model_short_name() in ["repudiation_malicious", "repudiation_honest"]: return False # not supported by storm
     return True
@@ -33,15 +36,45 @@ if __name__ == "__main__":
     print("Benchmarking tool.")
     print("This script determines the considered benchmark sets.")
     print("Usages:")
-    print("python3 {} generates benchmark sets that do not need to depend on logfiles.".format(sys.argv[0]))
-    print("python3 {} path/to/first/logfiles/ reads from log file directories and determines more sets '".format(sys.argv[0]))
+    print("python3 {} path/to/first/logfiles/ reads from log file directories and determines benchmark sets '".format(sys.argv[0]))
     print("")
     if (len(sys.argv) == 2 and sys.argv[1] in ["-h", "-help", "--help"]):
         exit(1)
 
     settings = Settings()
 
-    all = [ b for b in get_all_benchmarks(settings, set_mdpmc_dir(os.path.join(settings.benchmark_dir(), "index.json"))) if is_supported(b)]
+    logdirs = sys.argv[1:]
+    if len(logdirs) == 0:
+        print("No log directories given. Exiting.")
+        exit(1)
+
+    print("Selected log dir(s): {}".format(", ".join(logdirs)))
+    print("")
+    groups_tools_configs = get_all_groups_tools_configs(logdirs) # group names are derived from the directory names
+    exec_data = gather_execution_data(settings, logdirs, groups_tools_configs)  # Group -> Tool -> Config -> Benchmark -> [Data array]
+
+    # get benchmarks with long build time for either mcsta or storm
+    long_build_time_ids = set()
+    for g,t,c in groups_tools_configs:
+        if "exact" in c: continue
+        if t not in exec_data[g]: continue
+        if c not in exec_data[g][t]: continue
+        for b in exec_data[g][t][c]:
+            if len(exec_data[g][t][c][b]) == 0: continue
+            res_data = exec_data[g][t][c][b][0]
+            buildtime = None
+            if "model-building-time" in res_data:
+                buildtime = res_data["model-building-time"]
+            if buildtime is None and t == storm.get_name(): # no build time in mcsta might also mean timeout during model checking
+                long_build_time_ids.add(b)
+            elif buildtime is not None and buildtime > 300.0:
+                long_build_time_ids.add(b)
+    save_set(sorted(long_build_time_ids), "long-build-time")
+
+    # get all supported benchmarks
+    all = [ b for b in get_all_benchmarks(settings, set_mdpmc_dir(os.path.join(settings.benchmark_dir(), "index.json"))) if is_considered(b)]
+    # ... but ignore those with long build times
+    all = [ b for b in all if b.get_identifier() not in long_build_time_ids]
 
     all_jani = [ b for b in all if b.has_janifile()]
 
@@ -67,25 +100,14 @@ if __name__ == "__main__":
     save_set(quickcheck, "quickcheck")
 
 
-    logdirs = sys.argv[1:]
-    if len(logdirs) == 0:
-        print("No log directories given. Exiting.")
-        exit(1)
-
-    print("Selected log dir(s): {}".format(", ".join(logdirs)))
-    print("")
-    groups_tools_configs = get_all_groups_tools_configs(logdirs) # group names are derived from the directory names
-    exec_data = gather_execution_data(settings, logdirs, groups_tools_configs)  # Group -> Tool -> Config -> Benchmark -> [Data array]
 
     # assemble community_superset
     min_chk_time_ids = set() # contains sufficiently hard benchmarks
     max_chk_time_ids = set() # contains sufficiently easy benchmarks
     max_build_time_ids = set() # contains easy-to-build benchmarks
-    long_build_time_ids = set() # contains hard-to-build benchmarks
     for g,t,c in groups_tools_configs:
         if not (t == storm.get_name() and c in ["ovi-topo", "vi2pi-topo-gmres", "vi2lp-topo-gurobi", "vi-topo"]):
             if not (t == mcsta.get_name() and c in ["vi"]):
-                print("Discarding config {}.{}.{} for determining community set".format(g,t,c))
                 continue
         if t not in exec_data[g]: continue
         if c not in exec_data[g][t]: continue
@@ -104,8 +126,6 @@ if __name__ == "__main__":
                 buildtime = res_data["model-building-time"]
             if buildtime is not None and buildtime <= 120.0:
                max_build_time_ids.add(b)
-            if buildtime is None or buildtime > 130.0:
-                long_build_time_ids.add(b)
     community_superset = min_chk_time_ids.intersection(max_chk_time_ids).intersection(max_build_time_ids)
     long_build_times_within_superset = community_superset.intersection(long_build_time_ids)
     save_set(sorted(community_superset), "community-superset")
@@ -116,7 +136,6 @@ if __name__ == "__main__":
     with_mecs = set()
     for g,t,c in groups_tools_configs:
         if not (t == storm.get_name() and c in ["vi-topo-mecq"]):
-            print("Discarding config {}.{}.{} for determining mec set".format(g,t,c))
             continue
         if t not in exec_data[g]: continue
         if c not in exec_data[g][t]: continue
@@ -136,7 +155,6 @@ if __name__ == "__main__":
     for g,t,c in groups_tools_configs:
         if not (t == storm.get_name() and c in ["vi-topo"]):
             if not (t == mcsta.get_name() and c in ["vi"]):
-                print("Discarding config {}.{}.{} for determining hard set".format(g,t,c))
                 continue
         if t not in exec_data[g]: continue
         if c not in exec_data[g][t]: continue
@@ -152,10 +170,3 @@ if __name__ == "__main__":
             if mctime is not None and buildtime is not None and mctime >= buildtime and mctime + buildtime >= 1.0:
                 hard_for_vi.add(b)
     save_set(sorted(hard_for_vi), "hard-for-vi")
-
-    # get benchmarks that are not considered in any set
-    considered_ids = set( [b.get_identifier() for b in qvbs + gridworld + premise + mec_only ])
-    unconsidered = [ b for b in all if b.get_identifier() not in considered_ids] # benchmarks that are not considered in any set
-    if len(unconsidered) > 0:
-        print("There are {} benchmarks that are not considered in any set".format(len(unconsidered)))
-    save_set(unconsidered, "unconsidered")
