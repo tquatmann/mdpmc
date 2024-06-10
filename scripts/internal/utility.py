@@ -272,9 +272,6 @@ class Settings(object):
         if not "mcsta-binary-dir" in self.json_data:
             self.json_data["mcsta-binary-dir"] = "$MDPMC_DIR/tools/Modest/"
             set_an_option = True
-        if not "filtered-paths" in self.json_data:
-            self.json_data["filtered-paths"] = [os.path.realpath(sys.path[0]) + "/", os.path.expanduser("~") + "/"]
-            set_an_option = True
         return set_an_option
 
     def benchmark_dir(self):
@@ -324,7 +321,10 @@ class Settings(object):
         return self.json_data["mcsta-binary-dir"]
     
     def filtered_paths(self):
-        """ returns a list of paths (e.g. home directory) that should be filtered from commands in logfiles """
+        """ returns a list of paths (e.g. home directory) that should be filtered from commands in logfiles
+            Note: for portability reasons, this is not stored in the settings.json file by default (but can be entered by hand)"""
+        if not "filtered-paths" in self.json_data:
+            return [os.path.realpath(sys.path[0]) + "/", os.path.expanduser("~") + "/"]
         return self.json_data["filtered-paths"]
         
     def save(self):

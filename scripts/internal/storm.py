@@ -40,12 +40,20 @@ def is_benchmark_supported(benchmark : Benchmark, configuration : Configuration)
 def get_configurations():
     cfgs = []
 
+    # VI-based
     cfgs.append(Configuration(id="ovi-topo", note="Optimistic VI, topological solving", command="--minmax:method topological --topological:minmax ovi  --sound"))
-    cfgs.append(Configuration(id="vi2pi-topo-exactlu", note="PI with LU as LinEqSolver (exact) using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi --exact"))
-    cfgs.append(Configuration(id="vi2pi-topo-gmres", note="PI with gmres as LinEqSolver using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi"))
-    cfgs.append(Configuration(id="vi2lp-topo-gurobi", note="LP with VI warm-start using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi"))
     cfgs.append(Configuration(id="vi-topo", note="Classical VI, topological solving", command="--minmax:method topological --topological:minmax vi "))
     cfgs.append(Configuration(id="vi-topo-mecq", note="Classical VI, topological solving", command="--minmax:method topological --topological:minmax vi --force-require-unique"))
+
+    # PI-based
+    cfgs.append(Configuration(id="pi-topo-gmres", note="PI with gmres as LinEqSolver, topological solving", command="--minmax:method topological --topological:minmax pi"))
+    cfgs.append(Configuration(id="pi-topo-exactlu", note="PI with LU as LinEqSolver (exact), topological solving", command="--minmax:method topological --topological:minmax pi --exact"))
+    cfgs.append(Configuration(id="vi2pi-topo-gmres", note="PI with gmres as LinEqSolver using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi"))
+    cfgs.append(Configuration(id="vi2pi-topo-exactlu", note="PI with LU as LinEqSolver (exact) using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi --exact"))
+
+    # LP-based
+    cfgs.append(Configuration(id="lp-topo-gurobi", note="LP using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi"))
+    cfgs.append(Configuration(id="vi2lp-topo-gurobi", note="LP with VI warm-start using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi"))
 
 
     # cfgs.append(Configuration(id="lp", note="LP with non-triv bounds using gurobi (1 thread)", command="--minmax:method lp  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds"))

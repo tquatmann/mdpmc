@@ -154,8 +154,7 @@ if __name__ == "__main__":
     save_set(sorted(hard_for_vi), "hard-for-vi")
 
     # get benchmarks that are not considered in any set
-    benchmarksets.reload_benchmark_sets()
-    considered_ids = set([ ident for setname in benchmarksets.data.keys() for ident in benchmarksets.data[setname]])
+    considered_ids = set( [b.get_identifier() for b in qvbs + gridworld + premise + mec_only ])
     unconsidered = [ b for b in all if b.get_identifier() not in considered_ids] # benchmarks that are not considered in any set
     if len(unconsidered) > 0:
         print("There are {} benchmarks that are not considered in any set".format(len(unconsidered)))
