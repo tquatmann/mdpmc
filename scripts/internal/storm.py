@@ -42,14 +42,17 @@ def get_configurations():
 
     # VI-based
     cfgs.append(Configuration(id="vi-mono", note="Classical VI", command="--minmax:method vi "))
+    cfgs.append(Configuration(id="vi-mono-mecq", note="Classical VI, always collapses mecs", command="--minmax:method vi --force-require-unique"))
     cfgs.append(Configuration(id="vi-topo", note="Classical VI, topological solving", command="--minmax:method topological --topological:minmax vi "))
     cfgs.append(Configuration(id="vi-topo-mecq", note="Classical VI, topological solving, always collapse mecs", command="--minmax:method topological --topological:minmax vi --force-require-unique"))
-    cfgs.append(Configuration(id="ovi-mono", note="Optimistic VI,  (always collapses mecs)", command="--minmax:method ovi  --sound"))
-    cfgs.append(Configuration(id="ovi-topo", note="Optimistic VI, topological solving (always collapses mecs)", command="--minmax:method topological --topological:minmax ovi  --sound"))
+    cfgs.append(Configuration(id="ovi-mono", note="Optimistic VI, always collapses mecs", command="--minmax:method ovi  --sound"))
+    cfgs.append(Configuration(id="ovi-topo", note="Optimistic VI, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax ovi  --sound"))
 
     # PI-based
     cfgs.append(Configuration(id="pi-mono-gmres", note="PI with gmres as LinEqSolver,", command="--minmax:method pi"))
+    cfgs.append(Configuration(id="pi-mono-mecq-gmres", note="PI with gmres as LinEqSolver, always collapses mecs", command="--minmax:method pi --force-require-unique"))
     cfgs.append(Configuration(id="pi-topo-gmres", note="PI with gmres as LinEqSolver, topological solving", command="--minmax:method topological --topological:minmax pi"))
+    cfgs.append(Configuration(id="pi-topo-mecq-gmres", note="PI with gmres as LinEqSolver, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax pi --force-require-unique"))
     cfgs.append(Configuration(id="pi-mono-exactlu", note="PI with LU as LinEqSolver (exact)", command="--minmax:method pi --exact"))
     cfgs.append(Configuration(id="pi-topo-exactlu", note="PI with LU as LinEqSolver (exact), topological solving", command="--minmax:method topological --topological:minmax pi --exact"))
     cfgs.append(Configuration(id="pi-mono-lu", note="PI with LU as LinEqSolver,", command="--minmax:method pi --eqsolver eigen --eigen:method sparselu"))
@@ -84,9 +87,14 @@ def get_configurations():
 
     cfgs.append(Configuration(id="lp-topo-gurobi", note="LP using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax lp --lpsolver gurobi"))
     cfgs.append(Configuration(id="lp-topo-mecq-gurobi", note="LP using Gurobi (1 thread), topological solving, always eliminate end components", command="--minmax:method topological --topological:minmax lp --lpsolver gurobi --force-require-unique"))
+    cfgs.append(Configuration(id="lp-topo-mecq-gurobi-4auto", note="LP using Gurobi (4 threads), topological solving, always eliminate end components", command="--minmax:method topological --topological:minmax lp --lpsolver gurobi --gurobi:threads 4 --force-require-unique"))
+    cfgs.append(Configuration(id="lp-mono-mecq-gurobi-4auto", note="LP using Gurobi (4 threads), non-topol., always eliminate end components", command="--minmax:method lp --lpsolver gurobi --gurobi:threads 4 --force-require-unique"))
 
     cfgs.append(Configuration(id="vi2lp-topo-gurobi", note="LP with VI warm-start using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi"))
     cfgs.append(Configuration(id="vi2lp-mono-gurobi", note="LP with VI warm-start using Gurobi (1 thread)", command="--minmax:method vi-to-lp --lpsolver gurobi"))
+
+    cfgs.append(Configuration(id="vi2lp-topo-gurobi-4auto", note="LP with VI warm-start using Gurobi (4 threads), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --gurobi:threads 4"))
+    cfgs.append(Configuration(id="vi2lp-mono-gurobi-4auto", note="LP with VI warm-start using Gurobi (4 threads)", command="--minmax:method vi-to-lp --lpsolver gurobi --gurobi:threads 4"))
 
 
     # LP-based (other)
