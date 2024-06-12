@@ -18,19 +18,19 @@ def get_configurations():
     cfgs.append(Configuration(id="ovi", note="Optimistic VI", command="--alg OptimisticValueIteration"))
 
     # lp-based
-    # cfgs.append(Configuration(id="lp-copt-mono", note="LP with COpt, monolithical", command="--alg LinearProgramming --lp-solver Copt"))
+    cfgs.append(Configuration(id="lp-copt-mono", note="LP with COpt, monolithical", command="--alg LinearProgramming --lp-solver Copt"))
     cfgs.append(Configuration(id="lp-copt-topo", note="LP with COpt, topological",  command="--alg LinearProgramming --lp-solver Copt --topological"))
-    # cfgs.append(Configuration(id="lp-cplex-mono", note="LP with CPLEX, monolithical", command="--alg LinearProgramming --lp-solver Cplex"))
+    cfgs.append(Configuration(id="lp-cplex-mono", note="LP with CPLEX, monolithical", command="--alg LinearProgramming --lp-solver Cplex"))
     cfgs.append(Configuration(id="lp-cplex-topo", note="LP with CPLEX, topological",  command="--alg LinearProgramming --lp-solver Cplex --topological"))
-    # cfgs.append(Configuration(id="lp-glop-mono", note="LP with Glop, monolithical", command="--alg LinearProgramming --lp-solver Glop"))
+    cfgs.append(Configuration(id="lp-glop-mono", note="LP with Glop, monolithical", command="--alg LinearProgramming --lp-solver Glop"))
     cfgs.append(Configuration(id="lp-glop-topo", note="LP with Glop, topological",  command="--alg LinearProgramming --lp-solver Glop --topological"))
-    # cfgs.append(Configuration(id="lp-gurobi-mono", note="LP with Gurobi, monolithical", command="--alg LinearProgramming --lp-solver Gurobi"))
+    cfgs.append(Configuration(id="lp-gurobi-mono", note="LP with Gurobi, monolithical", command="--alg LinearProgramming --lp-solver Gurobi"))
     cfgs.append(Configuration(id="lp-gurobi-topo", note="LP with Gurobi, topological",  command="--alg LinearProgramming --lp-solver Gurobi --topological"))
-    # cfgs.append(Configuration(id="lp-highs-mono", note="LP with HiGHS, monolithical", command="--alg LinearProgramming --lp-solver HiGHS"))
+    cfgs.append(Configuration(id="lp-highs-mono", note="LP with HiGHS, monolithical", command="--alg LinearProgramming --lp-solver HiGHS"))
     cfgs.append(Configuration(id="lp-highs-topo", note="LP with HiGHS, topological",  command="--alg LinearProgramming --lp-solver HiGHS --topological"))
-    # cfgs.append(Configuration(id="lp-lpsolve-mono", note="LP with lp\\_solve, monolithical", command="--alg LinearProgramming --lp-solver LPSolve"))
+    cfgs.append(Configuration(id="lp-lpsolve-mono", note="LP with lp\\_solve, monolithical", command="--alg LinearProgramming --lp-solver LPSolve"))
     cfgs.append(Configuration(id="lp-lpsolve-topo", note="LP with lp\\_solve, topological",  command="--alg LinearProgramming --lp-solver LPSolve --topological"))
-    # cfgs.append(Configuration(id="lp-mosek-mono", note="LP with Mosek, monolithical", command="--alg LinearProgramming --lp-solver Mosek"))
+    cfgs.append(Configuration(id="lp-mosek-mono", note="LP with Mosek, monolithical", command="--alg LinearProgramming --lp-solver Mosek"))
     cfgs.append(Configuration(id="lp-mosek-topo", note="LP with Mosek, topological",  command="--alg LinearProgramming --lp-solver Mosek --topological"))
 
     # vi with reductions
@@ -196,7 +196,7 @@ def get_Build_Time(log):
     num_expl = float(log[pos_expl:end_pos_expl]) # note that mcsta has rounded this to a multiple of 0.1 s
     num_merge = float(log[pos_merge:end_pos_merge]) # note that mcsta has rounded this to a multiple of 0.1 s
     return num_expl + num_merge
-      
+
 def is_not_supported(logfile):
     """
     Returns true if the logfile contains error messages that mean that the input is not supported.
