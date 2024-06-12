@@ -348,6 +348,7 @@ def is_memout(logfile):
     known_messages.append("Maximum memory exceeded.")
     known_messages.append("BDD Unique table full")
     known_messages.append("ERROR: The program received signal 11")
+    known_messages.append("Unable to optimize Gurobi model (Out of memory, error code 10001).")
     for m in known_messages:
         if m in logfile:
             return True

@@ -32,12 +32,10 @@ class CombinedResult(object):
         for res_json in result_json_array:
             if not res_json["supported"]: self.num_not_supported += 1
             elif False: self.num_ignored += 1 # Nothing ignored right now
-            elif "expected-error" in res_json and res_json["expected-error"]:
-                self.num_expected_error += 1
-            elif "execution-error" in res_json and res_json["execution-error"]:
-                self.num_unexpected_error += 1
-            elif "timeout" in res_json and res_json["timeout"]: self.num_timeout += 1
+            elif "expected-error" in res_json and res_json["expected-error"]: self.num_expected_error += 1
             elif "memout" in res_json and res_json["memout"]: self.num_memout += 1
+            elif "execution-error" in res_json and res_json["execution-error"]: self.num_unexpected_error += 1
+            elif "timeout" in res_json and res_json["timeout"]: self.num_timeout += 1
             elif "result-correct" in res_json and not res_json["result-correct"]:
                 self.num_incorrect += 1
             else:
@@ -192,15 +190,24 @@ def generate_group_scaling_factors(exec_data, benchmark_ids, groups_tools_config
 def generate_stats_json(settings, exec_data, benchmark_ids, groups_tools_configs):
     stats = OrderedDict()
     stats["accumulated_walltime"] = OrderedDict()
+    stats["num-cor-inc-nores"] = OrderedDict()
     all_walltime = 0.0
     for (group, tool, config) in groups_tools_configs:
         gtc_walltime = 0.0
+        gtc_num_cor_inc_nores = [0, 0, 0]
         for benchmark_id in benchmark_ids:
             if benchmark_id not in exec_data[group][tool][config]: continue
             res = CombinedResult(exec_data[group][tool][config][benchmark_id])
-            b_time =  sum(res.walltimes)
-            gtc_walltime += b_time
-        stats["accumulated_walltime"]["{}.{}.{}".format(group, tool, config)] = round(gtc_walltime/3600, 1)
+            gtc_walltime += sum(res.walltimes)
+            if res.num_incorrect > 0:
+                gtc_num_cor_inc_nores[1] += 1
+            elif res.average_runtime() is None:
+                gtc_num_cor_inc_nores[2] += 1
+            else:
+                gtc_num_cor_inc_nores[0] += 1
+        gtc_string = "{}.{}.{}".format(group, tool, config)
+        stats["accumulated_walltime"][gtc_string] = round(gtc_walltime/3600, 1)
+        stats["num-cor-inc-nores"][gtc_string] = "{} / {} / {}".format(*gtc_num_cor_inc_nores)
         all_walltime += gtc_walltime
     stats["accumulated_walltime"]["total"] = round(all_walltime / 3600, 1)
     stats["group_scaling_factors"] = generate_group_scaling_factors(exec_data, benchmark_ids, groups_tools_configs)

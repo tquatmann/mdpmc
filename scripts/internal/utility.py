@@ -332,7 +332,7 @@ class Settings(object):
         if not "ignored-tools-configs-for-inv-generation" in self.json_data:
             return []
         return self.json_data["ignored-tools-configs-for-inv-generation"]
-    
+
     def save(self):
         save_json(self.json_data, self.settings_filename)
         print("Settings saved to {}.".format(os.path.realpath(self.settings_filename)))
