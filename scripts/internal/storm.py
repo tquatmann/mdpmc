@@ -47,12 +47,14 @@ def get_configurations():
     cfgs.append(Configuration(id="vi-topo-mecq", note="Classical VI, topological solving, always collapse mecs", command="--minmax:method topological --topological:minmax vi --force-require-unique"))
     cfgs.append(Configuration(id="ovi-mono", note="Optimistic VI, always collapses mecs", command="--minmax:method ovi  --sound"))
     cfgs.append(Configuration(id="ovi-topo", note="Optimistic VI, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax ovi  --sound"))
+    cfgs.append(Configuration(id="rs-topo-exact", note="RationalSearch (exact), topological solving", command="--minmax:method topological --topological:minmax rs --exact"))
+    cfgs.append(Configuration(id="rs-topo-mecq-exact", note="RationalSearch (exact), topological solving, mec quotient", command="--minmax:method topological --topological:minmax rs --force-require-unique  --exact"))
 
     # PI-based
     cfgs.append(Configuration(id="pi-mono-gmres", note="PI with gmres as LinEqSolver,", command="--minmax:method pi"))
-    cfgs.append(Configuration(id="pi-mono-mecq-gmres", note="PI with gmres as LinEqSolver, always collapses mecs", command="--minmax:method pi --force-require-unique"))
+    # cfgs.append(Configuration(id="pi-mono-mecq-gmres", note="PI with gmres as LinEqSolver, always collapses mecs", command="--minmax:method pi --force-require-unique"))
     cfgs.append(Configuration(id="pi-topo-gmres", note="PI with gmres as LinEqSolver, topological solving", command="--minmax:method topological --topological:minmax pi"))
-    cfgs.append(Configuration(id="pi-topo-mecq-gmres", note="PI with gmres as LinEqSolver, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax pi --force-require-unique"))
+    # cfgs.append(Configuration(id="pi-topo-mecq-gmres", note="PI with gmres as LinEqSolver, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax pi --force-require-unique"))
     cfgs.append(Configuration(id="pi-mono-exactlu", note="PI with LU as LinEqSolver (exact)", command="--minmax:method pi --exact"))
     cfgs.append(Configuration(id="pi-topo-exactlu", note="PI with LU as LinEqSolver (exact), topological solving", command="--minmax:method topological --topological:minmax pi --exact"))
     cfgs.append(Configuration(id="pi-mono-lu", note="PI with LU as LinEqSolver,", command="--minmax:method pi --eqsolver eigen --eigen:method sparselu"))
