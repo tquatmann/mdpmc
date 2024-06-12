@@ -326,7 +326,13 @@ class Settings(object):
         if not "filtered-paths" in self.json_data:
             return [os.path.realpath(sys.path[0]) + "/", os.path.expanduser("~") + "/"]
         return self.json_data["filtered-paths"]
-        
+
+    def get_ignored_tools_configs_for_inv_generation(self):
+        """ returns a list of tools that should be ignored when generating the invocations """
+        if not "ignored-tools-configs-for-inv-generation" in self.json_data:
+            return []
+        return self.json_data["ignored-tools-configs-for-inv-generation"]
+    
     def save(self):
         save_json(self.json_data, self.settings_filename)
         print("Settings saved to {}.".format(os.path.realpath(self.settings_filename)))

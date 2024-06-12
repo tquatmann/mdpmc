@@ -23,8 +23,12 @@ def create_invocations(settings):
             input("Press Return to continue or CTRL+C to abort.")
         # Get and test configurations
         storm_cfgs = storm.get_configurations()
-        selected_config_identifiers = input_selection("Storm configurations", OrderedDict([(config.identifier, [config.note, "default" if config.command == "" else config.command]) for config in storm_cfgs]))
-        print("Selected {} Storm configurations.".format(len(selected_config_identifiers)))
+        storm_cfgs = [cfg for cfg in storm_cfgs if "{}.{}".format(storm.get_name(), cfg.identifier) not in settings.get_ignored_tools_configs_for_inv_generation()]
+        if len(storm_cfgs) == 0:
+            input("No Storm configurations available. Press Return to continue.")
+        else:
+            selected_config_identifiers = input_selection("Storm configurations", OrderedDict([(config.identifier, [config.note, "default" if config.command == "" else config.command]) for config in storm_cfgs]))
+            print("Selected {} Storm configurations.".format(len(selected_config_identifiers)))
         for config in storm_cfgs:
             if config.identifier in selected_config_identifiers:
                 test_result = storm.test_installation(settings, config)
@@ -44,8 +48,12 @@ def create_invocations(settings):
             input("Press Return to continue or CTRL+C to abort.")
         # Get and test configurations
         mcsta_cfgs = mcsta.get_configurations()
-        selected_config_identifiers = input_selection("mcsta configurations", OrderedDict([(config.identifier, [config.note, "default" if config.command == "" else config.command]) for config in mcsta_cfgs]))
-        print("Selected {} mcsta configurations.".format(len(selected_config_identifiers)))
+        mcsta_cfgs = [cfg for cfg in mcsta_cfgs if "{}.{}".format(mcsta.get_name(), cfg.identifier) not in settings.get_ignored_tools_configs_for_inv_generation()]
+        if len(mcsta_cfgs) == 0:
+            input("No mcsta configurations available. Press Return to continue.")
+        else:
+            selected_config_identifiers = input_selection("mcsta configurations", OrderedDict([(config.identifier, [config.note, "default" if config.command == "" else config.command]) for config in mcsta_cfgs]))
+            print("Selected {} mcsta configurations.".format(len(selected_config_identifiers)))
         for config in mcsta_cfgs:
             if config.identifier in selected_config_identifiers:
                 test_result = mcsta.test_installation(settings, config)
