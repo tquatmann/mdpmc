@@ -47,8 +47,8 @@ def get_configurations():
     cfgs.append(Configuration(id="vi-topo-mecq", note="Classical VI, topological solving, always collapse mecs", command="--minmax:method topological --topological:minmax vi --force-require-unique"))
     cfgs.append(Configuration(id="ovi-mono", note="Optimistic VI, always collapses mecs", command="--minmax:method ovi  --sound"))
     cfgs.append(Configuration(id="ovi-topo", note="Optimistic VI, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax ovi  --sound"))
-    cfgs.append(Configuration(id="rs-topo-exact", note="RationalSearch (exact), topological solving", command="--minmax:method topological --topological:minmax rs --exact"))
-    cfgs.append(Configuration(id="rs-topo-mecq-exact", note="RationalSearch (exact), topological solving, mec quotient", command="--minmax:method topological --topological:minmax rs --force-require-unique  --exact"))
+    cfgs.append(Configuration(id="rs-topo-exact", note="RationalSearch (exact), topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax rs --exact --force-require-unique"))
+    cfgs.append(Configuration(id="rs-topo-mecq-exact", note="RationalSearch (exact), topological solving, mec quotient, always collapses mecs", command="--minmax:method topological --topological:minmax rs --force-require-unique  --exact --force-require-unique"))
 
     # PI-based
     cfgs.append(Configuration(id="pi-mono-gmres", note="PI with gmres as LinEqSolver,", command="--minmax:method pi"))
