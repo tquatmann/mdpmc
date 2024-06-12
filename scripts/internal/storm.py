@@ -63,13 +63,31 @@ def get_configurations():
     cfgs.append(Configuration(id="vi2pi-topo-gmres", note="PI with gmres as LinEqSolver using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi"))
     cfgs.append(Configuration(id="vi2pi-topo-exactlu", note="PI with LU as LinEqSolver (exact) using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi --exact"))
 
-
     # LP-based (gurobi)
+    cfgs.append(Configuration(id="lp-mono-gurobi", note="LP using Gurobi (1 thread), non-topological solving", command="--minmax:method lp --lpsolver gurobi"))
+
+    cfgs.append(Configuration(id="lp-mono-gurobi-4auto", note="LP with non-triv bounds using gurobi (4 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method auto"))
+    cfgs.append(Configuration(id="lp-mono-gurobi-4barrier", note="LP using gurobi (4 threads, barrier)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method barrier "))
+    cfgs.append(Configuration(id="lp-mono-gurobi-4dualsimpl", note="LP using gurobi (4 threads, dualsimpl)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method dual-simplex "))
+    cfgs.append(Configuration(id="lp-mono-gurobi-4primalsimpl", note="LP using gurobi (4 threads, primalsimpl)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method primal-simplex "))
+    cfgs.append(Configuration(id="lp-gurobi-16auto", note="LP using gurobi (16 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 16 --gurobi:method auto"))
+
+    cfgs.append(Configuration(id="lp-mono-gurobi-4autoeq", note="LP using gurobi (4 threads), eq. constr", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-eq-unique-actions"))
+    cfgs.append(Configuration(id="lp-mono-gurobi-4autoinit", note="LP using gurobi (4 threads), init opt. ", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial"))
+    cfgs.append(Configuration(id="lp-mono-gurobi-4autobnds", note="LP using gurobi (4 threads), nontriv bnds", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --minmax:lp-use-nontrivial-bounds"))
+    cfgs.append(Configuration(id="lp-mono-gurobi-4autoinitbnds", note="LP using gurobi (4 threads), init opt., nontriv bnds", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --minmax:lp-objective-type onlyinitial --minmax:lp-use-nontrivial-bounds"))
+    cfgs.append(Configuration(id="lp-topo-gurobi-4auto", note="LP using gurobi (4 threads), topol, eq. constr", command="--minmax:method topological --topological:minmax lp  --lpsolver gurobi --gurobi:threads 4"))
+    cfgs.append(Configuration(id="lp-topo-gurobi-4autoeq", note="LP using gurobi (4 threads), topol, eq. constr", command="--minmax:method topological --topological:minmax lp  --lpsolver gurobi --gurobi:threads 4 --minmax:lp-eq-unique-actions"))
+    cfgs.append(Configuration(id="lp-topo-gurobi-4autoinit", note="LP using gurobi (4 threads), topol, init opt. ", command="--minmax:method topological --topological:minmax lp  --lpsolver gurobi --gurobi:threads 4 --minmax:lp-objective-type onlyinitial --topological:relevant-values"))
+    cfgs.append(Configuration(id="lp-topo-gurobi-4autobnds", note="LP using gurobi (4 threads), topol, nontriv bnds", command="--minmax:method topological --topological:minmax lp  --lpsolver gurobi --gurobi:threads 4 --minmax:lp-use-nontrivial-bounds"))
+    cfgs.append(Configuration(id="lp-topo-gurobi-4autoinitbnds", note="LP using gurobi (4 threads), topol, init opt., nontriv bnds", command="--minmax:method topological --topological:minmax lp  --lpsolver gurobi --gurobi:threads 4 --minmax:lp-objective-type onlyinitial --topological:relevant-values --minmax:lp-use-nontrivial-bounds"))
+
     cfgs.append(Configuration(id="lp-topo-gurobi", note="LP using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax lp --lpsolver gurobi"))
     cfgs.append(Configuration(id="lp-topo-mecq-gurobi", note="LP using Gurobi (1 thread), topological solving, always eliminate end components", command="--minmax:method topological --topological:minmax lp --lpsolver gurobi --force-require-unique"))
-    cfgs.append(Configuration(id="lp-mono-gurobi", note="LP using Gurobi (1 thread), non-topological solving", command="--minmax:method lp --lpsolver gurobi"))
+
     cfgs.append(Configuration(id="vi2lp-topo-gurobi", note="LP with VI warm-start using Gurobi (1 thread), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi"))
     cfgs.append(Configuration(id="vi2lp-mono-gurobi", note="LP with VI warm-start using Gurobi (1 thread)", command="--minmax:method vi-to-lp --lpsolver gurobi"))
+
 
     # LP-based (other)
     cfgs.append(Configuration(id="lp-mono-soplex-exact", note="LP using soplex (exact)", command="--minmax:method lp --lpsolver soplex --exact "))
@@ -90,8 +108,8 @@ def get_configurations():
     # cfgs.append(Configuration(id="lp-gurobi-16autonobnds", note="LP using gurobi (16 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 16 "))
     # cfgs.append(Configuration(id="lp-gurobi-4auto", note="LP with non-triv bounds using gurobi (4 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds "))
     # cfgs.append(Configuration(id="lp-gurobi-4autoeq", note="LP with non-triv bounds using gurobi (4 threads), eq. constr", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-eq-unique-actions --minmax:lp-use-nontrivial-bounds "))
-    # cfgs.append(Configuration(id="lp-gurobi-4autoinit", note="LP with non-triv bounds using gurobi (4 threads), only init opt. ", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial --topological:relevant-values --minmax:lp-use-nontrivial-bounds "))
-    # cfgs.append(Configuration(id="lp-gurobi-4autoiniteq", note="LP with non-triv bounds using gurobi (4 threads), only init opt., eq. constr", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial --topological:relevant-values --minmax:lp-eq-unique-actions --minmax:lp-use-nontrivial-bounds "))
+    # cfgs.append(Configuration(id="lp-gurobi-4autoinit", note="LP with non-triv bounds using gurobi (4 threads), init opt. ", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial --topological:relevant-values --minmax:lp-use-nontrivial-bounds "))
+    # cfgs.append(Configuration(id="lp-gurobi-4autoiniteq", note="LP with non-triv bounds using gurobi (4 threads), init opt., eq. constr", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial --topological:relevant-values --minmax:lp-eq-unique-actions --minmax:lp-use-nontrivial-bounds "))
     # cfgs.append(Configuration(id="lp-gurobi-4autonobnds", note="LP using gurobi (4 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 "))
     # cfgs.append(Configuration(id="lp-gurobi-4barriernobnds", note="LP using gurobi (4 threads, barrier)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method barrier "))
     # cfgs.append(Configuration(id="lp-gurobi-4dualsimplnobnds", note="LP using gurobi (4 threads, dualsimpl)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method dual-simplex "))
