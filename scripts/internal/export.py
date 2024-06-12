@@ -4,6 +4,7 @@ from . import storm
 from . import mcsta
 from collections import Counter
 import os
+import itertools
 
 def get_runtime(result_json):
     if "model-checking-time" in result_json:
@@ -150,27 +151,59 @@ def generate_quantile_csv(settings, exec_data, benchmark_ids, groups_tools_confi
         result.append(row)
     return result
 
+def generate_group_scaling_factors(exec_data, benchmark_ids, groups_tools_configs):
+    groups = sorted(set([g for (g,t,c) in groups_tools_configs]))
+    tools_configs = sorted(set([(t,c) for (g,t,c) in groups_tools_configs]))
+    scaling_factors = OrderedDict([(g, OrderedDict()) for g in groups])
+    for g1, g2 in itertools.product(groups, groups):
+        if g1 == g2: continue
+        scaling_factors[g1][g2] = OrderedDict()
+        sum_g1 = 0.0
+        sum_g2 = 0.0
+        for t,c in tools_configs:
+            sum_gtc1 = 0.0
+            sum_gtc2 = 0.0
+            if t not in exec_data[g1] or c not in exec_data[g1][t]: continue
+            if t not in exec_data[g2] or c not in exec_data[g2][t]: continue
+            for b in benchmark_ids:
+                if b not in exec_data[g1][t][c] or b not in exec_data[g2][t][c]: continue
+                time1 = CombinedResult(exec_data[g1][t][c][b]).average_runtime()
+                time2 = CombinedResult(exec_data[g2][t][c][b]).average_runtime()
+                if time1 is None or time2 is None: continue
+                sum_gtc1 += time1
+                sum_gtc2 += time2
+            if sum_gtc2 > 0:
+                scaling_factors[g1][g2]["{}.{}".format(t,c)] = sum_gtc1 / sum_gtc2
+            elif sum_gtc1 == 0:
+                scaling_factors[g1][g2]["{}.{}".format(t,c)] = 1.0
+            else:
+                print("Warning: Can not compute scaling factor for {} vs. {} with tool {} and config {}".format(g1, g2, t, c))
+            sum_g1 += sum_gtc1
+            sum_g2 += sum_gtc2
+        if sum_g2 > 0:
+            scaling_factors[g1][g2]["total"] = sum_g1 / sum_g2
+        elif sum_g1 == 0:
+            scaling_factors[g1][g2]["total"] = 1.0
+        else:
+            print("Warning: Can not compute total scaling factor for {} vs. {}".format(g1, g2))
+    return scaling_factors
+
+
 def generate_stats_json(settings, exec_data, benchmark_ids, groups_tools_configs):
     stats = OrderedDict()
     stats["accumulated_walltime"] = OrderedDict()
     all_walltime = 0.0
-    benchmark_times = OrderedDict()
-    # finished_walltimes = []
     for (group, tool, config) in groups_tools_configs:
         gtc_walltime = 0.0
-        for benchmark_id in exec_data[group][tool][config]:
-            b_time =  sum(CombinedResult(exec_data[group][tool][config][benchmark_id]).walltimes)
+        for benchmark_id in benchmark_ids:
+            if benchmark_id not in exec_data[group][tool][config]: continue
+            res = CombinedResult(exec_data[group][tool][config][benchmark_id])
+            b_time =  sum(res.walltimes)
             gtc_walltime += b_time
-            if (benchmark_id not in benchmark_times):
-                benchmark_times[benchmark_id] = 0.0
-            benchmark_times[benchmark_id] += b_time
-            # if CombinedResult(exec_data[group][tool][config][benchmark_id]).average_runtime() is not None:
-            #     finished_walltimes.append([b_time, f"{group}.{tool}.{config}.{benchmark_id}"])
         stats["accumulated_walltime"]["{}.{}.{}".format(group, tool, config)] = round(gtc_walltime/3600, 1)
         all_walltime += gtc_walltime
-    stats["accumulated_walltime"]["all"] = round(all_walltime / 3600, 1)
-    stats["benchmark_walltime"] = {k: round(v / 3600, 1) for k, v in sorted(benchmark_times.items(), key=lambda item: -item[1])}
-    # stats["finished_walltimes"] = list(sorted(finished_walltimes, key=lambda x: -x[0]))
+    stats["accumulated_walltime"]["total"] = round(all_walltime / 3600, 1)
+    stats["group_scaling_factors"] = generate_group_scaling_factors(exec_data, benchmark_ids, groups_tools_configs)
     return stats
 
 
