@@ -441,7 +441,17 @@ class Benchmark(object):
     def get_benchmark_sets(self):
         ident = self.get_identifier()
         return [ s for s in benchmarksets.data.keys() if ident in benchmarksets.data[s] ]
-    
+
+    def get_scatterclass(self):
+        c = self.get_model_type().lower()
+        if "qvbs" in self.get_benchmark_sets():
+            c += "qvbs"
+        elif "gridworld" in self.get_benchmark_sets():
+            c += "grid"
+        if "mec-only" in self.get_benchmark_sets() or "mec-subset" in self.get_benchmark_sets():
+            c += "mec"
+        return c
+
     def get_property_jani(self):
         model_jani = self.load_jani_file()
         for property_jani in model_jani["properties"]:
