@@ -47,7 +47,12 @@ def get_configurations():
     cfgs.append(Configuration(id="vi-topo-mecq", note="Classical VI, topological solving, always collapse mecs", command="--minmax:method topological --topological:minmax vi --force-require-unique"))
     cfgs.append(Configuration(id="ovi-mono", note="Optimistic VI, always collapses mecs", command="--minmax:method ovi  --sound"))
     cfgs.append(Configuration(id="ovi-topo", note="Optimistic VI, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax ovi  --sound"))
+    cfgs.append(Configuration(id="svi-mono", note="Sound VI, always collapses mecs", command="--minmax:method svi  --sound"))
+    cfgs.append(Configuration(id="svi-topo", note="Sound VI, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax svi  --sound"))
+    cfgs.append(Configuration(id="ii-mono", note="II, always collapses mecs", command="--minmax:method ii  --sound"))
+    cfgs.append(Configuration(id="ii-topo", note="II, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax ii  --sound"))
     cfgs.append(Configuration(id="rs-topo-mecq-exact", note="RationalSearch (exact), topological solving, mec quotient", command="--minmax:method topological --topological:minmax rs --force-require-unique  --exact"))
+    cfgs.append(Configuration(id="rs-mono-mecq-exact", note="RationalSearch (exact), mec quotient", command="--minmax:method rs --force-require-unique  --exact"))
 
     # PI-based
     cfgs.append(Configuration(id="pi-mono-gmres", note="PI with gmres as LinEqSolver,", command="--minmax:method pi --eqsolver gmm++"))
@@ -81,7 +86,13 @@ def get_configurations():
     cfgs.append(Configuration(id="lp-mono-gurobi-4barrier", note="LP using gurobi (4 threads, barrier)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method barrier "))
     cfgs.append(Configuration(id="lp-mono-gurobi-4dualsimpl", note="LP using gurobi (4 threads, dualsimpl)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method dual-simplex "))
     cfgs.append(Configuration(id="lp-mono-gurobi-4primalsimpl", note="LP using gurobi (4 threads, primalsimpl)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method primal-simplex "))
+    cfgs.append(Configuration(id="lp-gurobi-8auto", note="LP using gurobi (8 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 8 --gurobi:method auto"))
     cfgs.append(Configuration(id="lp-gurobi-16auto", note="LP using gurobi (16 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 16 --gurobi:method auto"))
+
+    cfgs.append(Configuration(id="lp-gurobi95-1auto", note="LP using gurobi 9.5 (1 thread)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 1 --gurobi:method auto"))
+    cfgs.append(Configuration(id="lp-gurobi95-4auto", note="LP using gurobi 9.5 (4 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --gurobi:method auto"))
+    cfgs.append(Configuration(id="lp-gurobi95-8auto", note="LP using gurobi 9.5 (8 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 8 --gurobi:method auto"))
+    cfgs.append(Configuration(id="lp-gurobi95-16auto", note="LP using gurobi 9.5 (16 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 16 --gurobi:method auto"))
 
     cfgs.append(Configuration(id="lp-mono-gurobi-4autoeq", note="LP using gurobi (4 threads), eq. constr", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-eq-unique-actions"))
     cfgs.append(Configuration(id="lp-mono-gurobi-4autoinit", note="LP using gurobi (4 threads), init opt. ", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-objective-type onlyinitial"))

@@ -16,6 +16,8 @@ def get_configurations():
     # vi-based
     cfgs.append(Configuration(id="vi", note="Classical VI", command="--alg ValueIteration"))
     cfgs.append(Configuration(id="ovi", note="Optimistic VI", command="--alg OptimisticValueIteration"))
+    cfgs.append(Configuration(id="svi", note="Sound VI", command="--alg SoundValueIteration"))
+    cfgs.append(Configuration(id="ii", note="Interval iteration", command="--alg IntervalIteration"))
 
     # lp-based
     cfgs.append(Configuration(id="lp-copt-mono", note="LP with COpt, monolithical", command="--alg LinearProgramming --lp-solver Copt"))
