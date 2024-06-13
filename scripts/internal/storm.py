@@ -130,9 +130,28 @@ def get_configurations():
     cfgs.append(Configuration(id="lp-topo-z3-exact", note="LP using z3 (exact), topological solving", command="--minmax:method  topological --topological:minmax lp --lpsolver z3 --exact"))
     cfgs.append(Configuration(id="vi2lp-topo-soplex-exact", note="LP with VI warm-start using soplex (exact), topological solving", command="--minmax:method  topological --topological:minmax vi-to-lp --lpsolver soplex --exact "))
 
+    # bisimulation
+    cfgs.append(Configuration(id="vi-mono-bisim-expl", note="Classical VI, expl bisim", command="--minmax:method vi --bisimulation"))
+    cfgs.append(Configuration(id="vi-mono-bisim-cudd", note="Classical VI, symb bisim with cudd", command="--minmax:method vi --engine dd-to-sparse --bisimulation --ddlib cudd --cudd:maxmem 8192"))
+    cfgs.append(Configuration(id="vi-mono-bisim-sylvan1", note="Classical VI, symb bisim with sylvan (1 thread)", command="--minmax:method vi --engine dd-to-sparse --bisimulation --ddlib sylvan --sylvan:threads 1 --sylvan:maxmem 8192"))
+    cfgs.append(Configuration(id="vi-mono-bisim-sylvan4", note="Classical VI, symb bisim with sylvan (4 threads)", command="--minmax:method vi --engine dd-to-sparse --bisimulation --ddlib sylvan --sylvan:threads 4 --sylvan:maxmem 8192"))
+    cfgs.append(Configuration(id="vi2pi-topo-exactlu-bisim-expl", note="PI (topol) with LU as LinEqSolver (exact) using VI warm, expl bisim", command="--minmax:method topological --topological:minmax vi-to-pi --exact --bisimulation"))
+    cfgs.append(Configuration(id="vi2pi-topo-exactlu-bisim-sylvan1", note="PI (topol) with LU as LinEqSolver (exact) using VI warm, symb bisim 1th", command="--minmax:method topological --topological:minmax vi-to-pi --engine dd-to-sparse --bisimulation --sylvan:threads 1 --sylvan:maxmem 8192"))
+    cfgs.append(Configuration(id="vi2pi-topo-exactlu-bisim-sylvan4", note="PI (topol) with LU as LinEqSolver (exact) using VI warm, symb bisim 4th", command="--minmax:method topological --topological:minmax vi-to-pi --engine dd-to-sparse --bisimulation --sylvan:threads 4 --sylvan:maxmem 8192"))
+
+    # state permutation
+    cfgs.append(Configuration(id="vi-mono-bfs", note="Classical VI, bfs state order", command="--minmax:method vi --permute bfs"))
+    cfgs.append(Configuration(id="vi-mono-reversebfs", note="Classical VI, reverse bfs state order", command="--minmax:method vi --permute reverse-bfs"))
+    cfgs.append(Configuration(id="vi-mono-rnd", note="Classical VI, random state order", command="--minmax:method vi --permute random {}".format(RANDOM_SEED_TOKEN)))
+    cfgs.append(Configuration(id="pi-mono-bfs", note="PI gmres, bfs state order", command="--minmax:method pi --permute bfs"))
+    cfgs.append(Configuration(id="pi-mono-reversebfs", note="PI gmres, reverse bfs state order", command="--minmax:method pi --permute reverse-bfs"))
+    cfgs.append(Configuration(id="pi-mono-rnd", note="PI gmres, random state order", command="--minmax:method pi --permute random {}".format(RANDOM_SEED_TOKEN)))
+    cfgs.append(Configuration(id="lp-mono-bfs", note="PI gmres, bfs state order", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --permute bfs"))
+    cfgs.append(Configuration(id="lp-mono-reversebfs", note="PI gmres, reverse bfs state order", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --permute reverse-bfs"))
+    cfgs.append(Configuration(id="lp-mono-rnd", note="PI gmres, random state order", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4 --permute random {}".format(RANDOM_SEED_TOKEN)))
 
 
-    # cfgs.append(Configuration(id="lp", note="LP with non-triv bounds using gurobi (1 thread)", command="--minmax:method lp  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds"))
+# cfgs.append(Configuration(id="lp", note="LP with non-triv bounds using gurobi (1 thread)", command="--minmax:method lp  --lpsolver gurobi --minmax:lp-use-nontrivial-bounds"))
     # cfgs.append(Configuration(id="lp-glpk-nobnds", note="LP using glpk", command="--minmax:method lp  --lpsolver glpk"))
     # cfgs.append(Configuration(id="lp-gurobi-16autonobnds", note="LP using gurobi (16 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 16 "))
     # cfgs.append(Configuration(id="lp-gurobi-4auto", note="LP with non-triv bounds using gurobi (4 threads)", command="--minmax:method lp  --lpsolver gurobi --gurobi:threads 4  --minmax:lp-use-nontrivial-bounds "))
@@ -164,7 +183,6 @@ def get_configurations():
     # cfgs.append(Configuration(id="vi2lp-mecq-topo-gurobi", note="LP with non-triv bounds and VI warm-start using Gurobi (1 thread), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --minmax:lp-use-nontrivial-bounds --force-require-unique"))
     # cfgs.append(Configuration(id="vi2lp-mecq-topo-soplex-exact", note="LP with non-triv bounds and VI warm-start using soplex (exact), topological solving, MEC Quotient", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver soplex --exact --minmax:lp-use-nontrivial-bounds --force-require-unique"))
 
-    # cfgs.append(Configuration(id="rnd-vi", note="Random permutation, classical VI", command="--minmax:method vi --permute random {}".format(RANDOM_SEED_TOKEN)))
 
     return cfgs
 
