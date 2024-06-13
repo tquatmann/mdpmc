@@ -56,7 +56,8 @@
 			"Storm.lp-mono-soplex-exact",
 			"Storm.vi2lp-mono-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"evadeV.14-4-4-500.MaxGoal": {
@@ -1150,7 +1151,10 @@
 			"Storm.vi2pi-exactlu",
 			"Storm.pi-mecq-topo-exactlu",
 			"Storm.vi2pi-topo-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.vi2lp-topo-soplex-exact",
+			"Storm.lp-topo-soplex-exact",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"firewire.false-3-800.elected": {
@@ -1688,7 +1692,8 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"eajs.3-150-7.ExpUtil": {
@@ -1755,7 +1760,9 @@
 			"Storm.vi2lp-mecq-topo-soplex-exact",
 			"Storm.vi2lp-soplex-exactnobnds",
 			"Storm.vi2pi-topo-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.vi2lp-mono-soplex-exact",
+			"Storm.vi2lp-topo-soplex-exact"
 		]
 	},
 	"echoring.100.MinOffline1": {
@@ -2136,7 +2143,9 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-topo-soplex-exact"
 		]
 	},
 	"airportB.3-200-30-3-150.MaxGoal": {
@@ -2269,7 +2278,8 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.lp-topo-z3-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"consensus.6-2.steps_max": {
@@ -2284,7 +2294,8 @@
 			"Storm.vi2pi-topo-exactlu",
 			"Storm.pi-topo-exactlu",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"zeroconf-pta.150.incorrect": {
@@ -2903,7 +2914,8 @@
 			"Storm.vi2lp-mono-soplex-exact",
 			"Storm.lp-mono-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"readers-writers.40.pr_many_requests": {
@@ -3120,7 +3132,9 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-mono-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-mono-soplex-exact"
 		]
 	},
 	"reentrant-queues.3-3-3-5.PminBothQueuesFullIsOne": {
@@ -4023,7 +4037,8 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-topo-exactlu",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"airportB.3-200-30-1-150.MaxGoal": {
@@ -4138,7 +4153,9 @@
 			"Storm.vi2lp-mecq-topo-soplex-exact",
 			"Storm.vi2lp-soplex-exactnobnds",
 			"Storm.vi2pi-topo-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.vi2lp-topo-soplex-exact",
+			"Storm.vi2lp-mono-soplex-exact"
 		]
 	},
 	"consensus.4-4.steps_min": {
@@ -5319,7 +5336,8 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.lp-topo-z3-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"cdrive.10.goal": {
@@ -6490,7 +6508,10 @@
 			"Storm.vi2pi-topo-exactlu",
 			"Storm.pi-topo-exactlu",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.lp-topo-soplex-exact",
+			"Storm.vi2lp-topo-soplex-exact",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"zeroconf.20-6-false.correct_max": {
@@ -6536,7 +6557,8 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-topo-exactlu",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"pacman.100.crash": {
@@ -6556,7 +6578,8 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"jobs.10-3.avgtime": {
@@ -7017,7 +7040,8 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"evadeV.14-4-1-100.MaxGoal": {
@@ -7144,7 +7168,8 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"wlan.2-0.cost_max": {
@@ -7180,7 +7205,9 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.vi2lp-topo-soplex-exact"
 		]
 	},
 	"stream.100.pr_underrun": {
@@ -7430,7 +7457,9 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-topo-exactlu",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-topo-z3-exact"
 		]
 	},
 	"wlan.3-0.time_max": {
@@ -7500,7 +7529,8 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"wlan.1-0.time_max": {
@@ -7686,7 +7716,9 @@
 			"Storm.lp-mono-soplex-exact",
 			"Storm.vi2lp-mono-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-topo-z3-exact"
 		]
 	},
 	"rectangle-tireworld.11.goal": {
@@ -7748,7 +7780,8 @@
 			"Storm.lp-mono-soplex-exact",
 			"Storm.vi2lp-mono-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.pi-topo-exactlu"
 		]
 	},
 	"wlan.4-0.time_min": {
@@ -7858,7 +7891,8 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"firewire.true-3-200.time_max": {
@@ -7907,7 +7941,8 @@
 			"Storm.lp-topo-soplex-exact",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"firewire.false-3-400.elected": {
@@ -7964,7 +7999,8 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"firewire.false-3-400.time_max": {
@@ -8054,7 +8090,9 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-topo-soplex-exact"
 		]
 	},
 	"zeroconf.20-8-false.correct_min": {
@@ -9025,7 +9063,9 @@
 			"Storm.lp-topo-soplex-exact",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-topo-z3-exact"
 		]
 	},
 	"wlan-large.2.E_or": {
@@ -9043,7 +9083,9 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-topo-soplex-exact"
 		]
 	},
 	"firewire.true-3-200.time_sending": {
@@ -9110,7 +9152,8 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"firewire.true-3-600.elected": {
@@ -9390,7 +9433,9 @@
 			"Storm.pi-exactlu",
 			"Storm.vi2pi-exactlu",
 			"Storm.pi-topo-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.vi2pi-topo-exactlu",
+			"Storm.vi2pi-mono-exactlu"
 		]
 	},
 	"zeroconf_dl.1000-1-true-30.deadline_max": {
@@ -9420,7 +9465,9 @@
 			"Storm.vi2lp-mecq-topo-soplex-exact",
 			"Storm.vi2lp-soplex-exactnobnds",
 			"Storm.vi2pi-topo-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.vi2lp-topo-soplex-exact",
+			"Storm.vi2lp-mono-soplex-exact"
 		]
 	},
 	"dpm.4-8-100.TminQueuesFull": {
@@ -9438,7 +9485,8 @@
 			"Storm.rs-mecq-topo-exact",
 			"Storm.rs-exact",
 			"Storm.vi2pi-topo-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"dpm.4-4-25.PminQueuesFull": {
@@ -9688,7 +9736,10 @@
 			"Storm.vi2lp-soplex-exactnobnds",
 			"Storm.lp-topo-soplex-exact",
 			"Storm.vi2lp-topo-soplex-exact",
-			"Storm.vi2lp-mono-soplex-exact"
+			"Storm.vi2lp-mono-soplex-exact",
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.vi2pi-topo-exactlu",
+			"Storm.lp-mono-soplex-exact"
 		]
 	},
 	"sensor.1.max_success": {
@@ -9721,7 +9772,10 @@
 			"Storm.vi2pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.vi2lp-mono-soplex-exact",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-topo-soplex-exact",
+			"Storm.lp-mono-soplex-exact"
 		]
 	},
 	"sensor.3.max_success": {
@@ -9818,7 +9872,8 @@
 		"value": "71",
 		"cfgs": [
 			"Storm.vi2pi-topo-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"intercept-mdp.20-0.0.time_min": {
@@ -9843,7 +9898,9 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.lp-mono-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.vi2lp-mono-soplex-exact",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"airport-mdp.100-100.time_min": {
@@ -9873,7 +9930,8 @@
 			"Storm.lp-topo-soplex-exact",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"random-grid.80-0.3-0.3.prob_max": {
@@ -9882,7 +9940,8 @@
 			"Storm.vi2pi-topo-exactlu",
 			"Storm.pi-topo-exactlu",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"intercept-mdp.40-0.0.time_min": {
@@ -9899,7 +9958,9 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-topo-z3-exact"
 		]
 	},
 	"mer.250-0.1.prob_max": {
@@ -9911,7 +9972,9 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.lp-mono-soplex-exact",
+			"Storm.vi2lp-mono-soplex-exact"
 		]
 	},
 	"manymecs.10000.prob_max": {
@@ -9925,7 +9988,8 @@
 			"Storm.vi2lp-mono-soplex-exact",
 			"Storm.lp-mono-soplex-exact",
 			"Storm.vi2pi-mono-exactlu",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"evade-mdp.4-0.7.prob_max": {
@@ -9957,7 +10021,9 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-topo-z3-exact"
 		]
 	},
 	"sensor.2.max_success": {
@@ -9972,7 +10038,8 @@
 			"Storm.vi2pi-topo-exactlu",
 			"Storm.pi-topo-exactlu",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"manymecs.1000.prob_max": {
@@ -10015,7 +10082,8 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.lp-topo-z3-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact"
 		]
 	},
 	"wlan-mec.2-0.cost_min": {
@@ -10031,7 +10099,8 @@
 			"Storm.lp-topo-soplex-exact",
 			"Storm.pi-topo-exactlu",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.lp-topo-z3-exact"
 		]
 	},
 	"refuel-mdp.50-25.reach_max": {
@@ -10062,7 +10131,8 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.lp-mono-soplex-exact",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.vi2lp-mono-soplex-exact"
 		]
 	},
 	"consensus-mec.4-2.disagree": {
@@ -10073,7 +10143,10 @@
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.pi-topo-exactlu",
 			"Storm.pi-mono-exactlu",
-			"Storm.vi2pi-mono-exactlu"
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.lp-mono-soplex-exact",
+			"Storm.vi2lp-mono-soplex-exact"
 		]
 	},
 	"sensor.5.max_success": {
@@ -10082,7 +10155,24 @@
 			"Storm.pi-topo-exactlu",
 			"Storm.vi2lp-topo-soplex-exact",
 			"Storm.lp-topo-soplex-exact",
-			"Storm.pi-mono-exactlu"
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-topo-mecq-exact",
+			"Storm.vi2pi-topo-exactlu",
+			"Storm.lp-topo-z3-exact",
+			"Storm.vi2pi-mono-exactlu"
+		]
+	},
+	"avoid-mdp.25-0.2.time_min": {
+		"value": "121",
+		"cfgs": [
+			"Storm.rs-topo-mecq-exact"
+		]
+	},
+	"avoid-mdp.40-0.2.goal_max": {
+		"value": "207593292217354101801791165698914236543199149466244717912662620398157824/238418579101562535960004535106360707297156330707340840995311737060546875",
+		"cfgs": [
+			"Storm.vi2pi-mono-exactlu",
+			"Storm.vi2pi-topo-exactlu"
 		]
 	}
 }
