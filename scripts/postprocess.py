@@ -12,6 +12,7 @@ def exportData(settings, benchmark_set_id, exec_data, groups_tools_configs_sorte
     ensure_directory(benchmark_set_id)
     benchmarks_with_ref_res = [b for b in benchmark_set if get_benchmark_from_id(settings, b).has_reference_result()]
     print("Exporting data for benchmark set '{}' containing {} benchmarks out of which {} have a reference result".format(benchmark_set_id, len(benchmark_set), len(benchmarks_with_ref_res)))
+    print("No reference results for:\n\t{}".format("\n\t".join([b for b in benchmark_set if b not in benchmarks_with_ref_res])))
     scatterfile = os.path.join(benchmark_set_id, settings.results_file_scatter())
     print("\tGenerating file {} for scatter plots".format(scatterfile))
     scatter_csv = generate_scatter_csv(settings, exec_data, benchmark_set, groups_tools_configs_filtered)

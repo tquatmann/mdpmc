@@ -32,10 +32,10 @@ class CombinedResult(object):
         for res_json in result_json_array:
             if not res_json["supported"]: self.num_not_supported += 1
             elif False: self.num_ignored += 1 # Nothing ignored right now
+            elif "timeout" in res_json and res_json["timeout"]: self.num_timeout += 1
             elif "expected-error" in res_json and res_json["expected-error"]: self.num_expected_error += 1
             elif "memout" in res_json and res_json["memout"]: self.num_memout += 1
             elif "execution-error" in res_json and res_json["execution-error"]: self.num_unexpected_error += 1
-            elif "timeout" in res_json and res_json["timeout"]: self.num_timeout += 1
             elif "result-correct" in res_json and not res_json["result-correct"]:
                 self.num_incorrect += 1
             else:

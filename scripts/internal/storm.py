@@ -131,13 +131,13 @@ def get_configurations():
     cfgs.append(Configuration(id="vi2lp-topo-soplex-exact", note="LP with VI warm-start using soplex (exact), topological solving", command="--minmax:method  topological --topological:minmax vi-to-lp --lpsolver soplex --exact "))
 
     # bisimulation
-    cfgs.append(Configuration(id="vi-mono-bisim-expl", note="Classical VI, expl bisim", command="--minmax:method vi --bisimulation"))
-    cfgs.append(Configuration(id="vi-mono-bisim-cudd", note="Classical VI, symb bisim with cudd", command="--minmax:method vi --engine dd-to-sparse --bisimulation --ddlib cudd --cudd:maxmem 8192"))
+    # cfgs.append(Configuration(id="vi-mono-bisim-expl", note="Classical VI, expl bisim", command="--minmax:method vi --bisimulation"))
+    # cfgs.append(Configuration(id="vi-mono-bisim-cudd", note="Classical VI, symb bisim with cudd", command="--minmax:method vi --engine dd-to-sparse --bisimulation --ddlib cudd --cudd:maxmem 8192"))
     cfgs.append(Configuration(id="vi-mono-bisim-sylvan1", note="Classical VI, symb bisim with sylvan (1 thread)", command="--minmax:method vi --engine dd-to-sparse --bisimulation --ddlib sylvan --sylvan:threads 1 --sylvan:maxmem 8192"))
-    cfgs.append(Configuration(id="vi-mono-bisim-sylvan4", note="Classical VI, symb bisim with sylvan (4 threads)", command="--minmax:method vi --engine dd-to-sparse --bisimulation --ddlib sylvan --sylvan:threads 4 --sylvan:maxmem 8192"))
-    cfgs.append(Configuration(id="vi2pi-topo-exactlu-bisim-expl", note="PI (topol) with LU as LinEqSolver (exact) using VI warm, expl bisim", command="--minmax:method topological --topological:minmax vi-to-pi --exact --bisimulation"))
+    # cfgs.append(Configuration(id="vi-mono-bisim-sylvan4", note="Classical VI, symb bisim with sylvan (4 threads)", command="--minmax:method vi --engine dd-to-sparse --bisimulation --ddlib sylvan --sylvan:threads 4 --sylvan:maxmem 8192"))
+    # cfgs.append(Configuration(id="vi2pi-topo-exactlu-bisim-expl", note="PI (topol) with LU as LinEqSolver (exact) using VI warm, expl bisim", command="--minmax:method topological --topological:minmax vi-to-pi --exact --bisimulation"))
     cfgs.append(Configuration(id="vi2pi-topo-exactlu-bisim-sylvan1", note="PI (topol) with LU as LinEqSolver (exact) using VI warm, symb bisim 1th", command="--minmax:method topological --topological:minmax vi-to-pi --exact --engine dd-to-sparse --bisimulation --sylvan:threads 1 --sylvan:maxmem 8192"))
-    cfgs.append(Configuration(id="vi2pi-topo-exactlu-bisim-sylvan4", note="PI (topol) with LU as LinEqSolver (exact) using VI warm, symb bisim 4th", command="--minmax:method topological --topological:minmax vi-to-pi --exact --engine dd-to-sparse --bisimulation --sylvan:threads 4 --sylvan:maxmem 8192"))
+    # cfgs.append(Configuration(id="vi2pi-topo-exactlu-bisim-sylvan4", note="PI (topol) with LU as LinEqSolver (exact) using VI warm, symb bisim 4th", command="--minmax:method topological --topological:minmax vi-to-pi --exact --engine dd-to-sparse --bisimulation --sylvan:threads 4 --sylvan:maxmem 8192"))
 
     # state permutation
     cfgs.append(Configuration(id="vi-mono-bfs", note="Classical VI, bfs state order", command="--minmax:method vi --permute bfs"))

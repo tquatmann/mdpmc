@@ -366,7 +366,7 @@ class Benchmark(object):
         changed = False
         if self.get_identifier() in ref_json:
             if str(result) != str(ref_json[self.get_identifier()]["value"]):
-                print("Inconsistent reference result for {}.\nGot {}\nbut entry is {}".format(self.get_identifier(), result, ref_json[self.get_identifier()]))
+                print("Inconsistent reference result for {}.{}.\nGot {}\nbut entry is {}".format(cfg,self.get_identifier(), result, ref_json[self.get_identifier()]))
             if cfg not in ref_json[self.get_identifier()]["cfgs"]:
                 ref_json[self.get_identifier()]["cfgs"].append(cfg)
                 changed = True
