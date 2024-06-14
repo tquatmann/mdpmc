@@ -111,9 +111,10 @@ def generate_scatter_csv(settings, exec_data, benchmark_ids, groups_tools_config
 # Generates a csv containing runtimes. The first column denotes the row indices. Each of the remaining column corresponds to a tool/config combination. The last column corresponds to the fastest tool/config
 # An entry in the ith row corresponds to the runtime of the ith fastest benchmark
 def generate_quantile_csv(settings, exec_data, benchmark_ids, groups_tools_configs):
-    selection_for_best = ["{}.{}".format(storm.get_name(), cfg) for cfg in ["vi2pi-topo-exactlu", "ovi-topo", "vi2lp-topo-mecq-gurobi-4auto"]] + ["{}.{}".format(mcsta.get_name(), cfg) for cfg in ["vi-mecq", "ovi-mecq"]]
+    selection_for_best = ["{}.{}".format(storm.get_name(), cfg) for cfg in ["vi-topo-mecq", "pi-mono-gmres-topo"]] + ["{}.{}".format(mcsta.get_name(), cfg) for cfg in ["vi-es", "ii"]]
     for tc in selection_for_best:
-        assert tc in [ "{}.{}".format(t,c) for (g,t,c) in groups_tools_configs ], "Selection for best runtime '{}' not in the list of tools/configs".format(tc)
+        if tc not in [ "{}.{}".format(t,c) for (g,t,c) in groups_tools_configs ]:
+            print("Selection for best runtime '{}' not in the list of tools/configs".format(tc))
     MIN_VALUE = 0.1 # runtimes will be set to max(MIN_VALUE, actual runtime)
     runtimes_best_dict = OrderedDict()
     runtimes_best_dict["overall-best"] = OrderedDict()
@@ -200,6 +201,34 @@ def generate_group_scaling_factors(exec_data, benchmark_ids, groups_tools_config
     return scaling_factors
 
 
+def get_best_configs(settings, exec_data, benchmark_ids, groups_tools_configs):
+    runtimes = OrderedDict()
+    for benchmark_id in benchmark_ids:
+        runtimes[benchmark_id] = OrderedDict()
+        best_time = 999999
+        for (group, tool, config) in groups_tools_configs:
+            if benchmark_id in exec_data[group][tool][config]:
+                combined_res = CombinedResult(exec_data[group][tool][config][benchmark_id])
+                if combined_res.num_ignored + combined_res.num_not_supported + combined_res.num_incorrect == 0 and len(combined_res.runtimes) > 0:
+                    value = combined_res.average_runtime()
+                    runtimes[benchmark_id]["{}.{}.{}".format(group,tool,config)] = value
+                    if value < best_time:
+                        best_time = value
+        runtimes[benchmark_id]["best"] = best_time
+
+    # count how often a cfg is within 10% of the best
+    best_configs = OrderedDict()
+    for benchmark_id in benchmark_ids:
+        best_time = runtimes[benchmark_id]["best"]
+        for gtc in runtimes[benchmark_id]:
+            if gtc == "best": continue
+            if gtc not in best_configs: best_configs[gtc] = []
+            if runtimes[benchmark_id][gtc] <= 1.5 * best_time:
+                best_configs[gtc] += [benchmark_id]
+    # sort best_configs by length of list
+    best_configs = sorted(best_configs.items(), key=lambda x: len(x[1]), reverse=True)
+    return OrderedDict(best_configs)
+
 def generate_stats_json(settings, exec_data, benchmark_ids, groups_tools_configs):
     stats = OrderedDict()
     stats["accumulated_walltime"] = OrderedDict()
@@ -224,6 +253,7 @@ def generate_stats_json(settings, exec_data, benchmark_ids, groups_tools_configs
         all_walltime += gtc_walltime
     stats["accumulated_walltime"]["total"] = round(all_walltime / 3600, 1)
     stats["group_scaling_factors"] = generate_group_scaling_factors(exec_data, benchmark_ids, groups_tools_configs)
+    stats["best_configs"] = get_best_configs(settings, exec_data, benchmark_ids, groups_tools_configs)
     return stats
 
 

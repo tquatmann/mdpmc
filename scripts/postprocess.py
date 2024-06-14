@@ -10,6 +10,18 @@ def exportData(settings, benchmark_set_id, exec_data, groups_tools_configs_sorte
     groups_tools_configs_filtered = [(g,t,c) for g,t,c in groups_tools_configs_sorted if g in exec_data and t in exec_data[g] and c in exec_data[g][t] and len(exec_data[g][t][c]) > 0]
     benchmark_set = load_json(os.path.realpath(os.path.join(sys.path[0], "data/{}.json").format(benchmark_set_id)))
     ensure_directory(benchmark_set_id)
+
+    # this was used to find the a selection for the 'best' configurations
+    # benchmark_set_restr = benchmark_set
+    # for i in range(1,8):
+    #     best1 = list(get_best_configs(settings, exec_data, benchmark_set_restr, groups_tools_configs_filtered).items())
+    #     print("Round #{} Best cfgs:\n\t{}".format(i, "\n\t".join(["{}: {}".format(b[0],len(b[1])) for b in best1[:4]])))
+    #     best1 = best1[0]
+    #     benchmark_set_restr = [b for b in benchmark_set_restr if b not in best1[1]]
+    #     print("\tBest configuration: '{}'. \n{} benchmarks remaining".format(best1, len(benchmark_set_restr)))
+
+
+
     benchmarks_with_ref_res = [b for b in benchmark_set if get_benchmark_from_id(settings, b).has_reference_result()]
     print("Exporting data for benchmark set '{}' containing {} benchmarks out of which {} have a reference result".format(benchmark_set_id, len(benchmark_set), len(benchmarks_with_ref_res)))
     print("No reference results for:\n\t{}".format("\n\t".join([b for b in benchmark_set if b not in benchmarks_with_ref_res])))
@@ -51,7 +63,6 @@ if __name__ == "__main__":
 
     groups_tools_configs = get_all_groups_tools_configs(logdirs) # group names are derived from the directory names
     exec_data = gather_execution_data(settings, logdirs, groups_tools_configs)  # Group -> Tool -> Config -> Benchmark -> [Data array]
-
     for benchmarkset_id in benchmarksets.data.keys():
         exportData(settings, benchmarkset_id, exec_data, groups_tools_configs)
 
