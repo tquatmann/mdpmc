@@ -117,7 +117,7 @@ def get_configurations():
     cfgs.append(Configuration(id="vi2lp-topo-gurobi-4auto", note="LP with VI warm-start using Gurobi (4 threads), topological solving", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --gurobi:threads 4"))
     cfgs.append(Configuration(id="vi2lp-topo-mecq-gurobi-4auto", note="LP with VI warm-start using Gurobi (4 threads), topological solving, mecq", command="--minmax:method topological --topological:minmax vi-to-lp --lpsolver gurobi --gurobi:threads 4 --force-require-unique"))
     cfgs.append(Configuration(id="vi2lp-mono-gurobi-4auto", note="LP with VI warm-start using Gurobi (4 threads)", command="--minmax:method vi-to-lp --lpsolver gurobi --gurobi:threads 4"))
-    cfgs.append(Configuration(id="vi2lp-mono-mecq-gurobi-4auto", note="LP with VI warm-start using Gurobi (4 threads)", command="--minmax:method vi-to-lp --lpsolver gurobi --gurobi:threads 4 --force-require-unique"))
+    cfgs.append(Configuration(id="vi2lp-mono-mecq-gurobi-4auto", note="LP with VI warm-start using Gurobi (4 threads), mecq", command="--minmax:method vi-to-lp --lpsolver gurobi --gurobi:threads 4 --force-require-unique"))
 
 
     # LP-based (other)
@@ -131,6 +131,7 @@ def get_configurations():
     cfgs.append(Configuration(id="lp-topo-glpk", note="LP using glpk, topological solving", command="--minmax:method  topological --topological:minmax lp --lpsolver glpk"))
     cfgs.append(Configuration(id="lp-topo-z3-exact", note="LP using z3 (exact), topological solving", command="--minmax:method  topological --topological:minmax lp --lpsolver z3 --exact"))
     cfgs.append(Configuration(id="vi2lp-topo-soplex-exact", note="LP with VI warm-start using soplex (exact), topological solving", command="--minmax:method  topological --topological:minmax vi-to-lp --lpsolver soplex --exact "))
+    cfgs.append(Configuration(id="vi2lp-topo-mecq-soplex-exact", note="LP with VI warm-start using soplex (exact), topological solving, mecq", command="--minmax:method  topological --topological:minmax vi-to-lp --lpsolver soplex --exact --force-require-unique"))
 
     # bisimulation
     # cfgs.append(Configuration(id="vi-mono-bisim-expl", note="Classical VI, expl bisim", command="--minmax:method vi --bisimulation"))
