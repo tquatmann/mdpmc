@@ -59,6 +59,9 @@ def parse_tool_output(settings, execution_json):
         if build_time is not None: execution_json["model-building-time"] = build_time
         nontriv_mec = storm.get_nontriv_mec_percentage(log)
         if nontriv_mec is not None: execution_json["nontrivial-mec-percentage"] = nontriv_mec
+        preprocessing_time = storm.get_preprocessing_time(log)
+        if preprocessing_time is not None: execution_json["preprocessing-time"] = preprocessing_time
+        execution_json["bisimulation"] = storm.is_bisimulation_used(log)
         result = None
         mctime = storm.get_MC_Time(log)
         if mctime is not None:

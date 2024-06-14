@@ -292,6 +292,24 @@ def get_MC_Time(logfile):
         return float(num)
     return None
 
+def is_bisimulation_used(logfile):
+    """
+    Tries to parse the bisimulation usage
+    """
+    return "-bisim " in logfile or "--bisimulation" in logfile
+
+def get_preprocessing_time(logfile):
+    """
+    Tries to parse the model checking time
+    """
+    pos = logfile.find("Time for model preprocessing: ")
+    if pos >= 0:
+        pos += len("Time for model preprocessing: ")
+        pos2 = logfile.find("s.", pos)
+        num = logfile[pos:pos2]
+        return float(num)
+    return None
+
 def get_Solve_Time(logfile):
   """
   Tries to parse the solving time of the underlying solution method (model checking time without prob0/1, ... preprocessing)
