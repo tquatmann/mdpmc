@@ -66,6 +66,7 @@ def get_configurations():
     cfgs.append(Configuration(id="pi-topo-gmres-mono", note="PI (topological) with gmres as LinEqSolver (non-topo)", command="--minmax:method topological --topological:minmax pi --eqsolver gmm++"))
     # cfgs.append(Configuration(id="pi-topo-mecq-gmres", note="PI with gmres as LinEqSolver, topological solving, always collapses mecs", command="--minmax:method topological --topological:minmax pi --force-require-unique"))
     cfgs.append(Configuration(id="pi-mono-exactlu", note="PI with LU as LinEqSolver (exact)", command="--minmax:method pi --eqsolver eigen --exact"))
+    cfgs.append(Configuration(id="pi-mono-exactlu-topo", note="PI (non-topo) with LU as LinEqSolver (exact) (topo)", command="--minmax:method pi --eqsolver topological --topological:eqsolver eigen --exact"))
     cfgs.append(Configuration(id="pi-topo-exactlu", note="PI with LU as LinEqSolver (exact), topological solving", command="--minmax:method topological --topological:minmax pi --exact"))
     cfgs.append(Configuration(id="pi-topo-exactlu-mono", note="PI (topological) with LU as LinEqSolver (exact, non-topo)", command="--minmax:method topological --topological:minmax pi --eqsolver eigen --exact"))
     cfgs.append(Configuration(id="pi-mono-lu", note="PI with LU as LinEqSolver,", command="--minmax:method pi --eqsolver eigen --eigen:method sparselu"))
@@ -80,6 +81,7 @@ def get_configurations():
     cfgs.append(Configuration(id="vi2pi-topo-exactlu", note="PI with LU as LinEqSolver (exact) using VI warm-start, topological solving", command="--minmax:method topological --topological:minmax vi-to-pi --exact"))
     cfgs.append(Configuration(id="vi2pi-topo-gmres-mono", note="PI (topological) with gmres as LinEqSolver (non-topo) using VI warm-start", command="--minmax:method topological --topological:minmax vi-to-pi --eqsolver gmm++"))
     cfgs.append(Configuration(id="vi2pi-topo-exactlu-mono", note="PI (topological) with LU as LinEqSolver (exact, non-topo) using VI warm-start", command="--minmax:method topological --topological:minmax vi-to-pi --eqsolver eigen --exact"))
+    cfgs.append(Configuration(id="vi2pi-mono-exactlu-topo", note="PI (non-topo) with LU as LinEqSolver (exact) (topo) using VI warm-start", command="--minmax:method vi-to-pi --eqsolver topological --topological:eqsolver eigen --exact"))
 
     # LP-based (gurobi)
     cfgs.append(Configuration(id="lp-mono-gurobi", note="LP using Gurobi (1 thread), non-topological solving", command="--minmax:method lp --lpsolver gurobi"))

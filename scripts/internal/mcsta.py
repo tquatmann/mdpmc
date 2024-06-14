@@ -42,6 +42,9 @@ def get_configurations():
     cfgs.append(Configuration(id="vi-es", note="Classical VI", command="--alg ValueIteration --es"))
     cfgs.append(Configuration(id="vi-es-p01", note="Classical VI", command="--alg ValueIteration --es --p0 --p1"))
 
+    # mecq
+    cfgs.append(Configuration(id="vi-mecq", note="Classical VI, mecquotient", command="--alg ValueIteration --ec"))
+    cfgs.append(Configuration(id="ovi-mecq", note="Optimistic VI mecquotient", command="--alg OptimisticValueIteration --ec"))
 
     return cfgs
     
