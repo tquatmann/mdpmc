@@ -111,8 +111,13 @@ def generate_scatter_csv(settings, exec_data, benchmark_ids, groups_tools_config
 # Generates a csv containing runtimes. The first column denotes the row indices. Each of the remaining column corresponds to a tool/config combination. The last column corresponds to the fastest tool/config
 # An entry in the ith row corresponds to the runtime of the ith fastest benchmark
 def generate_quantile_csv(settings, exec_data, benchmark_ids, groups_tools_configs):
+    selection_for_best = ["{}.{}".format(storm.get_name(), cfg) for cfg in ["vi2pi-topo-exactlu", "ovi-topo", "vi2lp-topo-mecq-gurobi-4auto"]] + ["{}.{}".format(mcsta.get_name(), cfg) for cfg in ["vi-mecq", "ovi-mecq"]]
+    for tc in selection_for_best:
+        assert tc in [ "{}.{}".format(t,c) for (g,t,c) in groups_tools_configs ], "Selection for best runtime '{}' not in the list of tools/configs".format(tc)
     MIN_VALUE = 0.1 # runtimes will be set to max(MIN_VALUE, actual runtime)
     runtimes_best_dict = OrderedDict()
+    runtimes_best_dict["overall-best"] = OrderedDict()
+    runtimes_best_dict["selection-best"] = OrderedDict()
     groups_tools = []
     for (g,t,c) in groups_tools_configs:
         if g not in runtimes_best_dict: runtimes_best_dict[g] = OrderedDict()
@@ -120,8 +125,8 @@ def generate_quantile_csv(settings, exec_data, benchmark_ids, groups_tools_confi
             runtimes_best_dict[g][t] = OrderedDict()
             groups_tools.append((g,t))
 
-    result = [ ["n"] + ["{}.{}.{}shifted".format(g,t,c) for (g,t,c) in groups_tools_configs]  + ["{}.{}.bestshifted".format(g,t) for g,t in groups_tools]] # append 'shifted' for compatibility with qcomp latex
-    result.append([1] + [MIN_VALUE] * (len(groups_tools_configs) + len(groups_tools))) # prevents Latex error when there are no runtimes for a tool,config
+    result = [ ["n"] + ["{}.{}.{}shifted".format(g,t,c) for (g,t,c) in groups_tools_configs]  + ["{}.{}.bestshifted".format(g,t) for g,t in groups_tools] + ["selection-bestshifted", "bestshifted"]] # append 'shifted' for compatibility with qcomp latex
+    result.append([1] + [MIN_VALUE] * (len(groups_tools_configs) + len(groups_tools) + 2)) # prevents Latex error when there are no runtimes for a tool,config
     runtimes = OrderedDict()
     for (group, tool, config) in groups_tools_configs:
         runtimes_gtc = []
@@ -135,12 +140,18 @@ def generate_quantile_csv(settings, exec_data, benchmark_ids, groups_tools_confi
                         runtimes_best_dict[group][tool][benchmark_id] = value
                     else:
                         runtimes_best_dict[group][tool][benchmark_id] = min(runtimes_best_dict[group][tool][benchmark_id], value)
+                    if benchmark_id not in runtimes_best_dict["overall-best"] or value < runtimes_best_dict["overall-best"][benchmark_id]:
+                        runtimes_best_dict["overall-best"][benchmark_id] = value
+                    if tool + "." + config in selection_for_best and (benchmark_id not in runtimes_best_dict["selection-best"] or value < runtimes_best_dict["selection-best"][benchmark_id]):
+                        runtimes_best_dict["selection-best"][benchmark_id] = value
         runtimes_gtc.sort()
         runtimes["{}.{}.{}".format(group, tool,config)] = runtimes_gtc
     for (group,tool) in groups_tools:
         runtimes_best = [ runtimes_best_dict[group][tool][b] for b in runtimes_best_dict[group][tool] ]
         runtimes_best.sort()
         runtimes["{}.{}.best".format(group,tool)] = runtimes_best
+    runtimes["selection-best"] = sorted([ runtimes_best_dict["selection-best"][b] for b in runtimes_best_dict["selection-best"] ])
+    runtimes["best"] = sorted([ runtimes_best_dict["overall-best"][b] for b in runtimes_best_dict["overall-best"] ])
     for i in range(len(benchmark_ids)):
         row = [str(i+1)]
         for gtc in runtimes:
