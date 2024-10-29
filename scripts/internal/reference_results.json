@@ -1650,7 +1650,16 @@
 			"Storm.lp-topo-soplex-exact",
 			"Storm.lp-topo-z3-exact",
 			"Storm.vi2lp-topo-mecq-soplex-exact",
-			"Storm.rs-topo-mecq-exact"
+			"Storm.rs-topo-mecq-exact",
+			"Storm.pi-mono-exactlu-topo",
+			"Storm.pi-topo-exactlu-mono",
+			"Storm.vi2pi-topo-exactlu-bisim-sylvan1",
+			"Storm.vi2pi-mono-exactlu-topo",
+			"Storm.lp-mono-z3-exact",
+			"Storm.pi-mono-exactlu",
+			"Storm.rs-mono-mecq-exact",
+			"Storm.vi2pi-topo-exactlu-mono",
+			"Storm.vi2pi-mono-exactlu"
 		]
 	},
 	"csma.2-2.all_before_max": {
