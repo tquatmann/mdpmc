@@ -1,0 +1,22 @@
+
+
+\begin{figure}[t]
+%	\setlength{\scatterplotsize}{0.33\textwidth}
+	\centering
+	\subfigure[\emph{community} OVI vs.\ VI2PI$^\mathrm{X}$]{
+		\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.ovi-topo}{OVI}{logs.Storm.vi2pi-topo-exactlu}{VI2PI/LU$^\mathrm{X}$}{false} \label{fig:qvbsovipi}}
+\togglefalse{showplots} % TODO: what to do with the hard set?
+	\subfigure[\emph{hard} OVI vs.\ VI2PI$^\mathrm{X}$]{
+		\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.ovi-topo}{OVI}{logs.Storm.vi2pi-topo-exactlu}{VI2PI/LU$^\mathrm{X}$}{false} \label{fig:hardbot}
+	}
+
+	\subfigure[\emph{community} OVI vs.\ LP]{
+		\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.ovi-topo}{OVI}{logs.Storm.lp-topo-gurobi-4auto}{LP}{false} 
+		\label{fig:hardtop}
+	}
+	
+	%\vspace{-1em}
+	\caption{Additional direct performance comparisons}
+	\label{fig:my_label}
+	
+\end{figure}

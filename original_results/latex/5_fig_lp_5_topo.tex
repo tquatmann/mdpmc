@@ -1,0 +1,21 @@
+
+\begin{figure*}[!htp]
+\centering
+\quantileplot{plotdata/quantile-claix23-community.csv}
+{	logs.Storm.lp-mono-gurobi-4auto/color1, 
+	logs.Storm.lp-topo-gurobi-4auto/color2, logs.Storm.lp-mono-mecq-gurobi-4auto/color3, logs.Storm.lp-topo-mecq-gurobi-4auto/color4,
+	logs.Storm.vi2lp-mono-gurobi-4auto/color5,
+	logs.Storm.vi2lp-topo-gurobi-4auto/color6,
+	logs.Storm.vi2lp-mono-mecq-gurobi-4auto/color7,
+	logs.Storm.vi2lp-topo-mecq-gurobi-4auto/color8}
+{LP, LP-topo, LP-mec, LP-mec-topo, VI2LP, VI2LP-topo, VI2LP-mec, VI2LP-mec-topo}
+{0}{\numcommunity}{0.1}{900}{south east}%
+%
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{LP}{logs.Storm.vi2lp-topo-mecq-gurobi-4auto}{VI2LP-mec-topo}{false}
+
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{LP}{logs.Storm.lp-topo-gurobi-4auto}{LP-topo}{false}
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{LP}{logs.Storm.lp-mono-mecq-gurobi-4auto}{LP-mec}{false}
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{LP}{logs.Storm.vi2lp-mono-gurobi-4auto}{VI2LP}{false}
+\caption{Comparison of the \direct optimizations for LP algorithms, using $\solver{Gurobi}_\tool{s}$ v11.0, 4 threads and auto.}
+\label{fig:LP-opt}
+\end{figure*}

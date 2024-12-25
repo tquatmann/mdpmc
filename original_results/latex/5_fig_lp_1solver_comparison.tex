@@ -1,0 +1,42 @@
+\begin{figure*}[!htp]
+
+	\centering
+\renewcommand{\quantileplotlegendcols}{3}
+	%	\setlength{\quantileplotwidth}{0.5\textwidth}
+	%	\setlength{\quantileplotheight}{0.3\textwidth}
+	%	\setlength{\scatterplotsize}{0.3\textwidth}
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{logs.Storm.vi-mono/plotdarkblue, 
+	logs.mcsta.vi/plotblue, 
+	logs.Storm.lp-mono-gurobi/plotlightred, 
+	logs.mcsta.lp-gurobi-mono/plotred, 
+	logs.mcsta.lp-copt-mono/plotcyan, 
+	logs.mcsta.lp-highs-mono/plotdarkred, 
+	logs.mcsta.lp-mosek-mono/plotgreen, 
+	logs.mcsta.lp-cplex-mono/plotyellow, 
+	logs.mcsta.lp-glop-mono/plotorange, 
+	logs.Storm.lp-mono-soplex/plotpink, 
+	logs.Storm.lp-mono-soplex-exact/plotteal, 
+	logs.Storm.lp-mono-glpk/plotpurple, 
+	logs.mcsta.lp-lpsolve-mono/plotdarkgray,
+	logs.Storm.lp-mono-z3-exact/plotlightgray}
+	{$\text{VI}_\tool{s}$, 
+	$\text{VI}_\tool{m}$, 
+	$\solver{Gurobi}_\tool{s}$, 
+	$\solver{Gurobi}_\tool{m}$, 
+	$\solver{COPT}_\tool{m}$, 
+	$\solver{HiGHS}_\tool{m}$,  
+	$\solver{Mosek}_\tool{m}$, 
+	$\solver{CPLEX}_\tool{m}$,
+	$\solver{Glop}_\tool{m}$, 
+	$\solver{SoPlex}_\tool{s}$, 
+	$\solver{SoPlex}_\tool{s}^\mathrm{X}$,
+	$\solver{GLPK}_\tool{s}$, 
+	$\solver{lp\_solve}_\tool{m}$, 
+	$\solver{Z3}_\tool{s}^\mathrm{X}$ }
+	{0}{\numcommunity}{0.1}{900}{south east}
+%	\hfill
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.lp-gurobi-mono}{$\solver{Gurobi}_\tool{m}$}{logs.mcsta.lp-copt-mono}{$\solver{COPT}_\tool{m}$}{false}%
+	\caption{Comparison of LP solver runtime on the \comset set.}
+	\label{fig:LPSolvers}
+\end{figure*}

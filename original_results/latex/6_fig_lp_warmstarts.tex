@@ -1,0 +1,24 @@
+
+\begin{figure*}[t]
+	\centering
+%		\setlength{\quantileplotwidth}{0.4\textwidth}
+	%	\setlength{\quantileplotheight}{0.2\textwidth}
+%		\setlength{\scatterplotsize}{0.28\textwidth}
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{
+logs.Storm.lp-mono-mecq-gurobi-4auto/color1,
+logs.Storm.lp-topo-mecq-gurobi-4auto/color2,
+logs.Storm.vi2lp-mono-mecq-gurobi-4auto/color3,
+logs.Storm.vi2lp-topo-mecq-gurobi-4auto/color4,
+logs.Storm.vi2lp-topo-gurobi-4auto/color5
+}
+	{LP-mono-mecq, LP-topo-mecq, VI2LP-mono-mecq, VI2LP-topo-mecq, VI2LP-topo}
+	{0}{\numcommunity}{0.1}{900}{north west}
+%
+\scatterplot{plotdata/scatter-claix23-community.csv}
+{logs.Storm.lp-topo-mecq-gurobi-4auto}{LP-topo-mecq}
+{logs.Storm.vi2lp-topo-mecq-gurobi-4auto}{VI2LP-topo-mecq}
+{false}
+\caption{Comparison of Gurobi with/without warm starts}
+\label{fig:LP-warmstarts}
+\end{figure*}

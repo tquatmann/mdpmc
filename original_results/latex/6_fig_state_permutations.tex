@@ -1,0 +1,28 @@
+\begin{figure*}[t]
+	\centering
+	\quantileplot{plotdata/quantile-permute-community.csv}
+	{
+logs.Storm.vi-mono-bfs/color1!70!black,
+logs.Storm.vi-mono-reversebfs/color1,
+logs.Storm.vi-mono-rnd/color1!50!white,
+logs.Storm.lp-mono-bfs/colstormlp!70!black,
+logs.Storm.lp-mono-reversebfs/colstormlp,
+logs.Storm.lp-mono-rnd/colstormlp!50!white,
+logs.Storm.pi-mono-bfs/colstormpi!70!black,
+logs.Storm.pi-mono-reversebfs/colstormpi,
+logs.Storm.pi-mono-rnd/colstormpi!30!white
+	}
+	{VI-bfs-b2f,VI-bfs-f2b,VI-rnd,LP-bfs-b2f,LP-bfs-f2b,LP-rnd,PI-bfs-b2f,PI-bfs-f2b,PI-rnd}
+	{0}{\numcommunity}{0.1}{900}{south east}
+%
+%\scatterplot{plotdata/scatter-permute-community.csv}{logs.Storm.lp-mono-bfs}{LP-bfs}{logs.Storm.lp-mono-reversebfs}{LP-rev}{false}
+\scatterplot{plotdata/scatter-permute-community.csv}{logs.Storm.lp-mono-bfs}{LP-bfs-b2f}{logs.Storm.lp-mono-rnd}{LP-rnd}{false}
+
+%\scatterplot{plotdata/scatter-permute-community.csv}{logs.Storm.vi-mono-bfs}{VI-bfs-b2f}{logs.Storm.vi-mono-reversebfs}{VI-rev}{false}
+\scatterplot{plotdata/scatter-permute-community.csv}{logs.Storm.vi-mono-bfs}{VI-bfs-b2f}{logs.Storm.vi-mono-rnd}{VI-rnd}{false}
+\scatterplot{plotdata/scatter-permute-community.csv}{logs.Storm.pi-mono-bfs}{PI-bfs-b2f}{logs.Storm.pi-mono-reversebfs}{PI-bfs-f2b}{false}
+\scatterplot{plotdata/scatter-permute-community.csv}{logs.Storm.pi-mono-bfs}{PI-bfs-b2f}{logs.Storm.pi-mono-rnd}{PI-rnd}{false}
+
+	\caption{Impact of permuting the states.}
+	\label{fig:state-ordering}
+\end{figure*}

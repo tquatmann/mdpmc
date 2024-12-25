@@ -7,13 +7,16 @@
 
 ## Steps
 
-1. Download the docker image:
+1. Load the docker image:
 ```
-docker pull sjunges/mdpmc:latest
+docker load -i docker_mdpmc.tar
 ```
+The container is based on an container for the probabilistic model checker as provided by the Storm developers, for details, 
+see [this documentation](https://www.stormchecker.org/documentation/obtain-storm/docker.html).
+
 2. Start the docker container in detached mode, while pointing to the Gurobi license:
 ```
-docker run -it -d  --volume=/home/sjunges/gurobi.lic:/opt/gurobi/gurobi.lic  --platform linux/amd64 --workdir /opt/practitioners/hardware-experiment --name benchmarkrunner sjunges/mdpmc /bin/bash
+docker run -it -d  --volume=$HOME/gurobi.lic:/opt/gurobi/gurobi.lic  --platform linux/amd64 --workdir /opt/practitioners/hardware-experiment --name benchmarkrunner sjunges/mdpmc /bin/bash
 ```
 3. Test whether the Gurobi license was passed correctly by executing a storm invocation:
 ```
@@ -36,6 +39,6 @@ Once the number reaches 480, you can proceed to the next step.
 ```
 docker cp benchmarkrunner:/opt/practitioners/hardware-experiment/logs .
 ```
-7. Email the log files to sebastian.junges@ru.nl and tim.quatmann@cs.rwth-aachen.de, e.g., as a zip file.
+7. Manually inspect the log files or follow the instructions from the reproduce archive to generate insightful plots.
 
 

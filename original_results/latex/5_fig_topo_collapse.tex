@@ -1,0 +1,29 @@
+
+\begin{figure}[t]
+%		\setlength{\quantileplotwidth}{0.7\textwidth}
+%		\setlength{\quantileplotheight}{5cm}
+	\centering
+	{
+		\quantileplot{plotdata/quantile-claix23-community.csv}
+		{logs.Storm.vi-mono/color1, logs.Storm.vi-topo/color2, logs.Storm.vi-mono-mecq/color3, logs.Storm.vi-topo-mecq/color4}
+		{VI, VI-topo, VI-mec, VI-mec-topo}
+		{0}{\numcommunity}{0.1}{900}{north west}%
+	}
+
+	{
+		\quantileplot{plotdata/quantile-claix23-community.csv}
+		{logs.Storm.pi-mono-gmres/color1, logs.Storm.pi-topo-gmres/color2}%, logs.Storm.pi-mono-mecq/color3, logs.Storm.pi-mecq-topo/color4}
+		{PI, PI-topo}%, PI-mec, PI-mec-topo}
+		{0}{\numcommunity}{0.1}{900}{north west}%
+	}
+
+	{
+		\quantileplot{plotdata/quantile-claix23-community.csv}
+		{logs.Storm.lp-mono-gurobi-4auto/color1, logs.Storm.lp-topo-gurobi-4auto/color2, logs.Storm.lp-mono-mecq-gurobi-4auto/color3, logs.Storm.lp-topo-mecq-gurobi-4auto/color4}
+		{LP, LP-topo, LP-mec, LP-mec-topo}
+		{0}{\numcommunity}{0.1}{900}{north west}%
+	}
+	\caption{Comparison of the vanilla algorithms VI, PI and LP and their variants using MEC collapsing and topological decomposition.}
+	\label{fig:qvbs-topo-coll}
+\end{figure}
+\todo{PI with mec quotient is apparently not implemented}

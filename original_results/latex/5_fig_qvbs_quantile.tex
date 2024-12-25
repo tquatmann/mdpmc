@@ -1,0 +1,16 @@
+
+\begin{figure*}[t]
+	\centering
+%	\setlength{\quantileplotwidth}{0.55\textwidth}
+%	\setlength{\quantileplotheight}{4cm}
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{logs.Storm.vi-topo/color6, logs.Storm.ovi-topo/color4, logs.Storm.pi-topo-gmres/color3, logs.Storm.lp-topo-gurobi-4auto/color1, logs.Storm.vi2pi-topo-gmres/color7, logs.Storm.vi2lp-topo-gurobi-4auto/color2}
+	{VI, OVI, PI, LP, VI2PI, VI2LP}
+	{0}{\numcommunity}{0.1}{900}{north west}%
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{logs.Storm.rs-topo-mecq-exact/color9, logs.Storm.pi-topo-exactlu/color3, logs.Storm.vi2pi-topo-exactlu/color7, logs.Storm.lp-topo-soplex-exact/color1, logs.Storm.lp-topo-z3-exact/color16, logs.Storm.vi2lp-topo-soplex-exact/color2}
+	{RS$^\mathrm{X}$, PI/LU$^\mathrm{X}$, VI2PI/LU$^\mathrm{X}$, LP/$\solver{SoPlex}^\mathrm{X}$, LP/$\solver{Z3}^\mathrm{X}$, VI2LP/$\solver{SoPlex}^\mathrm{X}$}
+	{0}{\numcommunity}{0.1}{900}{north west}
+	\caption{Comparison of MDP model checking algorithms on the \textit{qvbs} set}
+	\label{fig:MethodsQVBS}
+\end{figure*}

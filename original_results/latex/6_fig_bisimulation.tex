@@ -1,0 +1,19 @@
+
+\begin{figure*}[!htp]
+	\centering
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{
+		logs.Storm.vi-mono/color1,
+		logs.Storm.vi-mono-bisim-sylvan1/color2,
+		logs.Storm.vi2pi-topo-exactlu/color3,
+		logs.Storm.vi2pi-topo-exactlu-bisim-sylvan1/color4
+	}
+	{VI-mono$_\tool{s}$,VI-mono-bisim$_\tool{s}$, VI2PI-topo$^X_\tool{s}$,VI2PI-topo-bisim$^X_\tool{s}$}
+	{0}{\numcommunity}{0.1}{900}{south east}
+%
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.vi-mono}{VI$_\tool{s}$}
+		{logs.Storm.vi-mono-bisim-sylvan1}{VI-bisim$_\tool{s}$}{false}
+	\caption{Impact of bisimulation minimization.}
+	\label{fig:bisim}
+\end{figure*}
+

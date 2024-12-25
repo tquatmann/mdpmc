@@ -1,0 +1,24 @@
+{
+	"accumulated_walltime": {
+		"logs.Storm.vi-topo": 2.1,
+		"logs.Storm.ovi-topo": 21.1,
+		"logs.Storm.rs-topo-mecq-exact": 29.0,
+		"logs.Storm.vi2pi-topo-exactlu": 0.3,
+		"logs.Storm.vi2pi-topo-gmres-mono": 0.3,
+		"logs.Storm.vi2lp-topo-mecq-gurobi-4auto": 0.3,
+		"logs.Storm.vi2lp-topo-mecq-soplex-exact": 3.2,
+		"total": 56.4
+	},
+	"num-cor-inc-nores": {
+		"logs.Storm.vi-topo": "79 / 121 / 0",
+		"logs.Storm.ovi-topo": "117 / 0 / 83",
+		"logs.Storm.rs-topo-mecq-exact": "73 / 0 / 127",
+		"logs.Storm.vi2pi-topo-exactlu": "200 / 0 / 0",
+		"logs.Storm.vi2pi-topo-gmres-mono": "159 / 41 / 0",
+		"logs.Storm.vi2lp-topo-mecq-gurobi-4auto": "157 / 43 / 0",
+		"logs.Storm.vi2lp-topo-mecq-soplex-exact": "122 / 0 / 78"
+	},
+	"group_scaling_factors": {
+		"logs": {}
+	}
+}

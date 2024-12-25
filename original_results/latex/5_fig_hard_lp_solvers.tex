@@ -1,0 +1,23 @@
+\begin{figure*}[h]
+	\centering
+	{
+%		\setlength{\quantileplotwidth}{0.65\textwidth}
+%		\setlength{\quantileplotheight}{6.5cm}
+%		\setlength{\scatterplotsize}{0.4\textwidth}
+		\quantileplot{plotdata/quantile-qvbs-hard.csv}
+		{Storm.vi-mecq-topo/plotdarkblue, mcsta.lp-copt-topo/plotcyan, mcsta.lp-cplex-topo/plotyellow, mcsta.lp-glop-topo/plotorange, Storm.lp-mecq-topo-glpk/plotpurple, Storm.lp-mecq-topo/plotlightred, mcsta.lp-gurobi-topo/plotred, mcsta.lp-highs-topo/plotdarkred, mcsta.lp-lpsolve-topo/plotdarkgray, mcsta.lp-mosek-topo/plotgreen, Storm.lp-mecq-topo-soplex/plotpink, Storm.lp-mecq-topo-soplex-exact/plotteal, Storm.lp-mecq-topo-z3-exact/plotlightgray}
+		{$\text{VI}_\tool{s}$, $\solver{COPT}_\tool{m}$, $\solver{CPLEX}_\tool{m}$, $\solver{Glop}_\tool{m}$, $\solver{GLPK}_\tool{s}$, $\solver{Gurobi}_\tool{s}$, $\solver{Gurobi}_\tool{m}$, $\solver{HiGHS}_\tool{m}$, $\solver{lp\_solve}_\tool{m}$, $\solver{Mosek}_\tool{m}$, $\solver{SoPlex}_\tool{s}$, $\solver{SoPlex}_\tool{s}^\mathrm{X}$, $\solver{Z3}_\tool{s}^\mathrm{X}$}
+		{-10}{\numqvbshard}{0.1}{1800}{north west}
+	}
+	{
+%		\setlength{\quantileplotwidth}{0.65\textwidth}
+%		\setlength{\quantileplotheight}{6.5cm}
+%		\setlength{\scatterplotsize}{0.4\textwidth}
+		\quantileplot{plotdata/quantile-qvbs-hard.csv}
+		{Storm.vi/plotdarkblue, mcsta.vi/plotblue, mcsta.lp-copt-mono/plotcyan, mcsta.lp-cplex-mono/plotyellow, mcsta.lp-glop-mono/plotorange, Storm.lp-glpk-nobnds/plotpurple, Storm.lp-nobnds/plotlightred, mcsta.lp-gurobi-mono/plotred, mcsta.lp-highs-mono/plotdarkred, mcsta.lp-lpsolve-mono/plotdarkgray, mcsta.lp-mosek-mono/plotgreen, Storm.lp-soplex-nobnds/plotpink, Storm.lp-soplex-exactnobnds/plotteal, Storm.lp-z3-exactnobnds/plotlightgray}
+		{$\text{VI}_\tool{s}$, $\text{VI}_\tool{m}$, $\solver{COPT}_\tool{m}$, $\solver{CPLEX}_\tool{m}$, $\solver{Glop}_\tool{m}$, $\solver{GLPK}_\tool{s}$, $\solver{Gurobi}_\tool{s}$, $\solver{Gurobi}_\tool{m}$, $\solver{HiGHS}_\tool{m}$, $\solver{lp\_solve}_\tool{m}$, $\solver{Mosek}_\tool{m}$, $\solver{SoPlex}_\tool{s}$, $\solver{SoPlex}_\tool{s}^\mathrm{X}$, $\solver{Z3}_\tool{s}^\mathrm{X}$}
+		{-10}{\numqvbshard}{0.1}{1800}{north west}
+	}
+	\caption{Comparison of LP solver runtime on the \emph{hard} subset. The left plot uses the topological optimization, the right does not.}
+	\label{fig:hard-LP-solvers}
+\end{figure*}

@@ -1,0 +1,14 @@
+
+\begin{figure*}[!htp]
+	\centering
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{logs.mcsta.vi/color1,
+		logs.mcsta.vi-es/color2
+	}
+	{VI$_\tool{m}$, VI-es$_\tool{m}$}
+	{0}{\numcommunity}{0.1}{900}{south east}
+%
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.vi}{VI$_\tool{m}$}{logs.mcsta.vi-es}{VI-es$_\tool{m}$}{false}
+	\caption{Impact of essential state optimization.}
+	\label{fig:essential}
+\end{figure*}

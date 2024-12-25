@@ -1,0 +1,19 @@
+
+\begin{figure*}[!htp]
+	\centering
+%		\setlength{\quantileplotwidth}{0.4\textwidth}
+	%	\setlength{\quantileplotheight}{0.2\textwidth}
+%		\setlength{\scatterplotsize}{0.28\textwidth}
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{
+logs.Storm.lp-mono-gurobi-4auto/color1,
+logs.Storm.lp-gurobi95-4auto/color5,
+logs.Storm.lp-gurobi-16auto/color4,
+logs.Storm.lp-gurobi95-16auto/color8
+}
+	{v11.0/4 threads, v9.5/4 threads, v11.0/16 threads, v9.5/16 threads}
+	{0}{\numcommunity}{0.1}{900}{north west}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-gurobi-16auto}{$\solver{Gurobi}_\tool{s}$ v11.0 / 16 threads}{logs.Storm.lp-gurobi95-16auto}{$\solver{Gurobi}_\tool{s}$ v9.5 / 16 threads}{false}
+	\caption{Comparison of Gurobi v11.0 (Nov 2023) and v9.5 (Nov 2021).}
+	\label{fig:LP-version}
+\end{figure*}

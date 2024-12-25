@@ -1,0 +1,59 @@
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[bookmarks,unicode,colorlinks=true,breaklinks=true]{hyperref}
+\usepackage{color}
+\usepackage[a4paper,margin=1cm,footskip=0.25in]{geometry}
+
+\usepackage{xspace}
+\usepackage[tableposition=top]{caption}
+\usepackage{wrapfig}
+
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{microtype}
+
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{xifthen}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,calc,automata,positioning}
+%\tikzset{align at top/.style={baseline=(current bounding box.north)}}
+%\tikzstyle{every node}=[font=\scriptsize]
+\tikzstyle{state} = [draw,fill=white,circle,thick,align=center,inner sep=0pt,minimum size=4.5mm]
+\tikzstyle{lstate} = [draw,fill=white,rectangle,rounded corners,thick,align=center,inner sep=2pt]
+\tikzstyle{dot} = [fill,circle,inner sep=0mm,minimum size=1.25mm,line width=0mm]
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+%\usepackage{todonotes}
+
+\usetikzlibrary{shapes,positioning,arrows,calc,automata,matrix,fit}
+\newcommand{\drawcirc}{\node[draw,circle,minimum size=.7cm, outer sep=1pt]}
+\newcommand{\drawbox}{\node[draw,rectangle,minimum size=.7cm, outer sep=1pt]}
+\newcommand{\drawdummy}{\node[minimum size=0,inner sep=0]}
+\usepackage{xfrac}
+
+\usepackage[capitalise]{cleveref}
+\Crefname{equation}{Eq.}{Eqs.}
+\Crefname{figure}{Fig.}{Figs.}
+\Crefname{tabular}{Tab.}{Tabs.}
+\Crefname{remark}{Rem.}{Rems.}
+\Crefname{section}{Sec.}{Secs.}
+\Crefname{subsection}{Sec.}{Secs.}
+\Crefname{proposition}{Prop.}{Props.}
+\usepackage{csquotes} % for enquote
+
+% Spacing between text and display math
+\makeatletter%
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{3pt}%
+  \setlength\belowdisplayskip{3pt}%
+  \setlength\abovedisplayshortskip{-3pt}%
+  \setlength\belowdisplayshortskip{3pt}%
+}%
+\makeatother
+%\renewcommand{\baselinestretch}{0.974} % >=0.97

@@ -1,0 +1,92 @@
+
+
+\begin{figure*}[p]
+\centering
+	\setlength{\scatterplotsize}{0.24\textwidth}
+	\hwscsubfig{TRP5965}{TRP5965-dockerized}{dockerized}{TRP5965-native}{bare metal}{hwscatter}
+	\hspace{-1em}
+	\hwscsubfig{TRP5965 (portable compile)}{TRP5965-dockerized}{dockerized}{TRP5965-nativeportable-wls}{bare metal (portable)}{hwscatter}
+	\hspace{-1em}
+	\hwscsubfig{i910980 (portable compile)}{i910980xe-dockerized}{dockerized}{i910980xe-native-portable}{bare metal (portable)}{hwscatter}
+	\hspace{-1em}
+	\hwscsubfig{\changed{Bare-metal TRP5965}}{TRP5965-nativeportable-wls}{WLS}{TRP5965-nativeportable}{single-machine license}{hwscatter}
+	
+	\hardwareexperimentlegend
+	\caption{Performance on bare metal and inside a Docker container as elaborated in \cref{sec:usingdocker}.}
+	\label{fig:usingdocker}
+\label{fig:hardwarelegend}
+\end{figure*}
+
+%\toggletrue{showplots}
+%\begin{figure*}
+%	\scatterplotseb{plotdata/scatter-hardware.csv}{logs-claix23}{pi}{logs-TRP5965-dockerized}{lp}
+%	\caption{Effect of hardware}
+%\end{figure*}
+
+\begin{figure*}[p]
+\setlength{\quantileplotheight}{0.24\linewidth}
+\setlength{\quantileplotwidth}{0.245\linewidth}
+\setlength{\hwsubfigspace}{-2.04em}
+\mbox{\hspace{-0.4em}%
+\hwsubfig{claix23 \changed{(bare metal)}}{claix23}\hspace{\hwsubfigspace}%
+\renewcommand{\quantileplotylabel}{}
+\hwsubfig{E1620}{E1620-dockerized}\hspace{\hwsubfigspace}%
+\hwsubfig{R332200}{R32200-dockerized}\hspace{\hwsubfigspace}%
+\hwsubfig{R54650U}{R54650U-dockerized}\hspace{\hwsubfigspace}%
+\hwsubfig{R97950}{R97950X-dockerized}}
+
+\mbox{\hspace{-0.4em}%
+\hwsubfig{TRP5965}{TRP5965-dockerized}\hspace{\hwsubfigspace}%
+\renewcommand{\quantileplotylabel}{}
+\hwsubfig{i910980}{i910980xe-dockerized}\hspace{\hwsubfigspace}%
+\hwsubfig{i910980 \changed{(bare metal)}}{i910980xe-native-portable}\hspace{\hwsubfigspace}%
+\hwsubfig{i911900}{i911900K-dockerized}\hspace{\hwsubfigspace}%
+\hwsubfig{M1U \changed{(bare metal)}}{M2Pro}}
+
+\caption{Quantile plots for different hardware configurations (legend see \cref{fig:hardwarelegend}) \changed{as explained in \cref{sec:differenthardware}. The plots use data gathered with a docker container unless specified. The claix23 uses a single-machine license for Gurobi and does not include the portable flag, as this reflects the setup from previous sections. On the M1U, the completely different architecture means that compile flags are not comparable.}}
+\label{fig:hwquantile}
+\end{figure*}
+
+
+%$\text{VI}_\tool{s}$, $\text{OVI}_\tool{s}$, $\text{VI}_\tool{m}$, $\text{OVI}_\tool{m}$, $\text{VI2LP}_\tool{s}$, $\text{VI2PI}_\tool{s}$
+
+%\toggletrue{showplots}
+%\togglefalse{showplots}
+\begin{figure*}\setlength{\scatterplotsize}{0.24\textwidth}
+\centering
+\hwscsubfig{AMD platforms}{TRP5965-dockerized}{TRP5965}{R97950X-dockerized}{R97950X}{hwscattersum}
+   \hwscsubfig{Intel platforms}{i911900K-dockerized}{i911900}{i910980xe-dockerized}{i910980}{hwscattersum}
+ \hwscsubfig{Similar platforms}{i911900K-dockerized}{i911900}{R97950X-dockerized}{R97950}{hwscattersum}
+\hwscsubfig{Contrasting platforms}{E1620-dockerized}{E1620}{TRP5965-dockerized}{TRP5965}{hwscattersum}
+%	  
+	\hardwareexperimentlegend
+	\caption{Detailed comparison of performance of the same docker container on different hardware.  \changed{All running in the same Docker container, except claix23.} \changed{See \cref{sec:differenthardware}, Observation 2 for additional explanations.}}
+	\label{fig:hwscatter:selection}
+	
+\end{figure*}
+
+
+
+
+
+   
+%	%	
+
+%	
+%	\centering
+%	\subfigure[caption]{
+%		\hardwarescatterplot{plotdata/scatter-hardware.csv}{logs-TRP5965-dockerized}{docker}{logs-TRP5965-native}{native}{false} 
+%		}
+%	\subfigure[]{
+%		\hardwarescatterplot{plotdata/scatter-hardware.csv}{logs-claix23}{claix}{logs-TRP5965-native}{trp5965}{false} 	}
+%	\subfigure[]{
+%	\hardwarescatterplot{plotdata/scatter-hardware.csv}{logs-R32200-dockerized}{R32200}{logs-TRP5965-dockerized}{trp5965}{false} 	}
+%	
+%		\hardwarescatterplot{plotdata/scatter-hardware.csv}{logs-i910980xe-dockerized}{i910980xe}{logs-TRP5965-dockerized}{trp5965}{false} 	
+%	\hspace{-2em}
+%	\subfigure[\emph{hard} OVI vs.\ LP]{
+%		\scatterplot{plotdata/scatter-qvbs-hard.csv}{Storm.ovi-topo}{OVI}{Storm.lp-mecq-topo-gurobi-4auto}{LP}{false} 
+%		\label{fig:hardtop}
+%	}
+%	
+	%\vspace{-1em}

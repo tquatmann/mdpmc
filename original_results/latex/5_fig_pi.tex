@@ -1,0 +1,72 @@
+%
+% MC SOLVERS GENERAL
+%
+\begin{figure*}[!htp]
+	%\setlength{\quantileplotwidth}{0.5\linewidth}
+	%\setlength{\quantileplotheight}{4.2cm}%
+	%	\renewcommand{\quantileplotlegendcols}{2}
+	\centering%
+	\quantileplot{plotdata/quantile-claix23-community.csv}{
+	logs.Storm.pi-mono-gmres/color1,
+	logs.Storm.pi-mono-gmres-diagprecond/color2,
+	logs.Storm.pi-mono-gmres-noprecond/color3,
+	logs.Storm.pi-mono-gmres-bicgstab/color4,
+	logs.Storm.pi-mono-gmres-qmr/color5,
+	logs.Storm.pi-mono-vi/color6,
+	logs.Storm.pi-mono-ovi/color7,
+	logs.Storm.pi-mono-lu/color8,
+	logs.Storm.pi-mono-exactlu/color9}
+	{PI/gmres-ilu, PI/gmres-diagonal, PI/gmres-none, PI/bicgstab-ilu, PI/qmr-ilu, PI/VI, PI/OVI, PI/LU, PI/LU$^\mathrm{X}$}
+	{0}{\numcommunity}{0.1}{900}{south east}
+	%
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-mono-gmres}{PI/gmres-ilu}{logs.Storm.pi-mono-exactlu}{PI/LU$^\mathrm{X}$}{false}
+	
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-mono-gmres}{PI/gmres-ilu}{logs.Storm.pi-mono-gmres-bicgstab}{PI/bigcstab-ilu}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-mono-gmres}{PI/gmres-ilu}{logs.Storm.pi-mono-gmres-qmr}{PI/qmr-ilu}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-mono-gmres}{PI/gmres-ilu}{logs.Storm.pi-mono-vi}{PI/VI}{false}
+%\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-mono-gmres}{PI/gmres-ilu}{logs.Storm.pi-mono-ovi}{PI/OVI}{false}
+%\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-mono-gmres}{PI/gmres-ilu}{logs.Storm.pi-mono-lu}{PI/LU}{false}
+	
+%	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-mono-gmres}{PI/gmres-ilu}{logs.Storm.pi-mono-gmres-diagprecond}{PI/gmres-diagonal}{false}
+%	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-mono-gmres}{PI/gmres-ilu}{logs.Storm.pi-mono-gmres-noprecond}{PI/gmres-none}{false}
+	\caption{Comparison of different algorithms for solving induced Markov chains in PI (without optimizations).}
+	\label{fig:pi_mcsolver}
+\end{figure*}
+
+\begin{figure*}[!htp]
+\centering
+
+	
+%
+% TOPO
+%
+	\quantileplot{plotdata/quantile-claix23-community.csv}{
+	logs.Storm.pi-mono-gmres/color1,
+	logs.Storm.pi-mono-gmres-topo/color2,
+	logs.Storm.pi-topo-gmres-mono/color3,
+	logs.Storm.pi-topo-gmres/color4,
+	logs.Storm.pi-mono-exactlu/color5,
+	logs.Storm.pi-mono-exactlu-topo/color6,
+	logs.Storm.pi-topo-exactlu-mono/color7,
+	logs.Storm.pi-topo-exactlu/color8
+	}
+	{gmres-mono+mono, gmres-mono+topo, gmres-topo+mono, gmres-topo+topo, LU$^X$-mono+mono,LU$^X$-mono+topo,LU$^X$-topo+mono, LU$^X$-topo+topo}	{0}{\numcommunity}{0.1}{900}{south east}
+	%
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-mono-gmres}{PI/gmres-mono+mono}{logs.Storm.pi-topo-gmres-mono}{PI/gmres-topo+mono}{false}
+%
+% WARM START
+%
+	\quantileplot{plotdata/quantile-claix23-community.csv}{
+	logs.Storm.pi-topo-gmres-mono/color1,
+	logs.Storm.vi2pi-topo-gmres-mono/color2,
+	logs.Storm.pi-topo-exactlu/color3,
+	logs.Storm.vi2pi-topo-exactlu/color4}
+	{PI/gmres-topo+mono, VI2PI/gmres-topo+mono, PI/LU$^X$-topo+topo, VI2PI/LU$^X$-topo+topo}
+	{0}{\numcommunity}{0.1}{900}{south east}
+	%
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.pi-topo-gmres-mono}{PI/gmres-topo+mono}{logs.Storm.vi2pi-topo-gmres-mono}{VI2PI/gmres-topo+mono}{false}
+	
+	
+	\caption{Comparison of PI optimizations: topological solving (top) and warm starts (bottom).}
+	\label{fig:pi_opt}
+\end{figure*}

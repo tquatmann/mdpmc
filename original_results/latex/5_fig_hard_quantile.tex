@@ -1,0 +1,17 @@
+
+\begin{figure*}[t]
+	\centering
+	%\setlength{\quantileplotwidth}{0.55\textwidth}
+	%\setlength{\quantileplotheight}{4.5cm}
+	\vspace{1ex} % to get more distance to Fig. 6
+	\quantileplot{plotdata/quantile-qvbs-hard.csv}
+	{Storm.vi-mecq-topo/color6, Storm.ovi-topo/color4, Storm.pi-mecq-topo/color3, Storm.lp-mecq-topo-gurobi-4auto/color1, Storm.vi2pi-mecq-topo-gmres/color7, Storm.vi2lp-mecq-topo-gurobi/color2}
+	{VI, OVI, PI, LP, VI2PI, VI2LP}
+	{0}{\numqvbshard}{0.1}{1800}{north west}%
+	\quantileplot{plotdata/quantile-qvbs-hard.csv}
+	{Storm.rs-mecq-topo-exact/color9, Storm.pi-mecq-topo-exactlu/color3, Storm.vi2pi-mecq-topo-exactlu/color7, Storm.lp-mecq-topo-soplex-exact/color1, Storm.lp-mecq-topo-z3-exact/color16, Storm.vi2lp-mecq-topo-soplex-exact/color2}
+	{RS$^\mathrm{X}$, PI/LU$^\mathrm{X}$, VI2PI/LU$^\mathrm{X}$, LP/$\solver{SoPlex}^\mathrm{X}$, LP/$\solver{Z3}^\mathrm{X}$, VI2LP/$\solver{SoPlex}^\mathrm{X}$}
+	{0}{\numqvbshard}{0.1}{1800}{south east}
+	\caption{Comparison of MDP model checking algorithms on the \textit{hard} subset}
+	\label{fig:MethodsHard}
+\end{figure*}

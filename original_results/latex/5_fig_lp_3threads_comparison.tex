@@ -1,0 +1,18 @@
+
+\begin{figure*}[!htp]
+	\centering
+%		\setlength{\quantileplotwidth}{0.4\textwidth}
+	%	\setlength{\quantileplotheight}{0.2\textwidth}
+%		\setlength{\scatterplotsize}{0.28\textwidth}
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{logs.Storm.lp-mono-gurobi/color1, logs.Storm.lp-mono-gurobi-4auto/color2, logs.Storm.lp-gurobi-8auto/color3, logs.Storm.lp-gurobi-16auto/color4}
+	{1, 4, 8, 16}
+	{0}{\numcommunity}{0.1}{900}{north west}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{$\solver{Gurobi}_\tool{s}$/1}{logs.Storm.lp-gurobi-16auto}{$\solver{Gurobi}_\tool{s}$/16}{false}
+	
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{$\solver{Gurobi}_\tool{s}$/4}{logs.Storm.lp-mono-gurobi}{$\solver{Gurobi}_\tool{s}$/1}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{$\solver{Gurobi}_\tool{s}$/4}{logs.Storm.lp-gurobi-8auto}{$\solver{Gurobi}_\tool{s}$/8}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{$\solver{Gurobi}_\tool{s}$/4}{logs.Storm.lp-gurobi-16auto}{$\solver{Gurobi}_\tool{s}$/16}{false}
+	\caption{Comparison of how the number of threads affect the performance of \solver{Gurobi}'s auto method.}
+	\label{fig:LP-tweak-threads}
+\end{figure*}

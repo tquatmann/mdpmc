@@ -1,0 +1,71 @@
+%
+\renewcommand{\paragraph}[1]{\smallskip\noindent\emph{#1}}
+
+% MDP definition
+\newcommand{\mdp}{\mathcal{M}}
+\newcommand{\states}{\mathsf{S}}
+\newcommand{\actions}{\mathsf{A}}
+\newcommand{\trans}{\delta}
+
+% General math
+\newcommand{\dist}{\mathsf{d}}
+\newcommand{\dists}{\mathsf{D}}
+\newcommand{\eqdef}{\vcentcolon=}
+\newcommand{\Rationals}{\mathbb{Q}}
+\DeclareMathSymbol{\sm}{\mathbin}{AMSa}{"39} % short minus
+\newcommand{\set}[1]{\ensuremath{\{\,#1\,\}}}
+\newcommand{\tuple}[1]{\ensuremath{( #1 )}}
+
+% Semantics
+\newcommand{\apath}{\rho}
+\newcommand{\policy}{\pi}
+\newcommand{\policies}{\Pi}
+\newcommand{\paths}{\mathsf{Paths}}
+\newcommand{\prob}{\mathbb{P}}
+
+% Objectives
+\newcommand{\reachObj}{\mathsf{R}}
+\newcommand{\ERObj}{\mathsf{E}}
+\newcommand{\initstate}{s_i}
+\newcommand{\targets}{\mathsf{T}}
+\newcommand{\opt}{\mathsf{opt}}
+\renewcommand{\min}{\ensuremath{\mathrm{min}}}
+\renewcommand{\max}{\ensuremath{\mathrm{max}}}
+\newcommand{\val}{\mathsf{V}}
+\newcommand{\rew}{\mathsf{rew}}
+\newcommand{\Pobj}[2]{\ensuremath{\mathrm{P}_{{\!}#1}(#2)}}
+\newcommand{\Eobj}[2]{\ensuremath{\mathrm{E}_{#1}(#2)}}
+\newcommand{\Pmin}{\ensuremath{\mathrm{P}_{\min}}\xspace}
+\newcommand{\Pmax}{\ensuremath{\mathrm{P}_{\max}}\xspace}
+
+% For LP
+\newcommand{\lowerbound}{lb}
+\newcommand{\upperbound}{ub}
+
+% Abbreviations
+\newcommand{\ie}{i.e.\xspace}
+\newcommand{\eg}{e.g.\xspace}
+\newcommand{\wrt}{w.r.t.\xspace}
+\newcommand{\cf}{cf.\xspace}
+\newcommand{\etal}{et al.\xspace}
+\newcommand{\qee}{\hfill $\vartriangle$}
+
+% Tools etc.
+\newcommand{\tool}[1]{\textsf{#1}\xspace}
+\newcommand{\storm}{\tool{Storm}}
+\newcommand{\mcsta}{\tool{mcsta}}
+\newcommand{\solver}[1]{\textsf{#1}\xspace}
+
+% Better checkmark and x-mark
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\text{\ding{51}}}%
+\newcommand{\xmark}{\text{\ding{55}}}%
+
+
+\newcommand{\comset}{\textit{practitioner-set-2024}\xspace}
+\newcommand{\Direct}{Common\xspace}
+\newcommand{\direct}{common\xspace}
+\newcommand{\Modifying}{WORD2\xspace}
+\newcommand{\modifying}{wORD2\xspace}
+
+\newcommand{\changed}[1]{#1}

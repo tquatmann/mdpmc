@@ -1,0 +1,21 @@
+
+\begin{figure}[t]
+	\setlength{\scatterplotsize}{0.33\textwidth}
+	\centering
+	\subfigure[\emph{qvbs} OVI vs.\ VI2PI$^\mathrm{X}$]{
+		\scatterplot{plotdata/scatter-qvbs-full.csv}{Storm.ovi-topo}{OVI}{Storm.vi2pi-mecq-topo-exactlu}{VI2PI/LU$^\mathrm{X}$}{false} \label{fig:qvbsovipi}}
+	\hspace{-2em}
+	\subfigure[\emph{hard} OVI vs.\ VI2PI$^\mathrm{X}$]{
+		\scatterplot{plotdata/scatter-qvbs-hard.csv}{Storm.ovi-topo}{OVI}{Storm.vi2pi-mecq-topo-exactlu}{VI2PI/LU$^\mathrm{X}$}{false} \label{fig:hardbot}
+	}
+	\hspace{-2em}
+	\subfigure[\emph{hard} OVI vs.\ LP]{
+		\scatterplot{plotdata/scatter-qvbs-hard.csv}{Storm.ovi-topo}{OVI}{Storm.lp-mecq-topo-gurobi-4auto}{LP}{false} 
+		\label{fig:hardtop}
+	}
+	
+	%\vspace{-1em}
+	\caption{Additional direct performance comparisons}
+	\label{fig:my_label}
+	
+\end{figure}

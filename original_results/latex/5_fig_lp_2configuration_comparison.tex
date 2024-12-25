@@ -1,0 +1,21 @@
+
+%\newcommand{\heightForLPvariants}{0.25\textwidth}
+\begin{figure*}[!htp]
+
+	\centering
+	%	\setlength{\quantileplotwidth}{0.5\textwidth}
+	%	\setlength{\quantileplotheight}{0.2\textwidth}
+	%	\setlength{\scatterplotsize}{\heightForLPvariants}
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{logs.Storm.lp-mono-gurobi-4auto/color1, logs.Storm.lp-mono-gurobi-4primalsimpl/color2, logs.Storm.lp-mono-gurobi-4dualsimpl/color3, logs.Storm.lp-mono-gurobi-4barrier/color4}
+	{auto, prim, dual, barrier}
+	{0}{\numcommunity}{0.1}{900}{north west}
+	%	\hfill
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4dualsimpl}{$\solver{Gurobi}_\tool{s}$/dual simplex}{logs.Storm.lp-mono-gurobi-4barrier}{$\solver{Gurobi}_\tool{s}$/barrier}{false}
+
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{$\solver{Gurobi}_\tool{s}$/auto}{logs.Storm.lp-mono-gurobi-4primalsimpl}{$\solver{Gurobi}_\tool{s}$/primal simplex}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{$\solver{Gurobi}_\tool{s}$/auto}{logs.Storm.lp-mono-gurobi-4dualsimpl}{$\solver{Gurobi}_\tool{s}$/dual simplex}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{$\solver{Gurobi}_\tool{s}$/auto}{logs.Storm.lp-mono-gurobi-4barrier}{$\solver{Gurobi}_\tool{s}$/barrier}{false}
+	\caption{Comparison of \solver{Gurobi}'s configurations.}
+	\label{fig:LP-tweak-configurations}
+\end{figure*}

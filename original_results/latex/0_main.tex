@@ -1,0 +1,63 @@
+\documentclass{article}
+
+
+\input{0_packages}
+\input{0_macros}
+\input{0_plots}
+
+\begin{document}
+
+\title{Figures from the Revised Practitioner's Guide to MDP Model Checking Algorithms}
+
+
+\maketitle
+
+\large
+This document shows the plots derived from the experimental data.
+
+\large
+Compile with \texttt{lualatex} to avoid TeX capacity error.
+
+
+
+\setcounter{figure}{3} % start with figure 4    
+\setlength{\quantileplotwidth}{0.6\textwidth}
+\setlength{\quantileplotheight}{0.3\textwidth}
+\setlength{\scatterplotsize}{0.3\textwidth}
+
+\newcommand{\hwsubfig}[2]{\subfigure[#1]{\simplehardwarquantileplot{#2}\label{fig:hwquantile:#2}}}
+\newcommand{\hwsubfigc}[1]{\hwsubfig{#1}{#1}}
+\newcommand{\simplehardwarescatterplot}[4]{\hardwarescatterplot{plotdata/scatter-hardware.csv}{logs-#1}{#2}{logs-#3}{#4}{false}}
+\newcommand{\hwscsubfig}[6]{\subfigure[#1]{\simplehardwarescatterplot{#2}{#3}{#4}{#5}\label{fig:#6:#2:#4}}}
+\newcommand{\hwscsubfignc}[4]{\subfigure{\simplehardwarescatterplot{#1}{#2}{#3}{#4}}}
+\newcommand{\hwscsubfigc}[2]{\hwscsubfig{#1 vs #2}{#1}{#1}{#2}{#2}{hwscatter}}
+\newlength{\hwsubfigspace}
+
+
+
+\input{6_fig_vi_comparison.tex}
+
+\input{5_fig_lp_1solver_comparison}
+
+\input{5_fig_lp_2configuration_comparison}
+\input{5_fig_lp_gurobiversions.tex}
+\input{5_fig_lp_3threads_comparison}
+\input{5_fig_lp_4formulation_comparison}
+\input{5_fig_lp_5_topo}
+
+\input{5_fig_pi.tex}
+
+\input{6_fig_bisimulation.tex}
+\input{6_fig_essential_states.tex}
+
+{
+	\setlength{\quantileplotwidth}{0.45\textwidth}
+\input{6_fig_best_quantlie.tex}
+}
+
+\input{6_fig_state_permutations.tex}
+\input{5_fig_hardware_quantile}
+
+\input{5_fig_hardware_extended.tex}
+
+\end{document}

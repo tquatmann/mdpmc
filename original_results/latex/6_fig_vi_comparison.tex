@@ -1,0 +1,108 @@
+
+\begin{figure*}[!htp]
+	\centering
+%		\setlength{\quantileplotwidth}{0.4\textwidth}
+	%	\setlength{\quantileplotheight}{0.2\textwidth}
+%		\setlength{\scatterplotsize}{0.4\textwidth}
+	\quantileplot{plotdata/quantile-claix23-community.csv}
+	{
+		logs.Storm.vi-mono/color1!60!white,
+		logs.mcsta.vi/color1!60!black,
+		logs.Storm.ovi-mono/color2!60!white,
+		logs.mcsta.ovi/color2!60!black,
+		logs.Storm.svi-mono/color3!50!white,
+		logs.mcsta.svi/color3!50!black,
+		logs.Storm.ii-mono/color4!90!white,
+		logs.mcsta.ii/color4!70!black,
+		logs.Storm.rs-mono-mecq-exact/color9
+	}
+	{
+		VI$_\tool{s}$,
+		VI$_\tool{m}$, 
+		OVI$_\tool{s}$,
+		OVI$_\tool{m}$,  
+		SVI$_\tool{s}$,
+		SVI$_\tool{m}$,  
+		II$_\tool{s}$, 
+		II$_\tool{m}$, 
+		RS$_\tool{s}^{X}$}
+	{0}{\numcommunity}{0.1}{900}{south east}
+	%
+	% VIm vs. VIs
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.vi-mono}{VI$_\tool{s}$}{logs.mcsta.vi}{VI$_\tool{m}$}{true}
+	
+	% OVIm vs. OVIs
+	% OVIm vs. SVIs
+	% OVIm vs. IIs
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.ovi-mono}{OVI$_\tool{s}$}{logs.mcsta.ovi}{OVI$_\tool{m}$}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.ovi-mono}{OVI$_\tool{s}$}{logs.Storm.svi-mono}{SVI$_\tool{s}$}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.ovi-mono}{OVI$_\tool{s}$}{logs.Storm.ii-mono}{II$_\tool{s}$}{false}
+	
+	% OVIm vs. RSsX
+	% OVIm vs. IIm
+	% OVIm vs. SVIm
+%	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.ovi}{OVI$_\tool{m}$}{logs.Storm.rs-mono-mecq-exact}{RS$_\tool{s}^{X}$}{false}
+%	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.ovi}{OVI$_\tool{m}$}{logs.mcsta.svi}{SVI$_\tool{m}$}{false}
+%	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.ovi}{OVI$_\tool{m}$}{logs.mcsta.ii}{II$_\tool{m}$}{false}
+	
+	\caption{Comparison of VI-based methods.}
+	\label{fig:VI-algo}
+\end{figure*}
+%
+
+\begin{figure*}[!htp]
+	\centering
+	
+%	qual: 3 scatter VI vs. all three opts
+%	"logs.mcsta.vi": "72 / 7 / 1",
+%	"logs.mcsta.vi-p0": "72 / 7 / 1",
+%	"logs.mcsta.vi-p1": "72 / 7 / 1",
+%	"logs.mcsta.vi-p01": "72 / 7 / 1",	
+
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.vi}{VI$_\tool{m}$}{logs.mcsta.vi-p0}{VI-Pr0$_\tool{m}$}{false}
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.vi}{VI$_\tool{m}$}{logs.mcsta.vi-p1}{VI-Pr1$_\tool{m}$}{false}
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.vi}{VI$_\tool{m}$}{logs.mcsta.vi-p01}{VI-Pr01$_\tool{m}$}{false}
+	
+%	topo: 3 scatter vanilla vs. topo for vi, ovi, rs (all storm since modest doesnt offer)
+%	"logs.Storm.vi-mono": "74 / 5 / 1",
+%	"logs.Storm.vi-topo": "73 / 7 / 0",
+%	"logs.Storm.ovi-mono": "77 / 0 / 3",
+%	"logs.Storm.ovi-topo": "77 / 0 / 3",
+%	"logs.Storm.svi-mono": "73 / 0 / 7",
+%	"logs.Storm.svi-topo": "74 / 0 / 6",
+%	"logs.Storm.ii-mono": "77 / 0 / 3",
+%	"logs.Storm.ii-topo": "77 / 0 / 3",
+%	"logs.Storm.rs-mono-mecq-exact": "25 / 0 / 55",
+%	"logs.Storm.rs-topo-mecq-exact": "32 / 0 / 48",
+	
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.vi-mono}{VI$_\tool{s}$}{logs.Storm.vi-topo}{VI-topo$_\tool{s}$}{false}
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.ovi-mono}{OVI$_\tool{s}$}{logs.Storm.ovi-topo}{OVI-topo$_\tool{s}$}{false}
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.rs-mono-mecq-exact}{RS$_\tool{s}^{X}$}{logs.Storm.rs-topo-mecq-exact}{RS-topo$_\tool{s}^{X}$}{false}
+
+%	mec: 3 scatter vanilla vs. mecq (sadly don't have OVI_s-mecq in results)
+%	"logs.mcsta.vi": "72 / 7 / 1",
+%	"logs.mcsta.vi-mecq": "74 / 5 / 1",
+%	"logs.mcsta.ovi": "69 / 2 / 9"
+%	"logs.mcsta.ovi-mecq": "75 / 1 / 4"
+%	"logs.Storm.vi-mono": "74 / 5 / 1",
+%	"logs.Storm.vi-mono-mecq": "74 / 5 / 1"
+
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.vi}{VI$_\tool{m}$}{logs.mcsta.vi-mecq}{VI-mec$_\tool{m}$}{false}
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.vi-mono}{VI$_\tool{s}$}{logs.Storm.vi-mono-mecq}{VI-mec$_\tool{s}$}{false}
+\scatterplot{plotdata/scatter-claix23-community.csv}{logs.mcsta.ovi}{OVI$_\tool{m}$}{logs.mcsta.ovi-mecq}{OVI-mec$_\tool{m}$}{false}
+	
+	
+%	\quantileplot{plotdata/quantile-claix23-community.csv}
+%	{logs.Storm.vi-mono/color1,
+%		logs.Storm.vi-topo/color2,
+%		logs.mcsta.vi/color3,
+%		logs.mcsta.vi-p0/color4,
+%		logs.mcsta.vi-p1/color5,
+%		logs.mcsta.vi-p01/color6
+%	}
+%	{VI$_\tool{s}$, VI-topo$_\tool{s}$, VI$_\tool{m}$, VI-Pr0$_\tool{m}$, VI-Pr1$_\tool{m}$, VI-Pr01$_\tool{m}$}
+%	{0}{\numcommunity}{0.1}{900}{south east}
+%
+	\caption{Comparison of optimizations on different VI-based methods and implementations.}
+	\label{fig:VI-opt}
+\end{figure*}

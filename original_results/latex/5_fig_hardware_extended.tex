@@ -1,0 +1,95 @@
+%
+\begin{figure*}[p]
+\centering
+\setlength{\quantileplotheight}{0.2\linewidth}
+\setlength{\quantileplotwidth}{0.218\linewidth}
+\setlength{\hwsubfigspace}{-2.35em}
+\mbox{\hspace{-0.8em}%
+\renewcommand{\quantileplotylabel}{runtime\phantom{aaaa}}%
+\subfigure[$\text{OVI}_\tool{s}$]{\simplehardwaremethodsquantileplot{Storm.ovi-topo}}\hspace{\hwsubfigspace}%
+\renewcommand{\quantileplotylabel}{}%
+\subfigure[$\text{VI}_\tool{s}$]{\simplehardwaremethodsquantileplot{Storm.vi-topo}}\hspace{\hwsubfigspace}%
+\subfigure[$\text{VI}_\tool{m}$]{\simplehardwaremethodsquantileplot{mcsta.vi}}\hspace{\hwsubfigspace}%
+\subfigure[$\text{OVI}_\tool{m}$]{\simplehardwaremethodsquantileplot{mcsta.ovi}}\hspace{\hwsubfigspace}%
+\subfigure[$\text{VI2LP}_\tool{s}$]{\simplehardwaremethodsquantileplot{Storm.vi2lp-topo-gurobi}\label{fig:quantilefixedmethod:lp}}\hspace{\hwsubfigspace}%
+\subfigure[$\text{VI2PI}_\tool{s}$]{\simplehardwaremethodsquantileplot{Storm.vi2pi-topo-gmres}}%
+}
+
+\hardwaremethodslegend
+\caption{Quantile plots with fixed tool configurations on various hardware. \changed{The claix23 in red is the main platform used for benchmarking in this paper. Other colors reflect Intel, AMD and Apple processors. Darker colors reflect more powerful platforms.}}
+\label{fig:quantilefixedmethod}
+\end{figure*}
+
+\begin{figure*}[p]
+\centering
+	
+	\setlength{\scatterplotsize}{0.24\textwidth}
+	%\hwscsubfigc{TRP5965-dockerized}{TRP5965-native}
+	
+	\hwscsubfignc{TRP5965-dockerized}{TRP5965}{R32200-dockerized}{R32200}
+	\hspace{-1em}
+	 \hwscsubfignc{i911900K-dockerized}{i911900}{E1620-dockerized}{E1620}
+	 \hspace{-1em}
+	   \hwscsubfignc{E1620-dockerized}{E1620}{R32200-dockerized}{R32200}
+	   \hspace{-1em}
+	     \hwscsubfignc{E1620-dockerized}{E1620}{R97950X-dockerized}{R97950}
+	
+	
+\vspace{-0.3em}
+	
+    \hwscsubfignc{TRP5965-dockerized}{TRP5965}{R54650U-dockerized}{R54650U} 
+    \hspace{-1em}
+    \hwscsubfignc{i911900K-dockerized}{i911900}{claix23}{claix23}
+    \hspace{-1em}
+       \hwscsubfignc{claix23}{claix23}{TRP5965-dockerized}{TRP5965}
+       \hspace{-1em}
+        \hwscsubfignc{claix23}{claix23}{R54650U-dockerized}{R54650U}
+
+
+\vspace{-0.3em}
+    
+    \hwscsubfignc{TRP5965-dockerized}{TRP5965}{R97950X-dockerized}{R97950}
+    \hspace{-1em}
+    \hwscsubfignc{i911900K-dockerized}{i911900}{i910980xe-dockerized}{i910980}
+ \hspace{-1em}
+    \hwscsubfignc{i911900K-dockerized}{i911900}{R97950X-dockerized}{R97950}
+    \hspace{-1em}
+    \hwscsubfignc{i911900K-dockerized}{i911900}{R32200-dockerized}{R32200}
+
+    
+  
+	\hardwareexperimentlegend
+	\caption{Detailed comparison of different hardware.  \changed{All running in the same Docker container, except claix23.} A column is analogous to a single plot in \cref{fig:hwscatter:selection}. We repeat some subfigures for convenience.}
+	\label{fig:hwscatter:more}
+	
+\end{figure*}
+%
+\begin{figure*}[p]
+%	
+\centering
+	\setlength{\scatterplotsize}{0.24\textwidth}
+	%\hwscsubfigc{TRP5965-dockerized}{TRP5965-native}
+%		\hwscsubfig{Twice the same platform}{M2Pro}{first run}{M2Pro-2}{second run}{fig:m2:nondet}
+%	\hwscsubfigc{M2Pro}{claix23}
+%    \hwscsubfig{vs Intel}{M2Pro}{M2U}{i911900K-dockerized}{i911900}{fig:m2:intel}
+%    \hwscsubfig{vs AMD}{M2Pro}{M2U}{TRP5965-native}{TRP5965}{fig:m2:amd}
+    \subfigure[Twice on the M1U]{
+\simplehardwarescatterplot{M2Pro}{first run}{M2Pro-2}{second run}
+\label{fig:m2:nondet}
+}\hspace{-1em}
+\subfigure[]{
+\simplehardwarescatterplot{M2Pro}{M1U}{claix23}{claix23}
+\label{fig:m2:nondet:claix23}
+}\hspace{-1em}
+\subfigure[]{
+\simplehardwarescatterplot{M2Pro}{M1U}{i911900K-dockerized}{i911900}
+\label{fig:m2:nondet:intel}
+}\hspace{-1em}
+\subfigure[]{
+\simplehardwarescatterplot{M2Pro}{M1U}{TRP5965-native}{TRP5965}
+\label{fig:m2:nondet:amd}
+}
+	\caption{Preliminary comparison to an ARM64 platform.}
+	\label{fig:hwarm64}
+	
+\end{figure*}

@@ -1,0 +1,21 @@
+
+
+\begin{figure*}[!htp]
+	\centering
+	%	\setlength{\quantileplotwidth}{0.5\textwidth}
+	%	\setlength{\quantileplotheight}{\heightForLPvariants}
+	%	\setlength{\scatterplotsize}{\heightForLPvariants}
+	%
+	\quantileplot{plotdata/quantile-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto/color1, logs.Storm.lp-mono-gurobi-4autobnds/color2, logs.Storm.lp-mono-gurobi-4autoinit/color3, logs.Storm.lp-mono-gurobi-4autoeq/color4, logs.Storm.lp-mono-gurobi-4autoinitbnds/color5}
+	{simple/all/ineq, bounds/all/ineq, simple/init/ineq, simple/all/eq, bnds/init/ineq}
+	{0}{\numcommunity}{0.1}{900}{north west}%
+%	\hspace{0.11\textwidth}
+	% Check each modification individually (bounds/only init optimization/equality constraints)
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{simple/all/ineq}{logs.Storm.lp-mono-gurobi-4autobnds}{bounds/all/ineq}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{simple/all/ineq}{logs.Storm.lp-mono-gurobi-4autoinit}{simple/init/ineq}{false}
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{simple/all/ineq}{logs.Storm.lp-mono-gurobi-4autoeq}{simple/all/eq}{false}
+	% Then look at combined effect of bounds and init, but not eq because that was not helpful
+	\scatterplot{plotdata/scatter-claix23-community.csv}{logs.Storm.lp-mono-gurobi-4auto}{simple/all/ineq}{logs.Storm.lp-mono-gurobi-4autoinitbnds}{bounds/init/ineq}{false}
+	\caption{Performance impact of LP problem formulation variants (using $\solver{Gurobi}_\tool{s}$ with 4 threads).}
+	\label{fig:LP-tweak-formulation}
+\end{figure*}
